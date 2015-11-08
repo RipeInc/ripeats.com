@@ -16,8 +16,13 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.navbar-header{
+  width: inherit;
+}
+
  .navbar-ripe{
    height: 70px;
+   width: 1280px;
    border-bottom: 5px solid green;
    margin-bottom: 0px;
    border-radius: 0px;
@@ -27,7 +32,7 @@
    height: 100%;
  }
 
- .navbar-brand{
+ .navbar-brand {
    font-weight: bolder;
    height: 65px;
    vertical-align: middle;
@@ -35,6 +40,15 @@
    line-height: 40px;
    padding-left: 50px;
    color: crimson;
+ }
+
+ .icon-holder{
+   position: relative;
+ }
+
+ .top-icon {
+   position: absolute;
+   left: 45%;
  }
 
 .navbar-right > li{
