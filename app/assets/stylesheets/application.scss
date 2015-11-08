@@ -13,6 +13,89 @@
  *= require_tree .
  *= require_self
  */
-
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .navbar-ripe{
+   height: 70px;
+   border-bottom: 5px solid green;
+   margin-bottom: 0px;
+   border-radius: 0px;
+ }
+
+ .navbar > container-fluid{
+   height: 100%;
+ }
+
+ .navbar-brand{
+   font-weight: bolder;
+   height: 65px;
+   vertical-align: middle;
+   font-size: 24px;
+   line-height: 40px;
+   padding-left: 50px;
+   color: crimson;
+ }
+
+.navbar-right > li{
+  height: 63px;
+}
+
+ul.dropdown-menu{
+  padding: 0px;
+}
+
+ul.dropdown-menu > li{
+  height: inherit;
+}
+
+ul.dropdown-menu > li > a{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ //
