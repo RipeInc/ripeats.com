@@ -3,3 +3,45 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // css for the splash page
+
+.navbar-buffer{
+  height: 70px;
+  display: block;
+}
+
+.splash-main{
+  height: 630px;
+  border-bottom: 5px solid green;
+}
+
+.message-field{
+  padding-top: 160px;
+  padding-bottom: 15px;
+  width: 100%;
+}
+
+.message-board-holder{
+  width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  color: darkgreen;
+}
+
+.splash-search-field{
+  width: 100%;
+}
+
+.form-holder{
+  width: 900px;
+  margin: 0 auto;
+}
+
+.splash-search-field{
+}
+
+.splash-search-input{
+  display: inline-block;
+  width: 800px;
+  padding: 0px;
+  height: 40px;
+}
