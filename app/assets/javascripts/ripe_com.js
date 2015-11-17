@@ -4,7 +4,12 @@ window.RipeCom = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // alert('Hello from Backbone!');
+    window.noticeVisual = true;
+    new RipeCom.Routers.Router({
+      $rootEl: $()
+    });
+
+    Backbone.history.start();
   }
 };
 
