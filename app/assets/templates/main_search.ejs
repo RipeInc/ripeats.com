@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <div class="message-field">
+    <div class="message-board-holder">
+    </div>
+  </div>
+
+  <div class="splash-search-field">
+    <div class="form-holder">
+      <form class="form-group">
+        <input class="splash-search-input" placeholder=" Type in your zip code and find deals around you, eg. 10003"/>
+
+        <input class="btn btn-warning" type="submit" value="search"/>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var current = 2;
+  var messages = [
+    "Are You Hungry?",
+    "Want to be Sustainable?",
+    "Looking for Good Deals?"
+  ];
+  var lastMessage = null;
+
+  function changeMessage(){
+    current += 1;
+    if(lastMessage){ lastMessage.remove() };
+    var $newMessage = $("<h1>").addClass("message-board")
+                             .html(messages[current % 3]);
+    $(".message-board-holder").append($newMessage);
+    setInterval(function(){ $newMessage.css("opacity", "1")}, 1);
+    lastMessage = $newMessage;
+  }
+
+  changeMessage();
+  setInterval(changeMessage, 5000);
+</script>

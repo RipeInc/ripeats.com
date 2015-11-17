@@ -5,20 +5,20 @@ RipeCom.Routers.Router = Backbone.Router.extend({
     "signup": "showSignup"
   },
 
-  initialize: function(){
-
+  initialize: function(options){
+    this.$rootEl = options.$rootEl;
   },
 
   showSearch: function(){
-
+    alert('search');
   },
 
   showLogin: function(){
-
+    alert('login');
   },
 
   showSignup: function(){
-
+    alert('signup');
   },
 
   _swap: function(view){
