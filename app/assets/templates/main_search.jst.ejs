@@ -16,26 +16,3 @@
   </div>
 
 </div>
-
-<script>
-  var current = current || 2;
-  var messages = [
-    "Are You Hungry?",
-    "Want to be Sustainable?",
-    "Looking for Good Deals?"
-  ];
-  var lastMessage = null;
-
-  function changeMessage(){
-    current += 1;
-    if(lastMessage){ lastMessage.remove() };
-    var $newMessage = $("<h1>").addClass("message-board")
-                             .html(messages[current % 3]);
-    $(".message-board-holder").append($newMessage);
-    setInterval(function(){ $newMessage.css("opacity", "1")}, 1);
-    lastMessage = $newMessage;
-  }
-
-  changeMessage();
-  setInterval(changeMessage, 5000);
-</script>
