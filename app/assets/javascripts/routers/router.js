@@ -15,9 +15,13 @@ RipeCom.Routers.Router = Backbone.Router.extend({
   },
 
   showLogin: function(){
+    var loginView = new RipeCom.Views.SplashLogin();
+    this._swap(loginView);
   },
 
   showSignup: function(){
+    var signupView = new RipeCom.Views.SplashSignup();
+    this._swap(signupView);
   },
 
   _swap: function(view){
