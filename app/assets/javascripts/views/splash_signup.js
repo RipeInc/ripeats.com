@@ -1,5 +1,6 @@
 RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
   template: JST['main_signup'],
+  className: 'splash-main',
 
   events: {
 
