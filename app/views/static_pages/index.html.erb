@@ -30,7 +30,9 @@
 
 <div class="navbar-buffer"></div>
 
-<div id="splash-page-backbone-field"></div>
+<div id="splash-page-backbone-field">
+
+</div>
 
 
 <div class="row">
@@ -38,31 +40,45 @@
     <div class="col-md-4">
       <div class="intro-field">
         <%= image_tag('soup.jpg', class: "intro-pic",size: "250") %>
-        <h3>Enjoy Exclusive Deals</h3>
-        <p>Ripe partner with high end restaurants to bring you the best in food industry.
-        Ripe partner with high end restaurants to bring you the best in food industry.
-      Ripe partner with high end restaurants to bring you the best in food industry.
-    Ripe partner with high end restaurants to bring you the best in food industry.</p>
-
+        <br>
+        <h3>Exclusive Deals</h3>
+        <br>
+        <p>
+          Ripe.com Inc. connect restaurants with customers who enjoy a good deal for the dinner.
+          Ripe.com Inc. connect restaurants with customers who enjoy a good deal for the dinner.
+        </p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="intro-field">
         <%= image_tag('sushi.jpg', class: "intro-pic", size: "250") %>
-        <h3>Enjoy Exclusive Deals</h3>
-        <p>Ripe partner with high end restaurants to bring you the best in food industry.</p>
+        <br>
+        <h3>Quality Food</h3>
+        <br>
+        <p>
+          Ripe.com Inc. partner with reliable food industry leaders who provide quality food to its customers.
+          Ripe.com Inc. partner with reliable food industry leaders who provide quality food to its customers.
+        </p>
       </div>
     </div>
     <div class="col-md-4">
       <div class="intro-field">
         <%= image_tag('fruit.jpg', class: "intro-pic", size: "250") %>
-        <h3>Enjoy Exclusive Deals</h3>
-        <p>Ripe partner with high end restaurants to bring you the best in food industry.</p>
+        <br>
+        <h3>Sustainability</h3>
+        <br>
+        <p>
+          Ripe.com Inc. captures excess food sources to prevent waste and help make food industry more sustainable.
+          Ripe.com Inc. captures excess food sources to prevent waste and help make food industry more sustainable.
+        </p>
       </div>
     </div>
   </div>
 </div>
-
-
-
 <!-- thing -->
+
+<script>
+  $(function(){
+    Backbone.history.navigate("#main", {trigger: true});
+  });
+</script>
