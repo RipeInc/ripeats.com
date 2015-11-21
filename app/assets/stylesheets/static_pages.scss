@@ -100,4 +100,23 @@
 // ALl the footer stuff
 #splash-page-footer-field{
   border-top: 1px solid lightgrey;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.footer-section{
+  text-align: center;
+  padding: 20px;
+  // margin-left: 20px;
+  // margin-right: 20px;
+}
+
+.footer-link,
+.footer-link:link,
+.footer-link:active,
+.footer-link:visited,
+.footer-link:hover {
+  cursor: pointer;
+  display: block;
+  color: black;
 }

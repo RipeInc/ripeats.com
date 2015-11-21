@@ -7,6 +7,8 @@ RipeCom.Routers.Router = Backbone.Router.extend({
 
   initialize: function(options){
     this.$rootEl = options.$rootEl;
+    this.$footerEl = options.$footerEl;
+    this.showFooter();
   },
 
   showSearch: function(){
@@ -22,6 +24,11 @@ RipeCom.Routers.Router = Backbone.Router.extend({
   showSignup: function(){
     var signupView = new RipeCom.Views.SplashSignup();
     this._swap(signupView);
+  },
+
+  showFooter: function(){
+    var footerView = new RipeCom.Views.FooterView();
+    this.$footerEl.html(footerView.render().$el);
   },
 
   _swap: function(view){

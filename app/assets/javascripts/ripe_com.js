@@ -6,7 +6,8 @@ window.RipeCom = {
   initialize: function() {
     window.noticeVisual = true;
     new RipeCom.Routers.Router({
-      $rootEl: $('#splash-page-backbone-field')
+      $rootEl: $('#splash-page-backbone-field'),
+      $footerEl: $('#splash-page-footer-field')
     });
 
     Backbone.history.start();
