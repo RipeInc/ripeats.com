@@ -16,6 +16,10 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ * {
+   font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+ }
+
 .navbar-header{
   width: inherit;
 }
