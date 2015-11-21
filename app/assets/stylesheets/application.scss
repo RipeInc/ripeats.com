@@ -20,6 +20,10 @@
    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
  }
 
+ body{
+   overflow-x: hidden;
+ }
+
 .navbar-header{
   width: inherit;
 }
