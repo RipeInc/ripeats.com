@@ -90,6 +90,15 @@
   padding-left: 50px;
 }
 
+.signup-tab-link,
+.signup-tab-link:link,
+.signup-tab-link:active,
+.signup-tab-link:visited,
+.signup-tab-link:hover {
+  cursor: pointer;
+  color: darkgreen;
+}
+
 // Middle section
 #splash-page-middle-section{
   padding-top: 50px;
