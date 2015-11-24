@@ -38,6 +38,11 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
 
   },
 
+  createNewCorporate: function(event){
+    event.preventDefault();
+    var $form = this.$el.find("")
+  }
+
   swapToUser: function(){
     var content = this.userFormTemplate();
     this.$el.find("#main-form-holder").html(content);
