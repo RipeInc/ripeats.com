@@ -5,6 +5,7 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
   events: {
     "click .form-switch-user": "swapToUser",
     "click .form-switch-restaurant": "swapToRestaurant",
+    "submit #new-user-form": "createNewUser"
   },
 
   initialize: function(options){
@@ -16,6 +17,14 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  createNewUser: function(event){
+    event.preventDefault();
+
+    var $form = this.$el.find("#new-user-form");
+    var data = $form.serializeJSON();
+    console.log(data);
   },
 
   swapToUser: function(){

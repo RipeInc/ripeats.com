@@ -1,4 +1,4 @@
-<form class="form-horizontal col-lg-8">
+<form id="new-user-form" class="form-horizontal col-lg-8">
   <fieldset>
 
     <div class="signup-form-information">
@@ -16,7 +16,7 @@
     <div class="form-group">
       <label class="col-lg-3 control-label">Username</label>
       <div class="col-lg-7">
-        <input class="form-control" type="text" placeholder="Input a Username, e.g. BananaLovingMonkey">
+        <input class="form-control" name="user[username]" type="text" placeholder="Input a Username, e.g. BananaLovingMonkey">
       </div>
       <br>
     </div>
@@ -24,7 +24,7 @@
     <div class="form-group">
       <label class="col-lg-3 control-label">Email</label>
       <div class="col-lg-7">
-        <input class="form-control" type="text" placeholder="Input your email, e.g. CherryTree@ripe.com">
+        <input class="form-control" name="user[email]" type="text" placeholder="Input your email, e.g. CherryTree@ripe.com">
       </div>
       <br>
     </div>
@@ -32,7 +32,7 @@
     <div class="form-group">
       <label class="col-lg-3 control-label">Password</label>
       <div class="col-lg-7">
-        <input class="form-control" type="password" placeholder="Select your password">
+        <input class="form-control" name="user[password]" type="password" placeholder="Select your password">
       </div>
       <br>
     </div>
@@ -40,7 +40,7 @@
     <div class="form-group">
       <label class="col-lg-3 control-label">Verify Password</label>
       <div class="col-lg-7">
-        <input class="form-control" type="password" placeholder="Verify your password">
+        <input class="form-control" name="user[password_verify]" type="password" placeholder="Verify your password">
       </div>
       <br>
     </div>
