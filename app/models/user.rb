@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  def password_verify=(password_verify)
+  end
+
   def is_password?(password)
     BCyrpt::Password.new(self.password_digest).is_password?(password)
   end
