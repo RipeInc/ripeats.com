@@ -4,7 +4,7 @@ class Corporate < ActiveRecord::Base
 
   def password=(password)
     @password = password
-    self.password_digest = BCryps::Password.create(password)
+    self.password_digest = BCrypt::Password.create(password)
   end
 
   def is_password?(password)
@@ -26,7 +26,7 @@ class Corporate < ActiveRecord::Base
     session_token = Corporate.generate_session_token
     self.session_token = session_token
     self.save
-    return sesseion_token
+    return session_token
   end
 
   def self.find_by_credentials(name, password)

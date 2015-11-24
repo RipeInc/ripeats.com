@@ -5,7 +5,8 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
   events: {
     "click .form-switch-user": "swapToUser",
     "click .form-switch-restaurant": "swapToRestaurant",
-    "submit #new-user-form": "createNewUser"
+    "submit #new-user-form": "createNewUser",
+    "submit #new-corporate-form": "createNewCorporate",
   },
 
   initialize: function(options){
@@ -34,14 +35,25 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
       error: function(model, response){
         debugger;
       }
-    })
-
+    });
   },
 
   createNewCorporate: function(event){
     event.preventDefault();
-    var $form = this.$el.find("")
-  }
+    var $form = this.$el.find("#new-corporate-form");
+
+    var data = $form.serializeJSON();
+    var newCorporate = new RipeCom.Models.Corporate(data);
+
+    newCorporate.save(data.corporate, {
+      success: function(model){
+        window.location = "/corporates/" + model.id;
+      },
+      error: function(model, response){
+        debugger;
+      }
+    })
+  },
 
   swapToUser: function(){
     var content = this.userFormTemplate();
