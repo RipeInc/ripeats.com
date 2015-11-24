@@ -25,6 +25,19 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
     var $form = this.$el.find("#new-user-form");
     var data = $form.serializeJSON();
     console.log(data);
+
+    var newUser = new RipeCom.Models.User(data);
+    newUser.save(data.user, {
+      success: function(){
+        console.log(success);
+      },
+
+      error: function(model, response){
+        console.log(model);
+        console.log(response);
+      }
+    })
+
   },
 
   swapToUser: function(){

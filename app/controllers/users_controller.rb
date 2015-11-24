@@ -21,12 +21,12 @@ class UsersController < ApplicationController
 
   end
 
-  def delet
+  def delete
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :password_verify)
   end
 end
