@@ -12,8 +12,9 @@ class Api::SessionsController < ApplicationController
   end
 
   def destroy
+    @entity = current_user || current_corporate
     log_out!
-    redirect_to root_url
+    render json: @entity
   end
 
   private

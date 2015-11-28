@@ -2,7 +2,7 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
   template: JST['corporate_main'],
 
   events: {
-
+    "click #signout-link": "signout"
   },
 
   initialize: function(options){
@@ -12,6 +12,21 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
     this.listenTo(this.corporate, "sync", this.render.bind(this));
 
     this.addAllViews();
+  },
+
+  signout: function(event){
+    event.preventDefault();
+
+    $.ajax({
+      url: "/api/sessions",
+      method: "DELETE",
+      success: function(response){
+        window.location = "/"
+      },
+      error: function(response){
+        debugger;
+      }
+    })
   },
 
   addAllViews: function(){
