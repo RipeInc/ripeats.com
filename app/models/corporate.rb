@@ -29,6 +29,7 @@ class Corporate < ActiveRecord::Base
     return session_token
   end
 
+
   def self.find_by_credentials(name, password)
     @corporate = Corporate.find_by_corporate_name(name)
     return @corporate if (@corporate && @corporate.is_password?(password))

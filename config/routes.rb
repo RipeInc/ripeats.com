@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :corporates, only: [:show, :create]
 
   namespace :api, defaults: { format: :json } do
+    resources :corporates, only: [:show]
   end
 end
