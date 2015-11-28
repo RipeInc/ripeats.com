@@ -31,7 +31,6 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
 
   addAllViews: function(){
     this.addNavBar();
-    this.addInfoSection();
     this.addDashboard();
     this.addFooter();
   },
@@ -42,14 +41,7 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
     });
     this.addComponent($navBar, "#main-navbar-field");
   },
-
-  addInfoSection: function(){
-    var $infoSection = new RipeCom.Views.CorporateInfo({
-      corporate: this.corporate
-    });
-    this.addComponent($infoSection, "#corporate-info-field");
-  },
-
+  
   addDashboard: function(){
     var $dashboard = new RipeCom.Views.CorporateDashboard({
       corporate: this.corporate
