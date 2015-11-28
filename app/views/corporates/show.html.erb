@@ -1,7 +1,22 @@
-<nav class="navbar-fixed-top"></nav>
-<h1>this is the dashboard page for restaurant</h1>
 
-<%= @corporate.corporate_name %>
-<%= @corporate.email %>
+<div id="corporate-page-backbone-field">
+  <div id="corporate-info-header">
+    <%= @corporate.id %>
+    <%= @corporate.corporate_name %>
+    <%= @corporate.email %>
+  </div>
 
-<div><a rel="nofollow" data-method="delete" href="<%= api_sessions_url %>">Sign Out</a></div>
+  <div id="main-navbar-field"></div>
+
+  <div id="corporate-info-field"></div>
+
+  <div id="corporate-dashboard-field"></div>
+
+  <div id="footer-field"></div>
+
+  <div class="navbar-fixed-top">this is the navbar fixed top</div>
+  <h1>this is the dashboard page for restaurant</h1>
+
+  <div style="height: 7000px; background-color: yellow;"></div>
+  <div><a rel="nofollow" data-method="delete" href="<%= api_sessions_url %>">Sign Out</a></div>
+</div>
