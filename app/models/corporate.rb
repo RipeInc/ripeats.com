@@ -3,6 +3,7 @@ class Corporate < ActiveRecord::Base
 
   validates :corporate_name, :email, :password_digest, :session_token, presence: true
   validates :corporate_name, :email, uniqueness: true
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token

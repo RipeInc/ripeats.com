@@ -50,7 +50,7 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
         window.location = "/corporates/" + model.id;
       },
       error: function(model, response){
-        debugger;
+        RipeCom.Utils.insertErrorMessages(response.responseJSON);
       }
     })
   },

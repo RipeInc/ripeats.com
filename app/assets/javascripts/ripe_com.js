@@ -3,6 +3,7 @@ window.RipeCom = {
   Collections: {},
   Views: {},
   Routers: {},
+  Utils: {},
   initialize: function() {
     window.noticeVisual = true;
     new RipeCom.Routers.Router({

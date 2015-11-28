@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
   def bounce_back_if_not_logged_in
     if !current_user && !current_corporate
+      flash[:errors] = ["You must sign in to see your account."]
       redirect_to root_url
     end
   end

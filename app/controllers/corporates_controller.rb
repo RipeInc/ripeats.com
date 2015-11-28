@@ -5,6 +5,7 @@ class CorporatesController < ApplicationController
   end
 
   def show
+    @corporate = Corporate.find(params[:id])
     render :show
   end
 
