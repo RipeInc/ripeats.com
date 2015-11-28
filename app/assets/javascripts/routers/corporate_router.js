@@ -6,7 +6,11 @@ RipeCom.Routers.CorporateRouter = Backbone.Router.extend({
     this.$corporateRoot = options.$corporateRoot;
 
     var data = $("#corporate-info-header").html().split("\n");
-    console.log(data);
+    var corporateID = Number(data[1].trim());
+    this.corporate = new RipeCom.Models.Corporate({
+      id: corporateID
+    });
+    this.corporate.fetch();
 
     this.main();
   },

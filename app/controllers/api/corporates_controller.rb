@@ -1,4 +1,13 @@
 class Api::CorporatesController < ApplicationController
+  def show
+    @corporate = Corporate.find(params[:id])
+    if @corporate
+      render json: @corporate
+    else
+      render json: "Corporate not found.", status: 500
+    end
+  end
+
   def create
     @corporate = Corporate.new(corporate_params)
 

@@ -1,5 +1,5 @@
 RipeCom.Models.Corporate = Backbone.Model.extend({
-  urlRoot: "api/corporates",
+  urlRoot: "/api/corporates",
 
   initialize: function(){
 
