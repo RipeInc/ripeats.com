@@ -1,6 +1,15 @@
 class Corporate < ActiveRecord::Base
   attr_reader :password
+
+  validates :corporate_name, :email, :password_digest, :session_token, presence: true
+  validates :corporate_name, :email, uniqueness: true
+  validates :password, length: { minimum: 6, allow_nil: true }
+
   after_initialize :ensure_session_token
+  has_many :menus
+  has_many :menu_items
+  has_many :deals
+  has_many :transactions
 
   def password=(password)
     @password = password

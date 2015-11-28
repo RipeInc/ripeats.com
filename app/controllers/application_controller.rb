@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     session[:session_token] = corporate.reset_session_token!
   end
 
+  def log_out!
+    session[:session_token] = nil
+  end
+
   def current_user
     @current_user ||= User.find_by_session_token(session[:session_token])
   end
@@ -26,6 +30,12 @@ class ApplicationController < ActionController::Base
     end
     if current_corporate
       redirect_to corporate_url(current_corporate)
+    end
+  end
+
+  def bounce_back_if_not_logged_in
+    if !current_user && !current_corporate
+      redirect_to root_url
     end
   end
 end

@@ -3,7 +3,7 @@ RipeCom.Views.SplashLogin = Backbone.FusedView.extend({
   className: 'splash-main',
 
   events: {
-    "submit #login-form": "login"
+    "submit #login-form": "loginCorporate"
 
   },
 
@@ -18,23 +18,19 @@ RipeCom.Views.SplashLogin = Backbone.FusedView.extend({
     return this;
   },
 
-  login: function(event){
+  loginCorporate: function(event){
     event.preventDefault();
-
-    alert("logging in!");
     var $form = this.$el.find("#login-form");
     var data = $form.serializeJSON();
-    console.log(data);
 
     $.ajax({
       url: "/api/sessions",
       method: "POST",
       data: data,
       success: function(response){
-        debugger;
+        window.location = "/corporates/" + response.id;
       },
       error: function(response){
-        debugger;
       }
     })
   },

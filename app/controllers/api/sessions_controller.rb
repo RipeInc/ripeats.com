@@ -13,11 +13,10 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     log_out!
-    render json: { message: "You successfully logged out!" }
+    redirect_to root_url
   end
 
   private
-
   def session_params
     params.require(:session).permit(:name, :password)
   end
