@@ -7,7 +7,7 @@
     <div class="main-form-holder">
 
       <div id="main-form-holder" class="col-lg-12">
-        <form class="form-horizontal col-lg-8">
+        <form id="login-form" class="form-horizontal col-lg-8">
           <fieldset>
 
             <div class="login-form-information">
@@ -21,7 +21,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Account Name or Email</label>
               <div class="col-lg-7">
-                <input class="form-control" type="text" placeholder="Enter your username, restaurant name, or email">
+                <input class="form-control" name="session[name]" type="text" placeholder="Enter your username, restaurant name, or email">
               </div>
               <br>
             </div>
@@ -29,7 +29,7 @@
             <div class="form-group">
               <label class="col-lg-3 control-label">Password</label>
               <div class="col-lg-7">
-                <input class="form-control" type="password" placeholder="Enter the password for your account.">
+                <input class="form-control" name="session[password]" type="password" placeholder="Enter the password for your account.">
               </div>
               <br>
             </div>

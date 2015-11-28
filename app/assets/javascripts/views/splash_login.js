@@ -3,8 +3,8 @@ RipeCom.Views.SplashLogin = Backbone.FusedView.extend({
   className: 'splash-main',
 
   events: {
-    "click .form-switch-user": "swapToUser",
-    "click .form-switch-restaurant": "swapToRestaurant",
+    "submit #login-form": "login"
+
   },
 
   initialize: function(options){
@@ -16,6 +16,27 @@ RipeCom.Views.SplashLogin = Backbone.FusedView.extend({
     var content = this.template();
     this.$el.html(content);
     return this;
+  },
+
+  login: function(event){
+    event.preventDefault();
+
+    alert("logging in!");
+    var $form = this.$el.find("#login-form");
+    var data = $form.serializeJSON();
+    console.log(data);
+
+    $.ajax({
+      url: "/api/sessions",
+      method: "POST",
+      data: data,
+      success: function(response){
+        debugger;
+      },
+      error: function(response){
+        debugger;
+      }
+    })
   },
 
   swapToUser: function(){
