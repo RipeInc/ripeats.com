@@ -1,3 +1,21 @@
 // Place all the styles related to the Corporates controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#corporate-info-field{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 70px;
+  margin-bottom: 20px;
+  border: 2px solid black;
+  padding-top: 0px;
+  padding-bottom: 200px;
+}
+
+#corporate-dashboard-field{
+  margin: 100px;
+  margin-top: 20px;
+  border: 2px solid black;
+  padding-top: 0px;
+  padding-bottom: 600px;
+}
