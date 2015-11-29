@@ -8,6 +8,7 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
   initialize: function(options){
     this.$corporateRoot = options.$corporateRoot;
     this.corporate = options.corporate;
+    debugger;
 
     this.listenTo(this.corporate, "sync", this.render.bind(this));
 
@@ -41,7 +42,7 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
     });
     this.addComponent($navBar, "#main-navbar-field");
   },
-  
+
   addDashboard: function(){
     var $dashboard = new RipeCom.Views.CorporateDashboard({
       corporate: this.corporate

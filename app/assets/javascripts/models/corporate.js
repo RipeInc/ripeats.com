@@ -3,5 +3,9 @@ RipeCom.Models.Corporate = Backbone.Model.extend({
 
   initialize: function(){
 
+  },
+
+  parse: function(payload){
+    debugger;
   }
 })

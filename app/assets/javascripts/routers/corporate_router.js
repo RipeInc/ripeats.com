@@ -20,7 +20,7 @@ RipeCom.Routers.CorporateRouter = Backbone.Router.extend({
   main: function(){
     var $corporateMainView = new RipeCom.Views.CorporateMainView({
       $corporateRoot: this.$corporateRoot,
-      user: this.user
+      corporate: this.corporate
     });
     this._swap($corporateMainView);
   },
