@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   create_table "addresses", force: :cascade do |t|
     t.string   "name"
     t.string   "street_one",     null: false
-    t.string   "stree_two"
+    t.string   "street_two"
     t.string   "city",           null: false
     t.string   "state",          null: false
     t.string   "zip_code",       null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151129191450) do
     t.string   "deal_title",   null: false
     t.text     "description",  null: false
     t.integer  "quantity",     null: false
+    t.integer  "price",        null: false
     t.boolean  "expire",       null: false
     t.datetime "expiration",   null: false
     t.datetime "created_at",   null: false

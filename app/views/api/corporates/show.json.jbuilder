@@ -24,7 +24,7 @@ json.active_deals @corporate.deals do |deal|
     json.expiration deal.expiration
 
     json.transactions deal.transactions do |transaction|
-      transaction.user_id
+      json.user_id transaction.user_id
     end
   end
 end
@@ -35,8 +35,8 @@ json.expired_deals @corporate.deals do |deal|
     json.description deal.description
     json.quantity deal.quantity
 
-    json.transactions. deal.transactions do |transaction|
-      transaction.user_id
+    json.transactions deal.transactions do |transaction|
+      json.user_id transaction.user_id
     end
   end
 end

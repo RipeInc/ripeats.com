@@ -4,11 +4,13 @@ class CreateDeals < ActiveRecord::Migration
       t.integer :corporate_id, null: false
       t.string :deal_title, null: false
       t.text :description, null: false
+      
       t.integer :quantity, null: false
+      t.integer :price, null: false
 
       t.boolean :expire, null: false
       t.datetime :expiration, null: false
-      
+
       t.timestamps null: false
     end
   end
