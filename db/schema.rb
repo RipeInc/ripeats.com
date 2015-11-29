@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20151117004408) do
 
   create_table "corporates", force: :cascade do |t|
     t.string   "corporate_name",  null: false
+    t.string   "description"
     t.string   "email",           null: false
     t.string   "profile_image"
     t.string   "password_digest", null: false

@@ -2,9 +2,9 @@ class CreateCorporates < ActiveRecord::Migration
   def change
     create_table :corporates do |t|
       t.string :corporate_name, null: false
+      t.string :description
       t.string :email, null: false
       t.string :profile_image
-      t.string :description
 
       t.string :password_digest, null: false
       t.string :session_token, null: false
