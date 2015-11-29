@@ -2,6 +2,22 @@ class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
 
+  has_many :addresses, as: :locatable
+  
+  has_many(
+    :ratings,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: "Rating"
+  )
+
+  has_many(
+    :transactions,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: "Transaction"
+  )
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)
