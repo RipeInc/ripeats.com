@@ -4,6 +4,7 @@ class CreateCorporates < ActiveRecord::Migration
       t.string :corporate_name, null: false
       t.string :email, null: false
       t.string :profile_image
+      t.string :description
 
       t.string :password_digest, null: false
       t.string :session_token, null: false
