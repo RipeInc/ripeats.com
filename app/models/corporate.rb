@@ -7,10 +7,40 @@ class Corporate < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   after_initialize :ensure_session_token
-  has_many :menus
-  has_many :menu_items
-  has_many :deals
-  has_many :transactions
+
+  has_one(
+    :menu,
+    foreign_key: :corporate_id,
+    primary_key: :id,
+    class_name: "Menu"
+  )
+
+  has_many(
+    :ratings,
+    foreign_key: :corporate_id,
+    primary_key: :id,
+    class_name: "Rating"
+  )
+
+  has_many(
+    :menu_items,
+    through: :menu,
+    source: :menu_items
+  )
+
+  has_many(
+    :deals,
+    foreign_key: :corporate_id,
+    primary_key: :id,
+    class_name: "Deal"
+  )
+
+  has_many(
+    :transactions,
+    foreign_key: :corporate_id,
+    primary_key: :id,
+    class_name: "Transaction"
+  )
 
   def password=(password)
     @password = password
