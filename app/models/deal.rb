@@ -16,6 +16,6 @@ class Deal < ActiveRecord::Base
   has_many(
     :transactions,
     through: :bundlings,
-    source: :transaction
+    source: :transactn
   )
 end

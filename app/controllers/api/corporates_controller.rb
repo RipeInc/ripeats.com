@@ -1,8 +1,8 @@
 class Api::CorporatesController < ApplicationController
   def show
-    @corporate = Corporate.find(params[:id])
+    @corporate = Corporate.includes(:menu_items).includes(deals: :transactions).includes(:addresses).includes(:ratings).includes(:transactions).find(params[:id])
     if @corporate
-      render json: @corporate
+      render "show"
     else
       render json: "Corporate not found.", status: 500
     end

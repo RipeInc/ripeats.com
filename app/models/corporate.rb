@@ -38,9 +38,8 @@ class Corporate < ActiveRecord::Base
 
   has_many(
     :transactions,
-    foreign_key: :corporate_id,
-    primary_key: :id,
-    class_name: "Transaction"
+    through: :deals,
+    source: :transactions
   )
 
   def password=(password)

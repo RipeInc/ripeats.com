@@ -1,6 +1,6 @@
 class Bundling < ActiveRecord::Base
   belongs_to(
-    :transaction,
+    :transactn,
     foreign_key: :transaction_id,
     primary_key: :id,
     class_name: "Transaction"

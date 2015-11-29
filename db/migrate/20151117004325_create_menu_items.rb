@@ -6,6 +6,7 @@ class CreateMenuItems < ActiveRecord::Migration
       t.string :item_name, null: false
       t.text :description, null: false
       t.string :item_image
+      t.integer :price, null: false
 
       t.timestamps null: false
     end

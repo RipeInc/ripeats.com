@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20151129191450) do
     t.string   "item_name",   null: false
     t.text     "description", null: false
     t.string   "item_image"
+    t.integer  "price",       null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
