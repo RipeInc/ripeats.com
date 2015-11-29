@@ -4,7 +4,5 @@ class Deal < ActiveRecord::Base
     foreign_key: :corporate_id,
     primary_key: :id,
     class_name: "Corporate"
-  )
-
-  
+  )  
 end
