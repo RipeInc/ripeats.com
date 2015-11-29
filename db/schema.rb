@@ -39,6 +39,9 @@ ActiveRecord::Schema.define(version: 20151129191450) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "bundlings", ["deal_id"], name: "index_bundlings_on_deal_id", using: :btree
+  add_index "bundlings", ["transaction_id"], name: "index_bundlings_on_transaction_id", using: :btree
+
   create_table "corporates", force: :cascade do |t|
     t.string   "corporate_name",  null: false
     t.string   "description"
@@ -96,16 +99,13 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
-    t.integer  "user_id",      null: false
-    t.integer  "corporate_id", null: false
-    t.integer  "deal_id",      null: false
-    t.integer  "amount",       null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "user_id",    null: false
+    t.integer  "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "transactions", ["amount"], name: "index_transactions_on_amount", using: :btree
-  add_index "transactions", ["corporate_id"], name: "index_transactions_on_corporate_id", using: :btree
   add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|

@@ -8,7 +8,7 @@ class CreateBundlings < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index, :bundlings, :transaction_id
-    add_index, :bundlings, :deal_id
+    add_index :bundlings, :transaction_id
+    add_index :bundlings, :deal_id
   end
 end
