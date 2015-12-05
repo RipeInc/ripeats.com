@@ -9,13 +9,6 @@ class Corporate < ActiveRecord::Base
   after_initialize :ensure_session_token
   has_many :addresses, as: :locatable
 
-  has_one(
-    :menu,
-    foreign_key: :corporate_id,
-    primary_key: :id,
-    class_name: "Menu"
-  )
-
   has_many(
     :ratings,
     foreign_key: :corporate_id,
@@ -25,8 +18,9 @@ class Corporate < ActiveRecord::Base
 
   has_many(
     :menu_items,
-    through: :menu,
-    source: :menu_items
+    foreign_key: :corporate_id,
+    primary_key: :id,
+    class_name: "MenuItem"
   )
 
   has_many(
