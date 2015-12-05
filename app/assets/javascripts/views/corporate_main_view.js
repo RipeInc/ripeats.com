@@ -8,7 +8,6 @@ RipeCom.Views.CorporateMainView = Backbone.FusedView.extend({
   initialize: function(options){
     this.$corporateRoot = options.$corporateRoot;
     this.corporate = options.corporate;
-    debugger;
 
     this.listenTo(this.corporate, "sync", this.render.bind(this));
 

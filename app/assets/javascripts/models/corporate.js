@@ -94,7 +94,6 @@ RipeCom.Models.Corporate = Backbone.Model.extend({
       delete response.transactions;
     };
 
-    debugger;
     return response;
   }
 })
