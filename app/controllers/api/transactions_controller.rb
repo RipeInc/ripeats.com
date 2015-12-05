@@ -12,10 +12,16 @@ class Api::TransactionsController < ApplicationController
       render json: @transactions
     end
 
+    def deal_transactions
+      @Deal = Deal.includes(:transactions).find(params[:deal_id])
+      @transactions = @deal.transactions
+      render json: @transactions
+    end
+
     private
 
     def transaction_params
-      params.require(:transaction).permit(:corporate_id, :user_id)
+      params.require(:transaction).permit(:corporate_id, :user_id, :deal_id)
     end
 
 end
