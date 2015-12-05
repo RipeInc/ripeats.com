@@ -5,7 +5,13 @@ RipeCom.Models.Corporate = Backbone.Model.extend({
 
   },
 
-  parse: function(payload){
-    debugger;
+  address: function(){
+    if(!this._address){
+      this._address = new RipeCom.Model.Address
+    }
+  },
+
+  parse: function(response){
+
   }
 })

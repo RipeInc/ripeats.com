@@ -10,11 +10,13 @@ Rails.application.routes.draw do
       resources :deals, only: [:index]
       get '/ratings', to: "ratings#corporate_ratings"
       get '/transactions', to: "transactions#corporate_transactions"
+      get '/addresses', to: "addresses#corporate_address"
     end
 
     resources :users, only: [:show, :create, :destroy] do
       get '/ratings', to: "ratings#user_ratings"
       get '/transactions', to: "transactions#user_transactions"
+      get '/addresses', to: "addresses#user_address"
     end
 
     resource :sessions, only: [:create, :destroy]
