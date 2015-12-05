@@ -1,1 +1,42 @@
-<h1>Corporate Menu Information</h1>
+<% var defaultImage = corporate.attributes.profile_image %>
+
+<div class="container">
+  <div class="row">
+    <button id="create-new-menu-item">Add an Item</button>
+  </div>
+
+  <hr>
+
+  <div id="deal-list-holder">
+
+    <div class="list-group">
+      <% menuItems.forEach(function(item){ %>
+        <div class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">
+              <% if(item.attributes.item_image){ %>
+                <img class="menu-item-image" src=<%= String(item.attributes.item_image) %> alt="?" />
+              <% }else if(defaultImage){ %>
+                <img class="menu-item-image" src=<%= defaultImage %> alt="?" />
+              <% }else{ %>
+                <img class="menu-item-image" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+              <% }%>
+            </div>
+
+            <div class="col-md-6">
+              <h4><%= item.attributes.item_name %></h4>
+              <button>Edit Item</button>
+              <button>Delete Item</button>
+              <button>Post Deal with Item</button>
+              <p><%= item.attributes.description %></p>
+            </div>
+
+            <div class="col-md-3">
+              <h3>Price: $<%= item.attributes.item_price/100 %></h3>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</div>

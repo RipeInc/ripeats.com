@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20151129191450) do
     t.integer  "corporate_id", null: false
     t.string   "deal_title",   null: false
     t.text     "description",  null: false
+    t.string   "deal_image"
     t.integer  "quantity",     null: false
     t.integer  "price",        null: false
     t.boolean  "expire",       null: false

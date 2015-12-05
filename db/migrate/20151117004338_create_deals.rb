@@ -4,7 +4,8 @@ class CreateDeals < ActiveRecord::Migration
       t.integer :corporate_id, null: false
       t.string :deal_title, null: false
       t.text :description, null: false
-      
+      t.string :deal_image
+
       t.integer :quantity, null: false
       t.integer :price, null: false
 
