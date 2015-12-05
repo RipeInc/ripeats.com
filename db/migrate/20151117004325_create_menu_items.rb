@@ -2,6 +2,7 @@ class CreateMenuItems < ActiveRecord::Migration
   def change
     create_table :menu_items do |t|
       t.integer :menu_id, null: false
+      t.integer :corporate_id, null: false
 
       t.string :item_name, null: false
       t.text :description, null: false

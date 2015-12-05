@@ -69,23 +69,17 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   end
 
   create_table "menu_items", force: :cascade do |t|
-    t.integer  "menu_id",     null: false
-    t.string   "item_name",   null: false
-    t.text     "description", null: false
-    t.string   "item_image"
-    t.integer  "price",       null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "menu_items", ["item_name"], name: "index_menu_items_on_item_name", using: :btree
-
-  create_table "menus", force: :cascade do |t|
+    t.integer  "menu_id",      null: false
     t.integer  "corporate_id", null: false
-    t.text     "description"
+    t.string   "item_name",    null: false
+    t.text     "description",  null: false
+    t.string   "item_image"
+    t.integer  "price",        null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  add_index "menu_items", ["item_name"], name: "index_menu_items_on_item_name", using: :btree
 
   create_table "ratings", force: :cascade do |t|
     t.integer  "user_id",      null: false
