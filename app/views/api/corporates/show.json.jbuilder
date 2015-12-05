@@ -1,4 +1,4 @@
-json.(@corporate, :id, :corporate_name, :description, :email, :profile_image)
+json.(@corporate, :id, :corporate_name, :description, :email, :profile_image, :corporate_contact)
 
 json.addresses @corporate.addresses do |address|
   json.name address.name

@@ -1,7 +1,7 @@
 <div class="row" id="corporate-information-row">
   <div class="col-md-4">
     <div id="corporate-avatar-holder">
-      <img src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+      <img id="corporate-avatar" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
       <button>Change Profile Picture</button>
     </div>
   </div>
@@ -12,9 +12,16 @@
     <h5>Ripe Ratings: <%= corporate.ratings().average() %></h5>
     <div id="description-box">
       <% if(corporate.attributes.description){ %>
-        <h5><%= corporate.attributes.description %></h5>
+        <h5>Description: <%= corporate.attributes.description %></h5>
       <% }else{ %>
-        <h5>add a description!</h5>
+        <h5>Description: add a description!</h5>
+      <% } %>
+    </div>
+    <div id="contact-box">
+      <% if(corporate.attributes.corporate_contact){ %>
+        <h5>Phone Number: <%= corporate.attributes.corporate_contact %></h5>
+      <% }else{ %>
+        <h5>Phone Number: add a contact number</h5>
       <% } %>
     </div>
   </div>

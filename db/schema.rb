@@ -43,14 +43,15 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   add_index "bundlings", ["transaction_id"], name: "index_bundlings_on_transaction_id", using: :btree
 
   create_table "corporates", force: :cascade do |t|
-    t.string   "corporate_name",  null: false
+    t.string   "corporate_name",    null: false
     t.string   "description"
-    t.string   "email",           null: false
+    t.string   "email",             null: false
     t.string   "profile_image"
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "corporate_contact"
+    t.string   "password_digest",   null: false
+    t.string   "session_token",     null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   add_index "corporates", ["corporate_name"], name: "index_corporates_on_corporate_name", unique: true, using: :btree
