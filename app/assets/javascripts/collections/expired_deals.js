@@ -1,6 +1,6 @@
-RipeCom.Collections.Deals = Bakbone.Collection.extend({
+RipeCom.Collections.ExpiredDeals = Bakbone.Collection.extend({
   url: function(){
-    return "/api/corporate/" + this.corporate.id + "/deals";
+    return "/api/corporate/" + this.corporate.id + "/expired_deals";
   },
 
   model: RipeCom.Models.Deal,

@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]
-      resources :deals, only: [:index]
+      get '/active_deals', to: "deals#active_deals"
+      get '/expired_deals', to: "deals#expired_deals"
       get '/ratings', to: "ratings#corporate_ratings"
       get '/transactions', to: "transactions#corporate_transactions"
       get '/addresses', to: "addresses#corporate_address"
