@@ -12,10 +12,9 @@ User.create(username: "Brian", email: "brian@gmail.com", password: "123456", pas
 User.create(username: "Casey", email: "casey@gmail.com", password: "123456", password_verify: "123456");
 User.create(username: "Dylan", email: "dylan@gmail.com", password: "123456", password_verify: "123456");
 
-Menu.create(corporate_id: 1, description: "Testing Menu");
-MenuItem.create(menu_id: 1, item_name: "Fried Chicken", description: "Chicken at its finest.", price: 1200);
-MenuItem.create(menu_id: 1, item_name: "Turkey Burger", description: "Burger made with turkey.", price: 800);
-MenuItem.create(menu_id: 1, item_name: "Orange County Buffet", description: "Just a mixture of California stuff", price: 3600);
+MenuItem.create(corporate_id: 1, item_name: "Fried Chicken", description: "Chicken at its finest.", price: 1200);
+MenuItem.create(corporate_id: 1, item_name: "Turkey Burger", description: "Burger made with turkey.", price: 800);
+MenuItem.create(corporate_id: 1, item_name: "Orange County Buffet", description: "Just a mixture of California stuff", price: 3600);
 
 Deal.create(corporate_id: 1, deal_title: "Orange County Comes to You", description: "Orange County Buffet for sale", quantity: 25, price: 1800, expire: false, expiration: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}");
 Deal.create(corporate_id: 1, deal_title: "Chicken Frenzy", description: "Experience this American sensation for a buck", quantity: 10, price: 100, expire: false, expiration: "#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}");

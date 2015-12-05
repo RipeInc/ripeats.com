@@ -69,7 +69,6 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   end
 
   create_table "menu_items", force: :cascade do |t|
-    t.integer  "menu_id",      null: false
     t.integer  "corporate_id", null: false
     t.string   "item_name",    null: false
     t.text     "description",  null: false
