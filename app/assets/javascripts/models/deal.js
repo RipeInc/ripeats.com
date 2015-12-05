@@ -3,7 +3,7 @@ RipeCom.Models.Deal = Backbone.Model.extend({
 
   transactions: function(){
     if(!this._transactions){
-      this._transactions = new RipeCom.Collection.DealTransactions({
+      this._transactions = new RipeCom.Collections.DealTransactions({
         deal: this
       });
     };
@@ -27,6 +27,6 @@ RipeCom.Models.Deal = Backbone.Model.extend({
   },
 
   left: function(){
-    return this.quantity - this.transactions().length;
+    return this.attributes.quantity - this.transactions().length;
   }
 })

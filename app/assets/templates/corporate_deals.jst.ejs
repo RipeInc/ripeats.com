@@ -21,7 +21,7 @@
             </div>
 
             <div class="col-md-6">
-              <h4> <%= deal.deal_title %></h4>
+              <h2><%= deal.attributes.deal_title %></h2>
               <button>Remove Deal</button>
 
               <p><%= deal.attributes.description %></p>
@@ -30,7 +30,7 @@
               <div class="row">
                 <div class="col-md-4">
                   <h4>Expire Time:</h4>
-                  <p><%= deal.attribtues.expiration %></p>
+                  <p><%= deal.attributes.expiration %></p>
                 </div>
 
                 <div class="col-md-4">

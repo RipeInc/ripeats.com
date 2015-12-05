@@ -7,12 +7,12 @@ RipeCom.Views.CorporateDeals = Backbone.FusedView.extend({
 
   initialize: function(options){
     this.corporate = options.corporate;
-    this.deals = this.corporate.deals;
+    this.deals = this.corporate.activeDeals();
     this.listenTo(this.corporate, 'sync', this.updateRender);
   },
 
   updateRender: function(){
-    this.deals = this.corporate.deals();
+    this.deals = this.corporate.activeDeals();
     this.render();
   },
 
