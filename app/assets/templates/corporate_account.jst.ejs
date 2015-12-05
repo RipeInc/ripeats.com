@@ -1,5 +1,58 @@
+<div class="row" id="corporate-information-row">
+  <div class="col-md-4">
+    <div id="corporate-avatar-holder">
+      <img src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+      <button>Change Profile Picture</button>
+    </div>
+  </div>
 
-<%= corporate.id %>
-<h1>Corporate Account Information</h1>
+  <div class="col-md-8">
+    <h2><%= corporate.attributes.corporate_name %></h2>
+    <h5><%= corporate.attributes.email %></h5>
+    <h5>Ripe Ratings: <%= corporate.ratings().average() %></h5>
+    <div id="description-box">
+      <% if(corporate.attributes.description){ %>
+        <h5><%= corporate.attributes.description %></h5>
+      <% }else{ %>
+        <h5>add a description!</h5>
+      <% } %>
+    </div>
+  </div>
 
-<img src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+</div>
+
+<div class="row" id="corporate-stats-row">
+  <div class="col-md-3">
+    <p>Items on Menu</p>
+    <p> <%= corporate.menuItems().length %>
+  </div>
+
+  <div class="col-md-3">
+    <p>Current Deals</p>
+    <p> <%= corporate.activeDeals().length %></p>
+  </div>
+
+  <div class="col-md-3">
+    <p>Past Deals</p>
+    <p> <%= corporate.expiredDeals().length %></p>
+  </div>
+
+  <div class="col-md-3">
+    <p>Sold</p>
+    <p> <%= corporate.transactions().length %></p>
+  </div>
+</div>
+
+<div class="row" id="corproate-address-row">
+  <% var corporateAddress = corporate.address().attributes %>
+  <% if(corporateAddress.zip_code){ %>
+    <button>Change Address</button>
+    <p> <%= corporateAddress.street_one %></p>
+    <p> <%= corporateAddress.street_two %></p>
+    <p> <%= corporateAddress.city %></p>
+    <p> <%= corporateAddress.state %></p>
+    <p> <%= corporateAddress.zip_code %></p>
+  <% }else{ %>
+    <button>Add an Address</button>
+  <% } %>
+</div>

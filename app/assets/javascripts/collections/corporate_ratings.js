@@ -11,5 +11,15 @@ RipeCom.Collections.CorporateRatings = Backbone.Collection.extend({
 
   parse: function(response){
     this.set(response);
+  },
+
+  average: function(){
+    if(this._average){ return this._average; };
+    var sum = 0;
+    this.forEach(function(rating){
+      sum += Number(rating.attributes.rating);
+    });
+
+    return Math.round((sum*100)/this.length)/100;
   }
 })
