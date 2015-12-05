@@ -9,7 +9,7 @@ RipeCom.Collections.CorporateTransactions = Backbone.Collection.extend({
     this.corporate = options.corporate;
   },
 
-  parse: function(resposne){
+  parse: function(response){
     this.set(response);
   }
 })

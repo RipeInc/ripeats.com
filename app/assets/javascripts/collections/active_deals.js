@@ -1,4 +1,4 @@
-RipeCom.Collections.ActiveDeals = Bakbone.Collection.extend({
+RipeCom.Collections.ActiveDeals = Backbone.Collection.extend({
   url: function(){
     return "/api/corporate/" + this.corporate.id + "/active_deals";
   },

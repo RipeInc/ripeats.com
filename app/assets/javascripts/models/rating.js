@@ -1,4 +1,4 @@
-RipeCom.Model.Rating = Backbone.Model.extend({
+RipeCom.Models.Rating = Backbone.Model.extend({
   urlRoot: "/api/ratings",
 
   parse: function(response){

@@ -1,4 +1,4 @@
-RipeCom.Collections.ExpiredDeals = Bakbone.Collection.extend({
+RipeCom.Collections.ExpiredDeals = Backbone.Collection.extend({
   url: function(){
     return "/api/corporate/" + this.corporate.id + "/expired_deals";
   },
