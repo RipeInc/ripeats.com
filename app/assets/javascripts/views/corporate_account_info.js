@@ -7,6 +7,8 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
 
   initialize: function(options){
     this.corporate = options.corporate;
+
+    this.listenTo(this.corporate, 'sync', this.render.bind(this));
   },
 
   render: function(){
