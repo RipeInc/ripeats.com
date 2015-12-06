@@ -2,7 +2,7 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
   template: JST['corporate_account'],
 
   events: {
-
+    "click #change-corporate-avatar": "changeAvatar"
   },
 
   initialize: function(options){
@@ -15,5 +15,36 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
     });
     this.$el.html(content);
     return this;
+  },
+
+  changeAvatar: function(event){
+    event.preventDefault();
+    var thisView = this;
+    filepicker.setKey("A8wUZft6SyCY63HWqMYIFz");
+    filepicker.pick(
+      {
+        cropRatio: 1,
+        mimetype: 'image/*',
+        services: ['COMPUTER', 'CONVERT'],
+        cropForce: true
+      },
+
+      function(result){
+        var data = {"profile_image": result.url};
+        thisView.corporate.save(data, {
+          success: function(model, response){
+            thisView.corporate.fetch();
+          },
+
+          error: function(model, response){
+            debugger;
+          }
+        })
+      },
+
+      function(error){
+        debugger;
+      }
+    );
   }
 })

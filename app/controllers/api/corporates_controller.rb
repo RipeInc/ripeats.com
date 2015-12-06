@@ -19,13 +19,22 @@ class Api::CorporatesController < ApplicationController
     end
   end
 
+  def edit
+    @corporate = Corporate.find(params[:corporate_id]);
+    if @corporate.update(corporate_params)
+      render json: @corporate
+    else
+      render json: @corporate.errors.full_messages, status: 422
+    end
+  end
+
   def destroy
   end
 
   private
 
   def corporate_params
-    params.require(:corporate).permit(:corporate_name, :email, :password, :password_verify)
+    params.require(:corporate).permit(:id, :corporate_name, :description, :profile_image, :corporate_contact, :email, :password, :password_verify)
   end
 
 end
