@@ -13,7 +13,6 @@ RipeCom.Views.CorporateDashboard = Backbone.FusedView.extend({
   },
 
   render: function(){
-    debugger;
     var content = this.template({
       corporate: this.corporate
     });

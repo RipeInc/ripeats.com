@@ -2,13 +2,18 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
   template: JST['corporate_account'],
 
   events: {
-    "click #change-corporate-avatar": "changeAvatar"
+    "click #change-corporate-avatar": "changeAvatar",
+    "click #change-corporate-description": "changeDescription",
+    "click #change-corporate-contact": "changeContact",
+    "click #corporate-change-address": "changeAddress",
+    "click #corporate-add-address": "addAddress",
   },
 
   initialize: function(options){
     this.corporate = options.corporate;
 
     this.listenTo(this.corporate, 'sync', this.render.bind(this));
+    this.listenTo(this.corporate.address(), 'sync', this.render.bind(this));
   },
 
   render: function(){
@@ -48,5 +53,28 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
         debugger;
       }
     );
+  },
+
+  changeDescription: function(event){
+
+  },
+
+  changeContact: function(event){
+
+  },
+
+  addAddress: function(event){
+
+  },
+
+  changeAddress: function(event){
+    event.preventDefault();
+    var $modalField = $("#ripe-overlay-field-master");
+    var newModalView = new RipeCom.Views.CorporateChangeAddress({
+      corporate: this.corporate,
+      address: this.corporate.address()
+    });
+
+    $modalField.html(newModalView.render().$el);
   }
 })

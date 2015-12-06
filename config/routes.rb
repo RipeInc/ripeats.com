@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :corporates, only: [:show]
 
   namespace :api, defaults: { format: :json } do
+    put "/address/:id", to: "addresses#update"
+
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]
       put '', to: "corporates#edit"

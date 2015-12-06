@@ -75,11 +75,11 @@
 
     <div class="col-md-8">
       <% if(corporateAddress.zip_code){ %>
-        <h5>Street Address: <%= corporateAddress.street_one %></h5>
-        <h5> <%= corporateAddress.street_two %></h5>
-        <h5>City: <%= corporateAddress.city %></h5>
-        <h5>State: <%= corporateAddress.state %></h5>
-        <h5>Zip Code: <%= corporateAddress.zip_code %></h5>
+        <h5>Street Address One: &nbsp; <%= corporateAddress.street_one %></h5>
+        <h5>Street Address Two: &nbsp;<%= corporateAddress.street_two %></h5>
+        <h5>City: &nbsp; <%= corporateAddress.city %></h5>
+        <h5>State: &nbsp; <%= corporateAddress.state %></h5>
+        <h5>Zip Code: &nbsp; <%= corporateAddress.zip_code %></h5>
       <% }else{ %>
         <h4>You haven't added an address yet.</h4>
       <% } %>
