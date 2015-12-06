@@ -56,11 +56,21 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
   },
 
   changeDescription: function(event){
-
+    event.preventDefault();
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.CorporateChangeDescription({
+      corporate: this.corporate
+    });
+    $modalField.html(newView.render().$el);
   },
 
   changeContact: function(event){
-
+    event.preventDefault();
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.CorporateChangeContact({
+      corporate: this.corporate
+    });
+    $modalField.html(newView.render().$el);
   },
 
   addAddress: function(event){

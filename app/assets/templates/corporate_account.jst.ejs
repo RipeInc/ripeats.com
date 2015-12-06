@@ -19,7 +19,7 @@
       <div id="description-box">
         <button id="change-corporate-description">Change Description</button>
         <% if(corporate.attributes.description){ %>
-          <h5><%= corporate.attributes.description %></h5>
+          <h5>My Description: <%= corporate.attributes.description %></h5>
         <% }else{ %>
           <h5>You haven't added a description.</h5>
         <% } %>
@@ -27,7 +27,7 @@
       <div id="contact-box">
         <button id="change-corporate-contact">Change Contact</button>
         <% if(corporate.attributes.corporate_contact){ %>
-          <h5><%= corporate.attributes.corporate_contact %></h5>
+          <h5>Contact Number: <%= corporate.attributes.corporate_contact %></h5>
         <% }else{ %>
           <h5>You haven't added a phone number.</h5>
         <% } %>
