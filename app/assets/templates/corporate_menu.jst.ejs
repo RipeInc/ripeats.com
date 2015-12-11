@@ -1,10 +1,14 @@
 <% var defaultImage = corporate.attributes.profile_image %>
 
 <div class="container">
-  <div class="row">
-    <button id="create-new-menu-item">Add an Item</button>
-  </div>
-
+  <input type="submit" val="add an item">
+  <button>Add an Item</button>
+  <a href="#">I'm an anchor tag!</a>
+  <% for(var i = 0; i< 3; i++){ %>
+    <div class="list-group-item">
+      <button>test</button>
+    </div>
+  <% } %>
   <hr>
 
   <div id="items-list-holder">
