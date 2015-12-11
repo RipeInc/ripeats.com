@@ -1,1 +1,17 @@
-<h1>Corporate Past Transactions</h1>
+<div class="container">
+  <div class="row">
+
+    <div id="past-transactions-holder">
+      <div class="list-group">
+        <% transactions.forEach(function(transaction){ %>
+          <div class="list-group-items">
+            <% var user = transaction.attributes.user %>
+            <h1><%= user.username %></h1>
+            <button>Cleared</button>
+            <button>Cancel</button>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>

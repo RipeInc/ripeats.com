@@ -1,6 +1,6 @@
 class Api::CorporatesController < ApplicationController
   def show
-    @corporate = Corporate.includes(:menu_items).includes(deals: :transactions).includes(:addresses).includes(:ratings).includes(:transactions).find(params[:id])
+    @corporate = Corporate.includes(:menu_items).includes(deals: :transactions).includes(:addresses).includes(:ratings).includes(transactions: :user).find(params[:id])
     if @corporate
       render "show"
     else

@@ -3,5 +3,9 @@ RipeCom.Models.User = Backbone.Model.extend({
 
   initialize: function(){
 
+  },
+
+  parse: function(payload){
+    this.set(payload);
   }
 })

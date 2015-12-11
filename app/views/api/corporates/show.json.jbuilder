@@ -58,5 +58,8 @@ end
 
 json.transactions @corporate.transactions do |transaction|
   json.id transaction.id
-  json.user_id transaction.user_id
+  json.user do
+    json.id transaction.user.id
+    json.username transaction.user.username
+  end
 end
