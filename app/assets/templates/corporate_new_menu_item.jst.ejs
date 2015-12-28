@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="container">
+
+    <div class="modal-form-holder">
+      <form id="corporate-new-menu-item-form">
+        <h2>Create a New Menu Item</h2>
+        <fieldset>
+          <% if(corporate.attributes.profile_image){ %>
+            <img id="image-preview" src=<%= String(corporate.attributes.profile_image) %> alt="?"/>
+          <% }else{ %>
+            <img id="image-preview" src= "https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+          <% } %>
+          <br>
+          <button id="newImage">Upload a Picture for the Item</button>
+          <br>
+          <strong>Item Name: </strong><input name="menu_item[item_name]">
+          <br>
+          <strong>Description: </strong><textarea name="menu_item[description]"></textarea>
+          <br>
+          <strong>Original Price: </strong><input type="number" name="menu_item[price]">
+          <br>
+          <button class="btn" id="modal-close-button">Cancel</button>
+          <input type="submit" val="submit">
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

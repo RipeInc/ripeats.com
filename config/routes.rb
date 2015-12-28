@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create]
   resources :corporates, only: [:show]
 
+  post "/corporates/api/menu_items", to: "api/menu_items#create"
+  delete "/corporates/api/menu_items/:id", to: "api/menu_items#destroy"
+
   namespace :api, defaults: { format: :json } do
     put "/address/:id", to: "addresses#update"
 

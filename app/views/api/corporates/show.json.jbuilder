@@ -15,7 +15,7 @@ json.menu_items @corporate.menu_items do |menu_item|
   json.item_name menu_item.item_name
   json.description menu_item.description
   json.item_image menu_item.item_image
-  json.item_price menu_item.price
+  json.price menu_item.price
 end
 
 json.active_deals @corporate.deals do |deal|
@@ -27,7 +27,7 @@ json.active_deals @corporate.deals do |deal|
     json.expiration deal.expiration
     json.price deal.price
     json.least_price deal.least_price
-    
+
     json.transactions deal.transactions do |transaction|
       json.id transaction.id
       json.user_id transaction.user_id
