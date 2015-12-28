@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20151129191450) do
     t.string   "deal_image"
     t.integer  "quantity",     null: false
     t.integer  "price",        null: false
+    t.integer  "least_price",  null: false
     t.boolean  "expire",       null: false
     t.datetime "expiration",   null: false
     t.datetime "created_at",   null: false

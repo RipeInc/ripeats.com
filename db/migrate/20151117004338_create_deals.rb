@@ -8,6 +8,7 @@ class CreateDeals < ActiveRecord::Migration
 
       t.integer :quantity, null: false
       t.integer :price, null: false
+      t.integer :least_price, null: false
 
       t.boolean :expire, null: false
       t.datetime :expiration, null: false

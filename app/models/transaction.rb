@@ -8,7 +8,7 @@ class Transaction < ActiveRecord::Base
 
   has_many(
     :bundlings,
-    foreign_key: :transactions_id,
+    foreign_key: :transaction_id,
     primary_key: :id,
     class_name: "Bundling"
   )
@@ -24,5 +24,5 @@ class Transaction < ActiveRecord::Base
     through: :deals,
     source: :corporate
   )
-  
+
 end

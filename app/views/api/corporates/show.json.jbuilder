@@ -58,8 +58,18 @@ end
 
 json.transactions @corporate.transactions do |transaction|
   json.id transaction.id
+  json.time transaction.created_at
+
   json.user do
     json.id transaction.user.id
     json.username transaction.user.username
+  end
+
+  json.deals transaction.deals do |deal|
+    json.id deal.id
+    json.corporate_id deal.corporate_id
+    json.deal_title deal.deal_title
+    json.time deal.created_at
+    json.price deal.price
   end
 end
