@@ -6,9 +6,14 @@
         <% transactions.forEach(function(transaction){ %>
           <div class="list-group-item">
             <% var user = transaction.attributes.user %>
-            <p><%= user.username %></p>
-            <button class="close-deal">Close Transaction</button>
-            <button class="refund-deal">Refund</button>
+            <h5><%= user.username %> bought the following deals at <%= transaction.attributes.time %></h5>
+            <% var deals = transaction.attributes.deals %>
+            <ul>
+              <% deals.forEach(function(deal){ %>
+                <li><%= deal.deal_title %> at price: <%= deal.price %>, <%= deal.least_price %></li>
+              <% }) %>
+            </ul>
+            <button class="refund-deal">Refund This Transaction</button>
           </div>
         <% }) %>
       </div>
