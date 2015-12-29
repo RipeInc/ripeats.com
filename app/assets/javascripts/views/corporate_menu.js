@@ -4,6 +4,7 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
   events: {
     "click #add-new-menu-item": "createNewItem",
     "click .delete-menu-item": "deleteItem",
+    "click .post-deal": "postDeal",
   },
 
   initialize: function(options){
@@ -42,6 +43,22 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
         }
       });
     }
+  },
+
+  postDeal: function(event){
+    event.preventDefault();
+    var itemID = Number(event.currentTarget.dataset.itemid);
+
+    var thisView = this;
+
+    var itemToPost = this.menuItems.where({id: itemID})[0];
+
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.CorporatePostDeal({
+      corporate: this.corporate,
+      menuItem: itemToPost
+    });
+    $modalField.html(newView.render().$el);
   },
 
   render: function(){

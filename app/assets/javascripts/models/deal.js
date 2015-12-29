@@ -28,5 +28,13 @@ RipeCom.Models.Deal = Backbone.Model.extend({
 
   left: function(){
     return this.attributes.quantity - this.transactions().length;
+  },
+
+  timeLeft: function(){
+    debugger;
+  },
+
+  currentPrice: function(){
+    debugger;
   }
 })

@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="container">
+    <div class="modal-form-holder">
+      <form id="corporate-new-deal-form">
+        <h2>Create a New Deal</h2>
+        <fieldset>
+          <% if(menuItem.attributes.item_image){ %>
+            <img id="image-preview" src=<%= String(menuItem.attributes.item_image) %> alt="?"/>
+          <% }else if(corporate.attributes.profile_image){ %>
+            <img id="image-preview" src=<%= String(corporate.attributes.profile_image) %> alt="?"/>
+          <% }else{ %>
+            <img id="image-preview" src= "https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+          <% } %>
+
+          <br>
+          <strong>Deal Title: </strong><input type="text" name="deal[deal_title]">
+          <br>
+          <strong>Description: </strong><textarea name="deal[description]"></textarea>
+          <br>
+          <hr>
+
+          <strong>Starting Price: </strong>$<input id="start-integer" type="number">.<input id="start-float" type="number" min="0" max="99">
+          <br>
+          <strong>Ending Price: </strong>$<input id="end-integer" type="number">.<input id="end-float" type="number" min="0" max="99">
+          <br>
+          <hr>
+          <strong>Quantity: </strong><input type="number" name="deal[quantity]">
+          <br>
+          <strong>Last for: </strong><select id="time-increment">
+            <option value="1800">Half an Hour</option>
+            <option value="3600">An Hour</option>
+            <option value="7200">Two Hours</option>
+            <option value="10800">Three Hours</option>
+            <option value="18000">Five Hours</option>
+            <option value="28800">Eight Hours</option>
+          </select>
+          <br>
+          <button class="btn" id="modal-close-button">Cancel</button>
+          <input type="submit" val="submit">
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

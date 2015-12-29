@@ -13,6 +13,12 @@ class Api::DealsController < ApplicationController
   end
 
   def create
+    @deal = Deal.new(deal_params)
+    if @deal.save
+      render json: @deal
+    else
+      render json: @deal.errors.full_messages, status: 422
+    end
   end
 
   def destroy
@@ -24,6 +30,6 @@ class Api::DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:corporate_id)
+    params.require(:deal).permit(:corporate_id, :deal_title, :description, :deal_image, :quantity, :price, :least_price, :expire, :expiration)
   end
 end
