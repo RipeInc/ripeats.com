@@ -7,7 +7,6 @@
 
       <% deals.forEach(function(deal){ %>
 
-
         <div class="list-group-item">
           <div class="row">
             <div class="col-md-3">
@@ -46,7 +45,11 @@
             </div>
 
             <div class="col-md-3">
-              <h3>Price: $<%= deal.attributes.price/100 %>/$<%= Number(deal.attributes.least_price)/100 %></h3>
+              <h4>Current Price:</h4>
+              <h4>$<%= deal.attributes.price/100 %></h4>
+              <br>
+              <h4>Least Price:</h4>
+              <h4>$<%= Number(deal.attributes.least_price)/100 %></h4>
             </div>
           </div>
         </div>
