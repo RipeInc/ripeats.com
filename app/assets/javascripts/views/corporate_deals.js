@@ -2,18 +2,31 @@ RipeCom.Views.CorporateDeals = Backbone.FusedView.extend({
   template: JST['corporate_deals'],
 
   events: {
-
+    "click #remove-deal": "removeDeal",
   },
 
   initialize: function(options){
     this.corporate = options.corporate;
     this.deals = this.corporate.activeDeals();
     this.listenTo(this.corporate, 'sync', this.updateRender);
+    this.listenTo(this.deals, 'sync update', this.updateRender);
   },
 
   updateRender: function(){
     this.deals = this.corporate.activeDeals();
     this.render();
+  },
+
+  removeDeal: function(event){
+    event.preventDefault();
+    var thisView = this;
+    var removeID = Number(event.currentTarget.dataset.dealid);
+    var removeDeal = this.deals.where({id: removeID})[0];
+    removeDeal.destroy({
+      success: function(model, response){
+
+      }
+    })
   },
 
   render: function(){

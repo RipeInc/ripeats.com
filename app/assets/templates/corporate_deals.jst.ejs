@@ -21,7 +21,7 @@
 
             <div class="col-md-6">
               <h2><%= deal.attributes.deal_title %></h2>
-              <button>Remove Deal</button>
+              <button id="remove-deal" data-dealid=<%= deal.id %>>Remove Deal</button>
 
               <p><%= deal.attributes.description %></p>
               <hr>
@@ -53,11 +53,6 @@
             </div>
           </div>
         </div>
-
-
-
-
-
       <% }) %>
     </div>
   </div>

@@ -12,6 +12,15 @@ class Api::DealsController < ApplicationController
     render json: @expired_deals
   end
 
+  def create
+  end
+
+  def destroy
+    @deal = Deal.find(params[:id])
+    @deal.destroy
+    render json: @deal
+  end
+
   private
 
   def deal_params

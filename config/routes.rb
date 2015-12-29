@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     put "/address/:id", to: "addresses#update"
+    resources :deals, only: [:create, :destroy]
 
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]
