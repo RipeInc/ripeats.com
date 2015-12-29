@@ -45,7 +45,6 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
   },
 
   render: function(){
-    debugger;
     var content = this.template({
       corporate: this.corporate,
       menuItems: this.menuItems

@@ -55,8 +55,10 @@ RipeCom.Views.CorporateNewMenuItem = Backbone.FusedView.extend({
     var newItem = new RipeCom.Models.MenuItem();
     data.menu_item.corporate_id = this.corporate.id;
     data.menu_item.item_image = this.image_url;
-    data.menu_item.price = Number(data.menu_item.price)*100;
-    debugger;
+
+    var integer = this.$el.find("#price-integer").val();
+    var float = this.$el.find("#price-float").val();
+    data.menu_item.price = Number(integer)*100+Number(float);
 
     newItem.save(data.menu_item, {
       success: function(model, response){
