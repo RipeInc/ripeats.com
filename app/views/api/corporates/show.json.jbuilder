@@ -24,6 +24,7 @@ json.active_deals @corporate.deals do |deal|
     json.deal_title deal.deal_title
     json.description deal.description
     json.quantity deal.quantity
+    json.time_start deal.created_at
     json.expiration deal.expiration
     json.price deal.price
     json.least_price deal.least_price
@@ -41,6 +42,7 @@ json.expired_deals @corporate.deals do |deal|
     json.deal_title deal.deal_title
     json.description deal.description
     json.quantity deal.quantity
+    json.time_start deal.created_at
     json.price deal.price
     json.least_price deal.least_price
 

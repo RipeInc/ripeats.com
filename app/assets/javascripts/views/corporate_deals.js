@@ -10,6 +10,8 @@ RipeCom.Views.CorporateDeals = Backbone.FusedView.extend({
     this.deals = this.corporate.activeDeals();
     this.listenTo(this.corporate, 'sync', this.updateRender);
     this.listenTo(this.deals, 'sync update', this.updateRender);
+
+    this.timeInterval = setInterval(this.updateRender.bind(this), 1000);
   },
 
   updateRender: function(){
@@ -36,5 +38,9 @@ RipeCom.Views.CorporateDeals = Backbone.FusedView.extend({
     });
     this.$el.html(content);
     return this;
+  },
+
+  remove: function(){
+    clearInterval(this.timeInterval);
   }
 })

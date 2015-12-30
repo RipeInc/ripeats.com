@@ -6,7 +6,7 @@
         <% transactions.forEach(function(transaction){ %>
           <div class="list-group-item">
             <% var user = transaction.attributes.user %>
-            <h5><%= user.username %> bought the following deals at <%= transaction.attributes.time %></h5>
+            <h5><%= user.username %> bought the following deals</h5>
             <% var deals = transaction.attributes.deals %>
             <ul>
               <% deals.forEach(function(deal){ %>

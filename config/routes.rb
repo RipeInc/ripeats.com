@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   post "/corporates/api/menu_items", to: "api/menu_items#create"
   delete "/corporates/api/menu_items/:id", to: "api/menu_items#destroy"
+  put "/api/deals/:id", to: "api/deals#edit"
 
   namespace :api, defaults: { format: :json } do
     put "/address/:id", to: "addresses#update"

@@ -21,6 +21,15 @@ class Api::DealsController < ApplicationController
     end
   end
 
+  def edit
+    @deal = Deal.find(params[:id])
+    if @deal.update(deal_params)
+      render json: @deal
+    else
+      render json: @deal.errors.full_messages, status: 422
+    end
+  end
+
   def destroy
     @deal = Deal.find(params[:id])
     @deal.destroy

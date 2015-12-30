@@ -7,52 +7,55 @@
 
       <% deals.forEach(function(deal){ %>
 
-        <div class="list-group-item">
-          <div class="row">
-            <div class="col-md-3">
-              <% if(deal.attributes.deal_image){ %>
-                <img class="deal-item-image" src=<%= String(deal.attributes.deal_image) %> alt="?" />
-              <% }else if(defaultImage){ %>
-                <img class="deal-item-image" src=<%= defaultImage %> alt="?" />
-              <% }else{ %>
-                <img class="deal-item-image" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
-              <% }%>
-            </div>
+        <% if(!deal.attributes.expire){ %>
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-md-3">
+                <% if(deal.attributes.deal_image){ %>
+                  <img class="deal-item-image" src=<%= String(deal.attributes.deal_image) %> alt="?" />
+                <% }else if(defaultImage){ %>
+                  <img class="deal-item-image" src=<%= defaultImage %> alt="?" />
+                <% }else{ %>
+                  <img class="deal-item-image" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+                <% }%>
+              </div>
 
-            <div class="col-md-6">
-              <h2><%= deal.attributes.deal_title %></h2>
-              <button id="remove-deal" data-dealid=<%= deal.id %>>Remove Deal</button>
+              <div class="col-md-6">
+                <h2><%= deal.attributes.deal_title %></h2>
+                <button id="remove-deal" data-dealid=<%= deal.id %>>Remove Deal</button>
 
-              <p><%= deal.attributes.description %></p>
-              <hr>
+                <p><%= deal.attributes.description %></p>
+                <hr>
 
-              <div class="row">
-                <div class="col-md-4">
-                  <h4>Expire Time:</h4>
-                  <p><%= deal.attributes.expiration %></p>
-                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <h4>Expire In:</h4>
+                    <p><%= deal.timeLeft() %></p>
+                  </div>
 
-                <div class="col-md-4">
-                  <h4>Quantity Left:</h4>
-                  <p><%= deal.left() %></p>
-                </div>
+                  <div class="col-md-4">
+                    <h4>Quantity Left:</h4>
+                    <p><%= deal.left() %></p>
+                  </div>
 
-                <div class="col-md-4">
-                  <h4>Quantity Sold:</h4>
-                  <p><%= deal.sold() %></p>
+                  <div class="col-md-4">
+                    <h4>Quantity Sold:</h4>
+                    <p><%= deal.sold() %></p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-md-3">
-              <h4>Current Price:</h4>
-              <h4>$<%= deal.attributes.price/100 %></h4>
-              <br>
-              <h4>Least Price:</h4>
-              <h4>$<%= Number(deal.attributes.least_price)/100 %></h4>
+              <div class="col-md-3">
+                <h4>Current Price:</h4>
+                <h4>$<%= deal.currentPrice()/100 %></h4>
+                <br>
+                <h4>Least Price:</h4>
+                <h4>$<%= Number(deal.attributes.least_price)/100 %></h4>
+              </div>
             </div>
           </div>
-        </div>
+        <% } %>
+
       <% }) %>
     </div>
   </div>
