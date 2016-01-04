@@ -17,6 +17,7 @@ RipeCom.Views.CorporateDashboard = Backbone.FusedView.extend({
       corporate: this.corporate
     });
     this.$el.html(content);
+    this.$el.find("#menu-tab > a").trigger("click")
     return this;
   },
 
@@ -29,7 +30,7 @@ RipeCom.Views.CorporateDashboard = Backbone.FusedView.extend({
   },
 
   showMenu: function(event){
-    event.preventDefault();
+    if(event){ event.preventDefault(); };
     var newView = new RipeCom.Views.CorporateMenu({
       corporate: this.corporate
     });

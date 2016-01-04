@@ -13,15 +13,16 @@
           <% } %>
 
           <br>
-          <strong>Deal Title: </strong><input type="text" name="deal[deal_title]">
+          <strong>Deal Title: </strong><input type="text" name="deal[deal_title]" value=<%= menuItem.attributes.item_name %>>
           <br>
-          <strong>Description: </strong><textarea name="deal[description]"></textarea>
+          <strong>Description: </strong><textarea name="deal[description]"><%= menuItem.attributes.description %></textarea>
           <br>
           <hr>
 
-          <strong>Starting Price: </strong>$<input id="start-integer" type="number">.<input id="start-float" type="number" min="0" max="99">
+          <strong>Starting Price: </strong>$<input id="start-integer" type="number" value=<%= Number(menuItem.attributes.price/100) %>>.<input id="start-float" type="number" min="0" max="99" value=<%= menuItem.attributes.price%100 %>>
           <br>
           <strong>Ending Price: </strong>$<input id="end-integer" type="number">.<input id="end-float" type="number" min="0" max="99">
+          <p>(What's the least price you want to sell for?)</p>
           <br>
           <hr>
           <strong>Quantity: </strong><input type="number" name="deal[quantity]">

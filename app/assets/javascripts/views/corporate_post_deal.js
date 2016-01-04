@@ -32,7 +32,14 @@ RipeCom.Views.CorporatePostDeal = Backbone.FusedView.extend({
 
     data.deal.quantity = Number(data.deal.quantity);
     data.deal.price = Number(this.$el.find("#start-integer").val())*100 + Number(this.$el.find("#start-float").val());
-    data.deal.least_price = Number(this.$el.find("#end-integer").val())*100 + Number(this.$el.find("#end-float").val());
+
+    var endInteger = thisView.$el.find("#end-integer").val();
+    var endFloat = thisView.$el.find("#end-float").val();
+    if(!endInteger || !endFloat){
+      data.deal.least_price = 100;
+    }else{
+      data.deal.least_price = Number(endInteger)*100 + Number(endFloat);
+    }
     data.deal.corporate_id = this.corporate.id;
     data.deal.expire = false;
 
