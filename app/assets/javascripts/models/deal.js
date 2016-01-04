@@ -62,12 +62,13 @@ RipeCom.Models.Deal = Backbone.Model.extend({
 
     var pStart = this.attributes.price;
     var pEnd = this.attributes.least_price;
+
     var t = Math.floor(Date.now()/60000);
     var tEndMinusTStart = Math.floor((Date.parse(this.attributes.expiration) - Date.parse(this.attributes.time_start))/60000);
     var tMinusTStart = Math.floor((Date.now() - Date.parse(this.attributes.time_start))/60000);
 
     var currentPrice;
-    if(tEndMinusTStart === 0 || tMinusTStart === 0){
+    if(tEndMinusTStart === 0){
       currentPrice = pEnd;
     }else{
       currentPrice = ((pEnd - pStart)*tMinusTStart)/tEndMinusTStart + pStart
