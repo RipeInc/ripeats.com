@@ -18,7 +18,7 @@ MenuItem.create(corporate_id: 1, item_name: "Orange County Buffet", description:
 
 Deal.create(corporate_id: 1, deal_title: "Orange County Comes to You", description: "Orange County Buffet for sale", quantity: 25, price: 1800, least_price: 1200, expire: false, expiration: Time.now+86400);
 Deal.create(corporate_id: 1, deal_title: "Chicken Frenzy", description: "Experience this American sensation for a buck", quantity: 10, price: 100, least_price: 1, expire: false, expiration: Time.now+86400);
-Deal.create(corporate_id: 1, deal_title: "Flying Turkey", description: "Turkey burger for ridiculous low price.", quantity: 6, price: 100, least_price: 1, expire: true, expiration: Time.now+86400000);
+Deal.create(corporate_id: 1, deal_title: "Flying Turkey", description: "Turkey burger for ridiculous low price.", quantity: 6, price: 100, least_price: 1, expire: true, expiration: Time.now+86400);
 
 Transaction.create(user_id: 1, amount: 4300);
 Transaction.create(user_id: 2, amount: 200);
