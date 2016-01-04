@@ -5,8 +5,7 @@
     <br>
     <div class="list-group">
 
-      <% deals.forEach(function(deal){ %>
-
+      <% _.each(deals.last(deals.length).reverse(), function(deal){ %>
         <% if(!deal.attributes.expire){ %>
           <div class="list-group-item">
             <div class="row">

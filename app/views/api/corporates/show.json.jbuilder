@@ -16,6 +16,7 @@ json.menu_items @corporate.menu_items do |menu_item|
   json.description menu_item.description
   json.item_image menu_item.item_image
   json.price menu_item.price
+  json.created_at menu_item.created_at
 end
 
 json.active_deals @corporate.deals do |deal|
@@ -28,10 +29,12 @@ json.active_deals @corporate.deals do |deal|
     json.expiration deal.expiration
     json.price deal.price
     json.least_price deal.least_price
+    json.created_at deal.created_at
 
     json.transactions deal.transactions do |transaction|
       json.id transaction.id
       json.user_id transaction.user_id
+      json.created_at transaction.created_at
     end
   end
 end
@@ -45,6 +48,7 @@ json.expired_deals @corporate.deals do |deal|
     json.time_start deal.created_at
     json.price deal.price
     json.least_price deal.least_price
+    json.created_at deal.created_at
 
     json.transactions deal.transactions do |transaction|
       json.id transaction.id
@@ -58,6 +62,7 @@ json.ratings @corporate.ratings do |rating|
   json.user_id rating.user_id
   json.description rating.description
   json.rating rating.rating
+  json.created_at rating.created_at
 end
 
 json.transactions @corporate.transactions do |transaction|
