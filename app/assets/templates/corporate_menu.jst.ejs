@@ -16,7 +16,7 @@
 
         <div class="list-group-item" style="padding-top: 20px; padding-bottom: 20px;">
           <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3" style="text-align: center;">
               <% if(item.attributes.item_image){ %>
                 <img class="menu-item-image" src=<%= String(item.attributes.item_image) %> alt="?" />
               <% }else if(defaultImage){ %>
@@ -29,14 +29,21 @@
             <div class="col-md-6">
               <h3><%= item.attributes.item_name %></h3>
               <p><%= item.attributes.description %></p>
-              <button class="post-deal btn btn-success" data-itemid=<%= item.attributes.id %>><span style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Post Deal with Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></button>
             </div>
 
             <div class="col-md-3">
               <h3>Original Price: <span style="font-weight: normal;">$<%= item.attributes.price/100 %></span></h3>
             </div>
+          </div>
 
-            <button class="delete-menu-item btn btn-danger" style="position: absolute; bottom: 35px; right: 30px;" data-itemid=<%= item.attributes.id %>><span style="font-size: 16px;">Delete Item</span></button>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+              <button class="post-deal btn btn-success" data-itemid=<%= item.attributes.id %>><span style="font-size: 16px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Post Deal with Item&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></button>
+            </div>
+            <div class="col-md-3">
+              <button class="delete-menu-item btn btn-danger" data-itemid=<%= item.attributes.id %>><span style="font-size: 16px;">Delete Item</span></button>
+            </div>
           </div>
         </div>
       <% }); %>
