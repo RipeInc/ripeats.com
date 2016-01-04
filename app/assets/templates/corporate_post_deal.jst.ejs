@@ -1,45 +1,125 @@
 <div class="row">
   <div class="container">
     <div class="modal-form-holder">
+
+
+
       <form id="corporate-new-deal-form">
-        <h2>Create a New Deal</h2>
-        <fieldset>
-          <% if(menuItem.attributes.item_image){ %>
-            <img id="image-preview" src=<%= String(menuItem.attributes.item_image) %> alt="?"/>
-          <% }else if(corporate.attributes.profile_image){ %>
-            <img id="image-preview" src=<%= String(corporate.attributes.profile_image) %> alt="?"/>
-          <% }else{ %>
-            <img id="image-preview" src= "https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
-          <% } %>
+        <h2>Post a New Deal from Menu Item</h2>
 
-          <br>
-          <strong>Deal Title: </strong><input type="text" name="deal[deal_title]" value="<%= menuItem.attributes.item_name %>">
-          <br>
-          <strong>Description: </strong><textarea name="deal[description]"><%= menuItem.attributes.description %></textarea>
-          <br>
-          <hr>
+        <hr>
 
-          <strong>Starting Price: </strong>$<input id="start-integer" type="number" value=<%= Number(menuItem.attributes.price/100) %>>.<input id="start-float" type="number" min="0" max="99" value=<%= menuItem.attributes.price%100 %>>
-          <br>
-          <strong>Ending Price: </strong>$<input id="end-integer" type="number">.<input id="end-float" type="number" min="0" max="99">
-          <p>(What's the least price you want to sell for?)</p>
-          <br>
-          <hr>
-          <strong>Quantity: </strong><input type="number" name="deal[quantity]">
-          <br>
-          <strong>Last for: </strong><select id="time-increment">
-            <option value="30">30 Seconds</option>
-            <option value="1800">Half an Hour</option>
-            <option value="3600">An Hour</option>
-            <option value="7200">Two Hours</option>
-            <option value="10800">Three Hours</option>
-            <option value="18000">Five Hours</option>
-            <option value="28800">Eight Hours</option>
-          </select>
-          <br>
-          <button class="btn" id="modal-close-button">Cancel</button>
-          <input type="submit" val="submit">
-        </fieldset>
+        <div class="row" style="width: 100%">
+
+          <div class="col-md-5" style="text-align: center; padding-top: 80px;">
+            <div class="form-group">
+              <% if(menuItem.attributes.item_image){ %>
+                <img id="image-preview" src=<%= String(menuItem.attributes.item_image) %> alt="?"/>
+              <% }else if(corporate.attributes.profile_image){ %>
+                <img id="image-preview" src=<%= String(corporate.attributes.profile_image) %> alt="?"/>
+              <% }else{ %>
+                <img id="image-preview" src= "https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+              <% } %>
+            </div>
+          </div>
+
+          <div class="col-md-7">
+
+              <div class="form-group" style="padding-bottom: 10px;">
+                <label class="col-md-4 control-label" for="input-deal-title" style="font-size: 20px;">Deal Title</label>
+                <div class="col-md-8">
+                  <input id="input-deal-title" class="form-control" type="text" name="deal[deal_title]" value="<%= menuItem.attributes.item_name %>">
+                </div>
+                <br>
+              </div>
+              <div class="form-group" style="padding-bottom: 10px;">
+                <label class="col-md-4 control-label" for="input-deal-description" style="font-size: 20px;">Description</label>
+                <div class="col-md-8">
+                  <textarea id="input-deal-description" class="form-control" rows="3" name="deal[description]"><%= menuItem.attributes.description %></textarea>
+                </div>
+              </div>
+
+              <legend style="padding-bottom: 10px; padding-top: 10px;"></legend>
+
+              <div class="form-group" style="height: inherit; padding-bottom: 30px;">
+                <label class="col-md-4 control-label" for="start-integer" style="font-size: 20px;">Starting Price</label>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-1" style="padding: 0px; text-align: center;">
+                      <span style="font-size: 28px;">$</span>
+                    </div>
+                    <div class="col-md-7" style="padding: 0px; text-align: center;">
+                      <input id="start-integer" class="form-control" type="number" value=<%= Number(menuItem.attributes.price/100) %>>
+                    </div>
+                    <div class="col-md-1" style="padding: 0px; text-align: center;">
+                      <span style="font-size: 28px;">.</span>
+                    </div>
+                    <div class="col-md-3" style="padding-left: 0px; text-align: center;">
+                      <input id="start-float" class="form-control" type="number" min="0" max="99" value=<%= menuItem.attributes.price%100 %>>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group" style="height: inherit; padding-bottom: 10px;">
+                <label class="col-md-4 control-label" for="end-integer" style="font-size: 20px;">Ending Price</label>
+                <div class="col-md-8">
+                  <div class="row">
+                    <div class="col-md-1" style="padding: 0px; text-align: center;">
+                      <span style="font-size: 28px;">$</span>
+                    </div>
+                    <div class="col-md-7" style="padding: 0px; text-align: center;">
+                      <input id="end-integer" class="form-control" type="number">
+                    </div>
+                    <div class="col-md-1" style="padding: 0px; text-align: center;">
+                      <span style="font-size: 28px;">.</span>
+                    </div>
+                    <div class="col-md-3" style="padding-left: 0px; text-align: center;">
+                      <input id="end-float" class="form-control" type="number" min="0" max="99">
+                    </div>
+
+                    <p>(Note: What's the least price you want to sell for? If left blank, the ending price will default to $1.00)</p>
+                  </div>
+                </div>
+              </div>
+
+              <legend style="padding-bottom: 10px; padding-top: 10px;"></legend>
+
+              <div class="form-group" style="padding-bottom: 30px;">
+                <label class="col-md-4 control-label" for="input-deal-quantity" style="font-size: 20px;">Quantity</label>
+                <div class="col-md-8">
+                  <input type="number" class="form-control" name="deal[quantity]">
+                </div>
+              </div>
+
+              <div class="form-group" style="padding-bottom: 10px;">
+                <label class="col-md-4 control-label" for="time-increment" style="font-size: 20px;">Last For</label>
+                <div class="col-md-8">
+                  <select class="form-control" id="time-increment">
+                    <option value="30">30 Seconds</option>
+                    <option value="1800">Half an Hour</option>
+                    <option value="3600">An Hour</option>
+                    <option value="7200">Two Hours</option>
+                    <option value="10800">Three Hours</option>
+                    <option value="18000">Five Hours</option>
+                    <option value="28800">Eight Hours</option>
+                  </select>
+                </div>
+              </div>
+          </div>
+
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <input class="btn btn-success" type="submit" val="submit">
+            <span>&nbsp&nbsp&nbsp</span>
+            <button class="btn btn-danger" id="modal-close-button">Cancel</button>
+          </div>
+        </div>
+
       </form>
     </div>
   </div>
