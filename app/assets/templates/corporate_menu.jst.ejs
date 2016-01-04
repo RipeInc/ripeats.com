@@ -4,7 +4,14 @@
   <br>
 
   <div class="list-group-item">
-    <button class="btn btn-warning" id="add-new-menu-item">Add a New Menu Item</button>
+    <div class="row">
+      <div class="col-md-3" style="text-align: center; padding: 10px;">
+        <button class="btn btn-warning" id="add-new-menu-item">Add a New Menu Item</button>
+      </div>
+      <div class="col-md-9">
+        <p style="font-size: 20.5px;">This is where you can add new items to your menu and decide which deals to post tonight by simply clicking the option to 'Post Deal with Item'.  The deal will then appear under 'Active Deals.'</p>
+      </div>
+    </div>
   </div>
 
   <hr>
@@ -16,7 +23,7 @@
 
         <div class="list-group-item" style="padding-top: 20px; padding-bottom: 20px;">
           <div class="row">
-            <div class="col-md-3" style="text-align: center;">
+            <div class="col-md-3" style="text-align: center; padding-top: 20px;">
               <% if(item.attributes.item_image){ %>
                 <img class="menu-item-image" src=<%= String(item.attributes.item_image) %> alt="?" />
               <% }else if(defaultImage){ %>
