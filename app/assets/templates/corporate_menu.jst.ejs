@@ -4,7 +4,7 @@
   <br>
 
   <div class="list-group-item">
-    <button id="add-new-menu-item">Add a New Menu Item</button>
+    <button class="btn btn-warning" id="add-new-menu-item">Add a New Menu Item</button>
   </div>
 
   <hr>
@@ -14,7 +14,7 @@
     <div class="list-group">
       <% _.each(menuItems.last(menuItems.length).reverse(), function(item){ %>
 
-        <div class="list-group-item">
+        <div class="list-group-item" style="padding-top: 20px; padding-bottom: 20px;">
           <div class="row">
             <div class="col-md-3">
               <% if(item.attributes.item_image){ %>
@@ -27,14 +27,14 @@
             </div>
 
             <div class="col-md-6">
-              <h4><%= item.attributes.item_name %></h4>
-              <button class="delete-menu-item" data-itemid=<%= item.attributes.id %>>Delete Item</button>
-              <button class="post-deal" data-itemid=<%= item.attributes.id %>>Post Deal with Item</button>
+              <h3><%= item.attributes.item_name %></h3>
               <p><%= item.attributes.description %></p>
+              <button class="post-deal btn btn-success" data-itemid=<%= item.attributes.id %>>Post Deal with Item</button>
+              <button class="delete-menu-item btn btn-danger" data-itemid=<%= item.attributes.id %>>Delete Item</button>
             </div>
 
             <div class="col-md-3">
-              <h3>Original Price: $<%= item.attributes.price/100 %></h3>
+              <h3>Original Price: <span style="font-weight: normal;">$<%= item.attributes.price/100 %></span></h3>
             </div>
           </div>
         </div>
