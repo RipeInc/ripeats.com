@@ -1,6 +1,7 @@
+<% var corporateAddress = corporate.address().attributes %>
 <div class="container">
   <div class="row" id="corporate-information-row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="text-align: center; padding-top: 30px;">
       <div id="corporate-avatar-holder">
         <% if(corporate.attributes.profile_image){ %>
           <img id="corporate-avatar" src=<%= String(corporate.attributes.profile_image) %> alt="?" />
@@ -8,29 +9,62 @@
           <img id="corporate-avatar" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
         <% }%>
       </div>
-      <button id="change-corporate-avatar">Change Profile Picture</button>
+      <button class="btn btn-info" id="change-corporate-avatar">Change Profile Picture</button>
       <!-- <input type="datetime-local"> -->
     </div>
 
-    <div class="col-md-8">
+    <div id="corporate-account-information-main" class="col-md-8">
       <h2><%= corporate.attributes.corporate_name %></h2>
-      <h5><%= corporate.attributes.email %></h5>
-      <h5>Ripe Ratings: <%= corporate.ratings().average() %></h5>
-      <div id="description-box">
-        <button id="change-corporate-description">Change Description</button>
-        <% if(corporate.attributes.description){ %>
-          <h5>My Description: <%= corporate.attributes.description %></h5>
-        <% }else{ %>
-          <h5>You haven't added a description.</h5>
-        <% } %>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">Description</span>
+        </div>
+        <div class="col-md-8">
+          <% if(corporate.attributes.description){ %>
+            <p><%= corporate.attributes.description %></p>
+          <% }else{ %>
+            <p>You haven't added a description.</p>
+          <% } %>
+        </div>
       </div>
-      <div id="contact-box">
-        <button id="change-corporate-contact">Change Contact</button>
-        <% if(corporate.attributes.corporate_contact){ %>
-          <h5>Contact Number: <%= corporate.attributes.corporate_contact %></h5>
-        <% }else{ %>
-          <h5>You haven't added a phone number.</h5>
-        <% } %>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold; margin-bottom: 10px;">Rating</span>
+        </div>
+        <div class="col-md-8"><p><%= corporate.ratings().average() %></p></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">Email</span>
+        </div>
+        <div class="col-md-8"><p><%= corporate.attributes.email %></p></div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">Contact</span>
+        </div>
+        <div class="col-md-8">
+          <% if(corporate.attributes.corporate_contact){ %>
+            <p><%= corporate.attributes.corporate_contact %></p>
+          <% }else{ %>
+            <p>You haven't added a phone number.</p>
+          <% } %>
+        </div>
+      </div>
+
+      <div class="row">
+          <button class="btn btn-info" id="change-corporate-description">Change Your Description</button>
+          <button class="btn btn-info" id="change-corporate-contact">Change Contact Number</button>
+          <% if(corporateAddress.zip_code){ %>
+            <button class="btn btn-info" id="corporate-change-address">Change Address</button>
+          <% }else{ %>
+            <button class="btn btn-info" id="corporate-add-address">Add an Address</button>
+          <% } %>
       </div>
     </div>
 
@@ -40,22 +74,22 @@
 
   <div class="row" id="corporate-stats-row">
     <div class="col-md-3">
-      <p>Items on Menu</p>
+      <p class="stats-chat">Items on Menu</p>
       <p> <%= corporate.menuItems().length %>
     </div>
 
     <div class="col-md-3">
-      <p>Active Deals</p>
+      <p class="stats-chat">Active Deals</p>
       <p> <%= corporate.activeDeals().length %></p>
     </div>
 
     <div class="col-md-3">
-      <p>Past Deals</p>
+      <p class="stats-chat">Past Deals</p>
       <p> <%= corporate.expiredDeals().length %></p>
     </div>
 
     <div class="col-md-3">
-      <p>Sold</p>
+      <p class="stats-chat">Sold</p>
       <p> <%= corporate.transactions().length %></p>
     </div>
   </div>
@@ -63,23 +97,61 @@
   <hr>
 
   <div class="row" id="corproate-address-row">
-    <% var corporateAddress = corporate.address().attributes %>
 
     <div class="col-md-4">
-      <% if(corporateAddress.zip_code){ %>
-        <button id="corporate-change-address">Change Address</button>
-      <% }else{ %>
-        <button id="corporate-add-address">Add an Address</button>
-      <% } %>
+
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8" id="address-display-col">
       <% if(corporateAddress.zip_code){ %>
-        <h5>Street Address One: &nbsp; <%= corporateAddress.street_one %></h5>
-        <h5>Street Address Two: &nbsp;<%= corporateAddress.street_two %></h5>
-        <h5>City: &nbsp; <%= corporateAddress.city %></h5>
-        <h5>State: &nbsp; <%= corporateAddress.state %></h5>
-        <h5>Zip Code: &nbsp; <%= corporateAddress.zip_code %></h5>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">Street Address One</span>
+        </div>
+        <div class="col-md-8">
+          <p><%= corporateAddress.street_one %></p>
+        </div>
+      </div>
+
+      <% if(corporateAddress.street_two){ %>
+        <div class="row">
+          <div class="col-md-4">
+            <span style="font-weight: bold">Street Address Two</span>
+          </div>
+          <div class="col-md-8">
+            <p><%= corporateAddress.street_two %></p>
+          </div>
+        </div>
+      <% } %>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">City</span>
+        </div>
+        <div class="col-md-8">
+          <p><%= corporateAddress.city %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">State</span>
+        </div>
+        <div class="col-md-8">
+          <p><%= corporateAddress.state %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <span style="font-weight: bold">Zip Code</span>
+        </div>
+        <div class="col-md-8">
+          <p><%= corporateAddress.zip_code %></p>
+        </div>
+      </div>
+
       <% }else{ %>
         <h4>You haven't added an address yet.</h4>
       <% } %>
