@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     put "/address/:id", to: "addresses#update"
     resources :deals, only: [:create, :destroy]
 
+    resources :users, only: [:show]
+
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]
       put '', to: "corporates#edit"

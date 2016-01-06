@@ -35,7 +35,7 @@ RipeCom.Views.UserMainView = Backbone.FusedView.extend({
 
   addNavBarDashboard: function(){
     var $userNavBarDashboard = new RipeCom.Views.UserNavBarDashboard({
-      entity: this.user
+      user: this.user
     });
 
     this.addComponent($userNavBarDashboard, "#main-navbardashboard-field");

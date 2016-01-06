@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def show
-    @user = User.includes(:ratings).includes(:transactions).includes(:addresses)
+    @user = User.includes(:ratings).includes(:transactions).includes(:addresses).find(params[:id])
     if @user
       render "show"
     else
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      log_in_user!(@user)
+      log_in!(@user)
       render json: @user
     else
       render json: @user.errors.full_messages, status: 422

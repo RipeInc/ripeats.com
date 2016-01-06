@@ -14,7 +14,6 @@ RipeCom.Routers.UserRouter = Backbone.Router.extend({
       id: userID
     });
     this.user.fetch();
-
     this.main();
   },
 

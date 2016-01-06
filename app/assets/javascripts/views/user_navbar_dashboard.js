@@ -8,7 +8,7 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
   },
 
   initialize: function(options){
-    this.user = options.entity;
+    this.user = options.user;
 
     this.listenTo(this.user, 'sync', this.render.bind(this));
   },
