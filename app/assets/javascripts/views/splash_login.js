@@ -28,7 +28,12 @@ RipeCom.Views.SplashLogin = Backbone.FusedView.extend({
       method: "POST",
       data: data,
       success: function(response){
-        window.location = "/corporates/" + response.id;
+        if(response.username){
+          window.location = "/users/" + response.id;
+        }else{
+          window.location = "/corporates/" + response.id;
+        }
+
       },
       error: function(response){
         RipeCom.Utils.insertErrorMessages(["Credential match failed."]);

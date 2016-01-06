@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :addresses, as: :locatable
-  
+
   has_many(
     :ratings,
     foreign_key: :user_id,
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(password)
-    BCyrpt::Password.new(self.password_digest).is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
   def self.generate_session_token

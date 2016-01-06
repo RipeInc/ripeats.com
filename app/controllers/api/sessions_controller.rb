@@ -2,10 +2,14 @@ class Api::SessionsController < ApplicationController
 
   def create
     @corporate = Corporate.find_by_credentials(session_params[:name], session_params[:password])
+    @user = User.find_by_credentials(session_params[:name], session_params[:password])
 
     if @corporate
       log_in!(@corporate)
       render json: @corporate
+    elsif @user
+      log_in!(@user)
+      render json: @user
     else
       render json: "Credential match failed.", status: 403
     end
