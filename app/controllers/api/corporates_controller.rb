@@ -4,7 +4,7 @@ class Api::CorporatesController < ApplicationController
     if @corporate
       render "show"
     else
-      render json: "Corporate not found.", status: 500
+      render json: "Corporate not found.", status: 404
     end
   end
 
@@ -36,5 +36,4 @@ class Api::CorporatesController < ApplicationController
   def corporate_params
     params.require(:corporate).permit(:id, :corporate_name, :description, :profile_image, :corporate_contact, :email, :password, :password_verify)
   end
-
 end
