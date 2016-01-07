@@ -8,6 +8,12 @@ class Api::UsersController < ApplicationController
     render "search"
   end
 
+  def cart
+    @user = User.find(params[:user_id])
+    @deal_selections = @user.deal_selections
+    render "cart"
+  end
+
   def show
     @user = User.includes(:ratings).includes(:transactions).includes(:addresses).find(params[:id])
     if @user

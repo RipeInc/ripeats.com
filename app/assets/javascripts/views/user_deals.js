@@ -2,13 +2,18 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   template: JST['user_deals'],
 
   events: {
-    "click #search-deals": "searchDeals"
+    "click #search-deals": "searchDeals",
+    "click #add-to-cart": "addToCart",
   },
 
   initialize: function(options){
     this.user = options.user;
     this.corporateDeals = new RipeCom.Collections.CorporateDeals({});
+    this.dealSelections = new RipeCom.Collections.DealSelections({
+      user: this.user
+    })
     this.corporateDeals.reset();
+    this.dealSelections.fetch();
 
     this.listenTo(this.corporateDeals, 'sync', this.render.bind(this));
 
@@ -17,6 +22,31 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
   remove: function(){
     clearInterval(this.timeInterval);
+  },
+
+  addToCart: function(event){
+    event.preventDefault();
+    var thisView = this;
+
+    var dealID = Number(event.currentTarget.dataset.id);
+    var userID = Number(this.user.id);
+    var newCartSelection = new RipeCom.Models.CartSelection();
+    var data = {
+      cart_selection: {
+        deal_id: dealID,
+        user_id: userID
+      }
+    }
+
+    newCartSelection.save(data.cart_selection, {
+      success: function(model, response){
+        thisView.dealSelections.fetch();
+      },
+
+      error: function(model, response){
+        debugger;
+      }
+    })
   },
 
   searchDeals: function(event){

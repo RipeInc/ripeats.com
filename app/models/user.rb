@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  profile_image   :string
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ActiveRecord::Base
   attr_reader :password
   after_initialize :ensure_session_token
@@ -16,6 +30,19 @@ class User < ActiveRecord::Base
     foreign_key: :user_id,
     primary_key: :id,
     class_name: "Transaction"
+  )
+
+  has_many(
+    :cart_selections,
+    foreign_key: :user_id,
+    primary_key: :id,
+    class_name: "CartSelection"
+  )
+
+  has_many(
+    :deal_selections,
+    through: :cart_selections,
+    source: :deal
   )
 
   def password=(password)

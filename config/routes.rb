@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     get "/search/:zip_code", to: "users#search"
     put "/address/:id", to: "addresses#update"
     resources :deals, only: [:create, :destroy]
-
-    resources :users, only: [:show]
+    resources :cart_selections, only: [:create, :destroy]
+    resources :users, only: [:show] do
+      get "/cart", to: "users#cart"
+    end
 
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]

@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: transactions
+# Table name: cart_selections
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
-#  amount     :integer          not null
+#  deal_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class TransactionTest < ActiveSupport::TestCase
+class CartSelectionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

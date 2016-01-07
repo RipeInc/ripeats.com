@@ -9,8 +9,6 @@
 Corporate.create(corporate_name: "Razynoir", email: "razynoir@gmail.com", password: "abcdef", password_verify: "abcdef");
 User.create(username: "Aaron", email: "aaron@gmail.com", password: "123456", password_verify: "123456");
 User.create(username: "Brian", email: "brian@gmail.com", password: "123456", password_verify: "123456");
-User.create(username: "Casey", email: "casey@gmail.com", password: "123456", password_verify: "123456");
-User.create(username: "Dylan", email: "dylan@gmail.com", password: "123456", password_verify: "123456");
 
 MenuItem.create(corporate_id: 1, item_name: "Fried Chicken", description: "Chicken at its finest.", price: 1200);
 MenuItem.create(corporate_id: 1, item_name: "Turkey Burger", description: "Burger made with turkey.", price: 800);
@@ -19,15 +17,6 @@ MenuItem.create(corporate_id: 1, item_name: "Orange County Buffet", description:
 Deal.create(corporate_id: 1, deal_title: "Orange County Comes to You", description: "Orange County Buffet for sale", quantity: 25, original_price: 3600, price: 1800, least_price: 1200, expire: false, expiration: Time.now+86400);
 Deal.create(corporate_id: 1, deal_title: "Chicken Frenzy", description: "Experience this American sensation for a buck", quantity: 10, original_price: 800, price: 100, least_price: 1, expire: false, expiration: Time.now+86400);
 Deal.create(corporate_id: 1, deal_title: "Flying Turkey", description: "Turkey burger for ridiculous low price.", quantity: 6, original_price: 1200, price: 100, least_price: 1, expire: true, expiration: Time.now+86400);
-
-Transaction.create(user_id: 1, amount: 4300);
-Transaction.create(user_id: 2, amount: 200);
-Transaction.create(user_id: 3, amount: 500);
-
-Bundling.create(transaction_id: 1, deal_id: 1);
-Bundling.create(transaction_id: 1, deal_id: 2);
-Bundling.create(transaction_id: 2, deal_id: 2);
-Bundling.create(transaction_id: 3, deal_id: 3);
 
 Rating.create(user_id: 1, corporate_id: 1, description: "This place is nice", rating: 5);
 Rating.create(user_id: 2, corporate_id: 1, description: "The delivery was fast.", rating: 4);
