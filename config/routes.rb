@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   put "/api/deals/:id", to: "api/deals#edit"
 
   namespace :api, defaults: { format: :json } do
+    get "/search/:zip_code", to: "users#search"
     put "/address/:id", to: "addresses#update"
     resources :deals, only: [:create, :destroy]
 

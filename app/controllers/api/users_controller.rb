@@ -1,4 +1,13 @@
 class Api::UsersController < ApplicationController
+
+  def search
+    @zip_code = params[:zip_code]
+    # RAZYNOIR-INCOMPLETE: NO ZIP CODE SEARCH
+
+    @corporates = Corporate.includes(:deals).includes(:ratings).includes(:transactions).all
+    render "search"
+  end
+
   def show
     @user = User.includes(:ratings).includes(:transactions).includes(:addresses).find(params[:id])
     if @user
@@ -30,6 +39,8 @@ class Api::UsersController < ApplicationController
 
   def destroy
   end
+
+
 
   private
 

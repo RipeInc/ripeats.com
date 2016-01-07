@@ -58,6 +58,4 @@ RipeCom.Views.CorporateDashboard = Backbone.FusedView.extend({
     this._currentView = newView;
     this.$el.find("#corporate-tab-field-main").html(newView.render().$el);
   }
-
-
 })
