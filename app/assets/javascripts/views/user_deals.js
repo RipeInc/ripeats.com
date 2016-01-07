@@ -29,6 +29,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
       url: "/api/search/" + searchInput,
       method: "GET",
       success: function(response){
+        thisView.corporateDeals.reset();
         response.corporates.forEach(function(corporate){
           var newCorporate = new RipeCom.Models.Corporate({});
           newCorporate.parse(corporate);
