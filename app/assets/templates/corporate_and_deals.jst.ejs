@@ -63,12 +63,13 @@
                     <p><%= deal.attributes.description %></p>
                   </div>
                   <div class="col-md-3">
-                    <h5>Current Price:</h5>
-                    <h5>$<%= deal.currentPrice()/100 %></h5>
+                    <h5>Original Price:</h5>
+                    <h5>$<%= Number(deal.attributes.original_price)/100 %></h5>
                   </div>
                   <div class="col-md-3">
-                    <h5>Least Price:</h5>
-                    <h5>$<%= Number(deal.attributes.least_price)/100 %></h5>
+                    <h5>Current Price:</h5>
+                    <h5>$<%= deal.currentPrice()/100 %></h5>
+                    <h5 style="color: red;">(-<%= deal.discount() %>%)</h5>
                   </div>
                 </div>
 

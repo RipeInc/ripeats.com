@@ -58,17 +58,18 @@ ActiveRecord::Schema.define(version: 20151129191450) do
   add_index "corporates", ["email"], name: "index_corporates_on_email", unique: true, using: :btree
 
   create_table "deals", force: :cascade do |t|
-    t.integer  "corporate_id", null: false
-    t.string   "deal_title",   null: false
-    t.text     "description",  null: false
+    t.integer  "corporate_id",   null: false
+    t.string   "deal_title",     null: false
+    t.text     "description",    null: false
     t.string   "deal_image"
-    t.integer  "quantity",     null: false
-    t.integer  "price",        null: false
-    t.integer  "least_price",  null: false
-    t.boolean  "expire",       null: false
-    t.datetime "expiration",   null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "quantity",       null: false
+    t.integer  "price",          null: false
+    t.integer  "least_price",    null: false
+    t.integer  "original_price"
+    t.boolean  "expire",         null: false
+    t.datetime "expiration",     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "menu_items", force: :cascade do |t|

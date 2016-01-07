@@ -75,5 +75,13 @@ RipeCom.Models.Deal = Backbone.Model.extend({
     }
 
     return Math.floor(currentPrice);
+  },
+
+  discount: function(){
+    var original_price = this.attributes.original_price;
+    var currentPrice = this.currentPrice();
+
+    var discount = Math.floor(((original_price - currentPrice) / original_price)*10000);
+    return discount/100;
   }
 })

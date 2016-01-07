@@ -23,6 +23,7 @@ json.corporates @corporates do |corporate|
       json.time_start deal.created_at
       json.expiration deal.expiration
       json.price deal.price
+      json.original_price deal.original_price
       json.least_price deal.least_price
       json.created_at deal.created_at
     end
