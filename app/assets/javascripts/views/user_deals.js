@@ -9,6 +9,8 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   initialize: function(options){
     this.user = options.user;
     this.corporateDeals = options.corporateDeals;
+    this.zip_code = options.zip_code;
+    if(this.zip_code){ this.retrieveDeals(this.zip_code); };
 
     this.corporateDeals.reset();
     this.listenTo(this.corporateDeals, 'sync', this.render.bind(this));
@@ -16,7 +18,12 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     this.timeInterval = setInterval(this.displayDeals.bind(this), 1000);
   },
 
+  isSearchView: function(){
+    return true;
+  },
+
   remove: function(){
+    debugger;
     clearInterval(this.timeInterval);
   },
 
@@ -47,9 +54,50 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   },
 
   searchDeals: function(event){
-    event.preventDefault();
+    if(event){ event.preventDefault(); };
     var thisView = this;
+
     var searchInput = this.$el.find("#search-input").val();
+    thisView.zip_code = searchInput;
+
+    thisView.corporateDeals.changeZip(Number(searchInput));
+
+    $.ajax({
+      url: "/api/search/" + searchInput,
+      method: "GET",
+      success: function(response){
+        thisView.corporateDeals.reset();
+        response.corporates.forEach(function(corporate){
+          var newCorporate = new RipeCom.Models.Corporate({});
+          newCorporate.parse(corporate);
+          thisView.corporateDeals.add(newCorporate);
+        });
+        thisView.displayDeals();
+      },
+
+      error: function(response){
+        debugger;
+      }
+    })
+
+    // RAZYNOIR-INCOMPLETE: ZIP CODE CALCULATION
+    // $.ajax({
+    //   url: "https://www.zipcodeapi.com/iApFqR6HFg30bmtMkMGRqo5ak5qbXXjgyJVZA1GghJht6KfrxViXkn8FtyRrvaH4/radius.json/" + searchInput + "/5/km",
+    //   method: "GET",
+    //   success: function(response){
+    //     debugger;
+    //   },
+    //
+    //   error: function(response){
+    //     debugger;
+    //   }
+    // })
+  },
+
+  retrieveDeals: function(zip_code){
+    var thisView = this;
+
+    var searchInput = zip_code;
     thisView.corporateDeals.changeZip(Number(searchInput));
 
     $.ajax({

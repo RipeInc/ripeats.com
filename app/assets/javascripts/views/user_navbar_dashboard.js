@@ -24,7 +24,8 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
 
     var newView = new RipeCom.Views.UserDeals({
       user: this.user,
-      corporateDeals: this.corporateDeals
+      corporateDeals: this.corporateDeals,
+      zip_code: this.zip_code
     });
 
     this._swap(newView);
@@ -56,6 +57,9 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
   },
 
   _swap: function(newView){
+    if(this._currentView && this._currentView.zip_code){
+       this.zip_code = this._currentView.zip_code;
+     };
     this._currentView && this._currentView.remove();
     this._currentView = newView;
     this.$el.find("#user-tab-field-main").html(newView.render().$el);

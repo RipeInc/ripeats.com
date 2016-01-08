@@ -14,6 +14,10 @@ RipeCom.Views.UserCart = Backbone.FusedView.extend({
     this.timeInterval = setInterval(this.render.bind(this), 1000);
   },
 
+  isSearchView: function(){
+    return false;
+  },
+
   remove: function(){
     clearInterval(this.timeInterval);
   },

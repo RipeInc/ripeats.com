@@ -9,6 +9,10 @@ RipeCom.Views.UserTransactions = Backbone.FusedView.extend({
     this.user = options.user;
   },
 
+  isSearchView: function(){
+    return false;
+  },
+
   render: function(){
     var content = this.template({
       user: this.user
