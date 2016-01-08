@@ -62,36 +62,24 @@
                     <h3><%= deal.attributes.deal_title %></h3>
                     <p><%= deal.attributes.description %></p>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3" style="text-align:center;">
                     <h5>Original Price:</h5>
-                    <h5>$<%= Number(deal.attributes.original_price)/100 %></h5>
+                    <h5><del>&nbsp;$<%= Number(deal.attributes.original_price)/100 %>&nbsp;</del></h5>
                   </div>
-                  <div class="col-md-3">
+                  <div class="col-md-3" style="text-align: center;">
                     <h5>Current Price:</h5>
-                    <h5>$<%= deal.currentPrice()/100 %></h5>
-                    <h5 style="color: red;">(-<%= deal.discount() %>%)</h5>
+                    <h5>$<%= deal.currentPrice()/100 %>&nbsp;&nbsp;&nbsp; <span style="color: #585858;"><%= deal.discount() %>% OFF</span></h5>
                   </div>
                 </div>
 
                 <hr>
 
                 <div class="row">
-                  <div class="col-md-3">
-                    <h5>Expire In:</h5>
-                    <p><%= deal.timeLeft() %></p>
+                  <div class="col-md-9">
+                    <h5>Expire In: <span style="font-weight: normal;"><%= deal.timeLeft() %></span></h5>
                   </div>
 
-                  <div class="col-md-3">
-                    <h5>Quantity Left:</h5>
-                    <p><%= deal.left() %></p>
-                  </div>
-
-                  <div class="col-md-3">
-                    <h5>Quantity Sold:</h5>
-                    <p><%= deal.sold() %></p>
-                  </div>
-
-                  <div class="col-md-3">
+                  <div class="col-md-3" style="text-align:center;">
                     <button id="add-to-cart" data-id=<%= deal.attributes.id %> class="btn btn-success">Add to Cart</button>
                   </div>
                 </div>

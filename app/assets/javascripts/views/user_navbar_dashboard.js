@@ -21,10 +21,12 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
 
   showDeals: function(event){
     if(event){ event.preventDefault(); };
+
     var newView = new RipeCom.Views.UserDeals({
       user: this.user,
       corporateDeals: this.corporateDeals
     });
+
     this._swap(newView);
   },
 
