@@ -1,22 +1,23 @@
 json.(@user, :id, :username, :email, :profile_image, :created_at)
 
-json.deal_selections @user.deal_selections do |deal_selection|
-  json.id deal_selection.id
-  json.deal_title deal_selection.deal_title
-  json.description deal_selection.description
-  json.quantity deal_selection.quantity
-  json.time_start deal_selection.created_at
-  json.expiration deal_selection.expiration
-  json.price deal_selection.price
-  json.original_price deal_selection.original_price
-  json.least_price deal_selection.least_price
-  json.created_at deal_selection.created_at
+json.deal_selections @user.cart_selections do |cart_selection|
+  json.id cart_selection.deal.id
+  json.deal_title cart_selection.deal.deal_title
+  json.description cart_selection.deal.description
+  json.quantity cart_selection.deal.quantity
+  json.time_start cart_selection.deal.created_at
+  json.expiration cart_selection.deal.expiration
+  json.price cart_selection.deal.price
+  json.original_price cart_selection.deal.original_price
+  json.least_price cart_selection.deal.least_price
+  json.created_at cart_selection.deal.created_at
+  json.cart_selection_id cart_selection.id
 
   json.corporate do
-    json.id deal_selection.corporate.id
-    json.corporate_name deal_selection.corporate.corporate_name
-    json.description deal_selection.corporate.description
-    json.profile_image deal_selection.corporate.profile_image
-    json.corporate_contact deal_selection.corporate.corporate_contact
+    json.id cart_selection.deal.corporate.id
+    json.corporate_name cart_selection.deal.corporate.corporate_name
+    json.description cart_selection.deal.corporate.description
+    json.profile_image cart_selection.deal.corporate.profile_image
+    json.corporate_contact cart_selection.deal.corporate.corporate_contact
   end
 end

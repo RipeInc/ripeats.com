@@ -10,7 +10,7 @@ class Api::CartSelectionsController < ApplicationController
   end
 
   def destroy
-    @cart_selection.find(params[:id])
+    @cart_selection = CartSelection.find(params[:id])
     @cart_selection.destroy
     render json: @cart_selection
   end
