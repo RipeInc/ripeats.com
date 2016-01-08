@@ -9,7 +9,7 @@ RipeCom.Collections.DealSelections = Backbone.Collection.extend({
     this.user = options.user;
   },
 
-  parse: function(payload){
-    this.set(payload);
+  parse: function(response){
+    this.set(response);
   }
 })

@@ -8,13 +8,9 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
   initialize: function(options){
     this.user = options.user;
-    this.corporateDeals = new RipeCom.Collections.CorporateDeals({});
-    this.dealSelections = new RipeCom.Collections.DealSelections({
-      user: this.user
-    })
-    this.corporateDeals.reset();
-    this.dealSelections.fetch();
+    this.corporateDeals = options.corporateDeals;
 
+    this.corporateDeals.reset();
     this.listenTo(this.corporateDeals, 'sync', this.render.bind(this));
 
     this.timeInterval = setInterval(this.displayDeals.bind(this), 1000);
@@ -40,7 +36,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
     newCartSelection.save(data.cart_selection, {
       success: function(model, response){
-        thisView.dealSelections.fetch();
+        thisView.user.fetch();
       },
 
       error: function(model, response){

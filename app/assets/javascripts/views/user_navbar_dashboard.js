@@ -8,15 +8,22 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
   },
 
   initialize: function(options){
+    var thisView = this;
     this.user = options.user;
-    this.listenTo(this.user, 'sync', this.render.bind(this));
+    this.corporateDeals = new RipeCom.Collections.CorporateDeals();
+
+    this.listenTo(this.user, 'sync', this.updateName.bind(this));
+  },
+
+  updateName: function(){
+    this.$el.find("#user-name").html(this.user.attributes.username);
   },
 
   showDeals: function(event){
     if(event){ event.preventDefault(); };
-
     var newView = new RipeCom.Views.UserDeals({
-      user: this.user
+      user: this.user,
+      corporateDeals: this.corporateDeals
     });
     this._swap(newView);
   },

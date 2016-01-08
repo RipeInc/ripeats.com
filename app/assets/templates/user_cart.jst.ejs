@@ -1,1 +1,61 @@
-<h2>This is user cart page</h2>
+
+<div class="container">
+  <br>
+
+  <div class="list-group-item">
+    <h3>Your cart contains <%= user.dealSelections().length %> items.</h3>
+  </div>
+
+  <hr>
+
+  <div id="deals-list-holder">
+    <% var deals = user.dealSelections() %>
+
+    <% _.each(deals.last(deals.length).reverse(), function(deal){ %>
+        <% var defaultImage = deal.attributes.corporate.profile_image %>
+        <div class="list-group-item corporate-deal-list-item">
+          <div class="row">
+            <div class="col-md-3" style="text-align: center; padding-top: 20px;">
+              <% if(deal.attributes.deal_image){ %>
+                <img class="deal-item-image" src=<%= String(deal.attributes.deal_image) %> alt="?" />
+              <% }else if(defaultImage){ %>
+                <img class="deal-item-image" src=<%= defaultImage %> alt="?" />
+              <% }else{ %>
+                <img class="deal-item-image" src="https://s3.amazonaws.com/ripe-assets/images/default_corporate_avatar.png" alt="?" />
+              <% }%>
+            </div>
+
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-6">
+                  <h3><%= deal.attributes.deal_title %></h3>
+                  <h5>Time Left:&nbsp;&nbsp;&nbsp; <span style="font-weight: normal;"><%= deal.timeLeft() %></span></h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Original Price:</h5>
+                  <h5>$<%= Number(deal.attributes.original_price)/100 %></h5>
+                </div>
+                <div class="col-md-3">
+                  <h5>Current Price:</h5>
+                  <h5>$<%= deal.currentPrice()/100 %></h5>
+                  <h5 style="color: red;">(-<%= deal.discount() %>%)</h5>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-md-9">
+                  <h5>Sold by:&nbsp;&nbsp;&nbsp; <span style="font-weight: normal;"><%= deal.attributes.corporate.corporate_name %></span></h5>
+                </div>
+                <div class="col-md-3">
+                  <button id="remove-from-cart" data-id=<%= deal.attributes.id %> class="btn btn-danger">Remove from Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% }) %>
+  </div>
+
+</div>

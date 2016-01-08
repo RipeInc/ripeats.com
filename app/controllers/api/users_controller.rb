@@ -15,7 +15,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:ratings).includes(:transactions).includes(:addresses).find(params[:id])
+    @user = User.includes(:ratings).includes(:transactions).includes(deal_selections: :corporate).includes(:addresses).find(params[:id])
     if @user
       render "show"
     else
