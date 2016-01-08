@@ -2,6 +2,7 @@ class CreateBundlings < ActiveRecord::Migration
   def change
     create_table :bundlings do |t|
       t.string :name
+      t.integer :price, null: false
       t.integer :transaction_id, null: false
       t.integer :deal_id, null: false
 

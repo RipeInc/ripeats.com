@@ -1,5 +1,9 @@
 class Api::TransactionsController < ApplicationController
 
+    def create
+      byebug
+    end
+
     def corporate_transactions
       @corporate = Corporate.includes(:transactions).find(params[:corporate_id])
       @transactions = @corporate.transactions
@@ -21,7 +25,7 @@ class Api::TransactionsController < ApplicationController
     private
 
     def transaction_params
-      params.require(:transaction).permit(:corporate_id, :user_id, :deal_id)
+      params.require(:transaction).permit(:corporate_id, :user_id, :deal_id, :type, :card_number, :expiration_month, :expiration_year, :security_code, :user, :deals)
     end
 
 end

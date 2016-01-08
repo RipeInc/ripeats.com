@@ -24,7 +24,26 @@ RipeCom.Views.UserCheckout = Backbone.FusedView.extend({
   pay: function(event){
     event.preventDefault();
     var thisView = this;
+
+    var data = $("#user-checkout-form").serializeJSON();
+
+    data.transaction.deals = [];
+    this.deals.forEach(function(deal){
+      data.transaction.deals.push([deal.attributes.id, deal.currentPrice()]);
+    });
+
+    var newTransaction = new RipeCom.Models.Transaction();
     debugger;
+
+    newTransaction.save(data.transaction, {
+      success: function(model, response){
+        debugger;
+      },
+
+      error: function(model, response){
+        debugger;
+      }
+    })
   },
 
   closeModal: function(event){

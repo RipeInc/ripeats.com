@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get "/cart", to: "users#cart"
     end
 
+    resources :transactions, only: [:create]
+
     resources :corporates, only: [:show, :create, :destroy] do
       resources :menu_items, only: [:index]
       put '', to: "corporates#edit"

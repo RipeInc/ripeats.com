@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20160107214907) do
 
   create_table "bundlings", force: :cascade do |t|
     t.string   "name"
+    t.integer  "price",          null: false
     t.integer  "transaction_id", null: false
     t.integer  "deal_id",        null: false
     t.datetime "created_at",     null: false

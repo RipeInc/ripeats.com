@@ -23,7 +23,6 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   },
 
   remove: function(){
-    debugger;
     clearInterval(this.timeInterval);
   },
 
