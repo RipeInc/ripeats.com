@@ -2,13 +2,20 @@ RipeCom.Views.UserCart = Backbone.FusedView.extend({
   template: JST['user_cart'],
 
   events: {
-    "click #remove-from-cart": "removeDeal"
+    "click #remove-from-cart": "removeDeal",
+    "click #checkout": "checkout"
   },
 
   initialize: function(options){
     this.user = options.user;
 
     this.listenTo(this.user.dealSelections(), 'sync update', this.render.bind(this));
+
+    this.timeInterval = setInterval(this.render.bind(this), 1000);
+  },
+
+  remove: function(){
+    clearInterval(this.timeInterval);
   },
 
   removeDeal: function(event){
@@ -28,6 +35,18 @@ RipeCom.Views.UserCart = Backbone.FusedView.extend({
         debugger;
       }
     });
+  },
+
+  checkout: function(event){
+    event.preventDefault();
+
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.UserCheckout({
+      user: this.user,
+      deals: this.user.dealSelections()
+    });
+    $modalField.html(newView.render().$el);
+    window.scrollTo(0, 0);
   },
 
   render: function(){

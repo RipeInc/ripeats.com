@@ -12,6 +12,7 @@
     <% var deals = user.dealSelections() %>
 
     <% _.each(deals.last(deals.length).reverse(), function(deal){ %>
+      <% if(!deal.attributes.expire){ %>
         <% var defaultImage = deal.attributes.corporate.profile_image %>
         <div class="list-group-item corporate-deal-list-item">
           <div class="row">
@@ -54,7 +55,78 @@
             </div>
           </div>
         </div>
+        <% } %>
     <% }) %>
   </div>
 
+
+  <% if(deals.length > 0){ %>
+    <hr>
+    <div id="cart-summary" class="list-group-item">
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-9">
+          <div class="col-md-6">
+            <h2>Cart Summary</h2>
+          </div>
+
+          <div class="col-md-6">
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Items</span>
+              </div>
+              <div class="col-md-6">
+                <span style="font-weight: bold;"><%= deals.length %></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Total before tax</span>
+              </div>
+              <div class="col-md-6">
+                <% var sum = 0; %>
+                <% deals.forEach(function(deal){ %>
+                    <% sum += deal.currentPrice(); %>
+                <% }) %>
+                <span style="font-weight: bold;">$ <%= sum/100 %></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Estimated tax</span>
+              </div>
+              <div class="col-md-6">
+                <% var tax = Math.floor(sum * 0.08875) %>
+                <span style="font-weight: bold;">$ <%= tax/100 %></span>
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold; color: crimson;">Order Total</span>
+              </div>
+              <div class="col-md-6">
+                <span style="font-weight: bold;">$ <%= (sum + tax)/100 %></span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6">
+                <br>
+                <button class="btn btn-success" id="checkout">Checkout and Pickup!</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <% } %>
 </div>

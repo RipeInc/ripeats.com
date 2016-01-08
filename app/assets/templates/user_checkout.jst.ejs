@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="container">
+    <div class="modal-form-holder">
+      <form id="user-checkout-form">
+        <h2>Checkout Information</h2>
+        <hr>
+
+        <div class="row" id="summary-info-main">
+
+            <div class="col-md-3"><h4>Cart Summary</h4></div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-6">
+                  <span style="font-weight: bold;">Items</span>
+                </div>
+                <div class="col-md-6">
+                  <span style="font-weight: bold;"><%= deals.length %></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span style="font-weight: bold;">Total before tax</span>
+                </div>
+                <div class="col-md-6">
+                  <% var sum = 0; %>
+                  <% deals.forEach(function(deal){ %>
+                      <% sum += deal.currentPrice(); %>
+                  <% }) %>
+                  <span style="font-weight: bold;">$ <%= sum/100 %></span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span style="font-weight: bold;">Estimated tax</span>
+                </div>
+                <div class="col-md-6">
+                  <% var tax = Math.floor(sum * 0.08875) %>
+                  <span style="font-weight: bold;">$ <%= tax/100 %></span>
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <span style="font-weight: bold; color: crimson;">Order Total</span>
+                </div>
+                <div class="col-md-6">
+                  <span style="font-weight: bold;">$ <%= (sum + tax)/100 %></span>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+        <hr>
+
+        <div class="row" id="payment-info-main">
+          <div class="col-md-3"><h4>Payment Information</h4></div>
+          <div class="col-md-9">
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Payment Method</span>
+              </div>
+              <div class="col-md-6">
+                <select name="transaction[type]" class="form-control">
+                  <option value="visa">Visa</option>
+                  <option value="mastercard">Mastercard</option>
+                  <option value="american_express">American Express</option>
+                  <option value="discover">Discover</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Name on card</span>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name=transaction[name]>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Card number</span>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="transaction[card_number]">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Expiration Date</span>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <select class="form-control" name="transaction[expiration_month]">
+                      <option value="1">01</option>
+                      <option value="2">02</option>
+                      <option value="3">03</option>
+                      <option value="4">04</option>
+                      <option value="5">05</option>
+                      <option value="6">06</option>
+                      <option value="7">07</option>
+                      <option value="8">08</option>
+                      <option value="9">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-control" name="transaction[expiration_year]">
+                      <% var starting = 2015 %>
+                      <% for(var i = 0; i < 30; i++){ %>
+                        <option value="<%= starting + i %>"><%= starting + i %></option>
+                      <% } %>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <span style="font-weight: bold;">Security Code</span>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="transaction[security_code]">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <input class="btn btn-success" type="submit" value="checkout">
+            <span>&nbsp&nbsp&nbsp</span>
+            <button class="btn btn-danger" id="modal-close-button">Back</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

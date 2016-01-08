@@ -7,7 +7,6 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   },
 
   initialize: function(options){
-    debugger;
     this.user = options.user;
     this.corporateDeals = options.corporateDeals;
 
