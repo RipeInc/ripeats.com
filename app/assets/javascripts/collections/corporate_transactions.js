@@ -1,6 +1,6 @@
 RipeCom.Collections.CorporateTransactions = Backbone.Collection.extend({
   url: function(){
-    return "/api/corporate/" + this.corporate.id + "/transactions";
+    return "/api/corporates/" + this.corporate.id + "/transactions";
   },
 
   model: RipeCom.Models.Transaction,

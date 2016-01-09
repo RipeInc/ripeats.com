@@ -32,12 +32,14 @@ RipeCom.Views.UserCheckout = Backbone.FusedView.extend({
       data.transaction.deals.push([deal.attributes.id, deal.currentPrice()]);
     });
 
+    data.transaction.user_id = this.user.id;
     var newTransaction = new RipeCom.Models.Transaction();
-    debugger;
 
     newTransaction.save(data.transaction, {
       success: function(model, response){
-        debugger;
+        thisView.user.fetch();
+        thisView.closeModal();
+        $("#user-transactions-tab").trigger("click");
       },
 
       error: function(model, response){

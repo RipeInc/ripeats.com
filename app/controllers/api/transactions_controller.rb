@@ -1,7 +1,26 @@
 class Api::TransactionsController < ApplicationController
-
     def create
-      byebug
+      user_id = params[:user_id]
+      deals = params[:deals]
+
+      sum = 0
+      deals.each do |deal|
+        sum += deal[1]
+      end
+      sum += (sum * 0.08875).floor
+
+      @transaction = Transaction.new({user_id: user_id, amount: sum});
+
+      if @transaction.save
+        deals.each do |deal|
+          @bundling = Bundling.new({transaction_id: @transaction.id, deal_id: deal[0], price: deal[1]})
+          @bundling.save
+        end
+        @transaction = Transaction.includes(bundlings: {deal: :corporate}).find(@transaction.id)
+        render "show"
+      else
+        render json: @transaction.errors.full_messages, status: 422
+      end
     end
 
     def corporate_transactions

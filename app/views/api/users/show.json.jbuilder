@@ -21,3 +21,15 @@ json.deal_selections @user.cart_selections do |cart_selection|
     json.corporate_contact cart_selection.deal.corporate.corporate_contact
   end
 end
+
+json.transactions @user.transactions do |transaction|
+  json.id transaction.id
+  json.amount transaction.amount
+  json.created_at transaction.created_at
+
+  json.deals transaction.bundlings do |bundling|
+    json.price bundling.price
+    json.deal_title bundling.deal.deal_title
+    json.corporate_name bundling.deal.corporate.corporate_name
+  end
+end
