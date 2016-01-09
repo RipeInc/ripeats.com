@@ -36,13 +36,17 @@ RipeCom.Views.CorporatePostDeal = Backbone.FusedView.extend({
 
     debugger;
     // CAUTION!
-    data.deal.original_price = Number(this.menuItem.attributes.original_price);
+    if(thisView.menuItem.attributes.original_price){
+      data.deal.original_price = Number(thisView.menuItem.attributes.original_price);
+    }else{
+      data.deal.original_price = Number(thisView.menuItem.attributes.price);
+    }
 
     var endInteger = thisView.$el.find("#end-integer").val();
     var endFloat = thisView.$el.find("#end-float").val();
 
     if(!endInteger && !endFloat){
-      data.deal.least_price = 100;
+      data.deal.least_price = Math.floor(Number(data.deal.original_price * 0.5));
     }else{
       data.deal.least_price = Number(endInteger)*100 + Number(endFloat);
     }

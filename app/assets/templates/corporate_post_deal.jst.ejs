@@ -48,14 +48,20 @@
                     <div class="col-md-1" style="padding: 0px; text-align: center;">
                       <span style="font-size: 28px;">$</span>
                     </div>
+                    <% var price; %>
+                    <% if(menuItem.attributes.price){ %>
+                        <% price = menuItem.attributes.price; %>
+                    <% }else{ %>
+                        <% price = menuItem.attributes.original_price %>
+                    <% } %>
                     <div class="col-md-7" style="padding: 0px; text-align: center;">
-                      <input id="start-integer" class="form-control" type="number" value=<%= Number(menuItem.attributes.price/100) %>>
+                      <input id="start-integer" class="form-control" type="number" value=<%= Number(price/100) %>>
                     </div>
                     <div class="col-md-1" style="padding: 0px; text-align: center;">
                       <span style="font-size: 28px;">.</span>
                     </div>
                     <div class="col-md-3" style="padding-left: 0px; text-align: center;">
-                      <input id="start-float" class="form-control" type="number" min="0" max="99" value=<%= menuItem.attributes.price%100 %>>
+                      <input id="start-float" class="form-control" type="number" min="0" max="99" value=<%= price%100 %>>
                     </div>
                   </div>
                 </div>
@@ -78,7 +84,7 @@
                       <input id="end-float" class="form-control" type="number" min="0" max="99">
                     </div>
 
-                    <p>(Note: What's the least price you want to sell for? If left blank, the ending price will default to $1.00)</p>
+                    <p>(Note: What's the least price you want to sell for? If left blank, the ending price will default to 50% of original price.)</p>
                   </div>
                 </div>
               </div>
