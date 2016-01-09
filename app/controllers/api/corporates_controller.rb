@@ -1,6 +1,14 @@
 class Api::CorporatesController < ApplicationController
   def show
     @corporate = Corporate.includes(:menu_items).includes(deals: {transactions: :user}).includes(:addresses).includes(:ratings).find(params[:id])
+    @bundlings = [];
+
+    @corporate.deals.each do |deal|
+      deal.bundlings.each do |bundling|
+        @bundlings.push(bundling)
+      end
+    end
+
     if @corporate
       render "show"
     else
