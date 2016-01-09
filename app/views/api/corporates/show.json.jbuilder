@@ -15,7 +15,7 @@ json.menu_items @corporate.menu_items do |menu_item|
   json.item_name menu_item.item_name
   json.description menu_item.description
   json.item_image menu_item.item_image
-  json.price menu_item.price
+  json.original_price menu_item.price
   json.created_at menu_item.created_at
 end
 

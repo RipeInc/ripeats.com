@@ -39,7 +39,14 @@
             </div>
 
             <div class="col-md-3">
-              <h3>Original Price: <span style="font-weight: normal;">$<%= item.attributes.price/100 %></span></h3>
+              <% var price; %>
+              <% if(item.attributes.price){ %>
+                  <% price = item.attributes.price; %>
+              <% }else{ %>
+                  <% price = item.attributes.original_price %>
+              <% } %>
+
+              <h3>Original Price: <span style="font-weight: normal;">$<%= price/100 %></span></h3>
             </div>
           </div>
 
