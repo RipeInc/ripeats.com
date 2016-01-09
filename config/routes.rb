@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get "/cart", to: "users#cart"
     end
 
+    resources :bundlings, only: [:destroy]
     resources :transactions, only: [:create]
 
     resources :corporates, only: [:show, :create, :destroy] do

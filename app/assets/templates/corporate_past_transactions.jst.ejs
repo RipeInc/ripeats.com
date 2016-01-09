@@ -18,10 +18,10 @@
             <div class="row">
               <div class="col-md-9">
                 <% var timeString = transaction.attributes.time.split("T")[0].split("-").join("/"); %>
-                <h3><%= timeString %>, <span class="information-span"><%= transaction.attributes.username %></span> bought your <span class="information-span"><%= transaction.attributes.deal_title %></span> at <span class="information-span">$<%= transaction.attributes.price %></span></h5>
+                <h4><%= timeString %>, <span class="information-span"><%= transaction.attributes.username %></span> bought your <span class="information-span"><%= transaction.attributes.deal_title %></span> at <span class="information-span">$<%= transaction.attributes.price/100 %></span></h4>
               </div>
               <div class="col-md-3" style="padding-top: 20px; text-align: center;">
-                <button data-id="<%= transaction.attributes.bundling_id %>" id="refund-deal" class="btn btn-danger">Refund This Transaction</button>
+                <button data-id="<%= transaction.attributes.bundling_id %>" data-tid="<%= transaction.attributes.id %>" id="refund-deal" class="btn btn-danger">Refund This Transaction</button>
               </div>
             </div>
           </div>

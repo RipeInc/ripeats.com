@@ -20,11 +20,17 @@
           </div>
 
           <div class="col-md-9">
-            <% transaction.attributes.deals.forEach(function(deal){ %>
-              <div class="row">
-                <h4>You bought <span class="information-span"><%= deal.corporate_name %></span>'s <span class="information-span"><%= deal.deal_title %></span> for <span class="information-span">$<%= deal.price/100 %></span></h4>
-              </div>
-            <% }) %>
+            <% if(transaction.attributes.deals.length > 0){ %>
+              <% transaction.attributes.deals.forEach(function(deal){ %>
+                <div class="row">
+                  <h4>You bought <span class="information-span"><%= deal.corporate_name %></span>'s <span class="information-span"><%= deal.deal_title %></span> for <span class="information-span">$<%= deal.price/100 %></span></h4>
+                </div>
+              <% }) %>
+            <% }else{ %>
+                <div class="row">
+                  <h4>All purchases in this transaction has been refunded.</h4>
+                </div>
+            <% } %>
           </div>
         </div>
       </div>

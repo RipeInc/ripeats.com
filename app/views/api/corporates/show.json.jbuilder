@@ -67,7 +67,7 @@ end
 
 json.transactions @corporate.deals do |deal|
   deal.bundlings.each do |bundling|
-    json.transaction_id bundling.transactn.id
+    json.id bundling.transactn.id
     json.deal_id deal.id
     json.deal_title deal.deal_title
     json.bundling_id bundling.id

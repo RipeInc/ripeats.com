@@ -1,0 +1,2 @@
+module BundlingsHelper
+end
