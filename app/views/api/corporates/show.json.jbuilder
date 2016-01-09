@@ -65,21 +65,15 @@ json.ratings @corporate.ratings do |rating|
   json.created_at rating.created_at
 end
 
-json.transactions @corporate.transactions do |transaction|
-  json.id transaction.id
-  json.time transaction.created_at
-
-  json.user do
-    json.id transaction.user.id
-    json.username transaction.user.username
-  end
-
-  json.deals transaction.deals do |deal|
-    json.id deal.id
-    json.corporate_id deal.corporate_id
+json.transactions @corporate.deals do |deal|
+  deal.bundlings.each do |bundling|
+    json.transaction_id bundling.transactn.id
+    json.deal_id deal.id
     json.deal_title deal.deal_title
-    json.price deal.price
-    json.least_price deal.least_price
-    json.time deal.created_at
+    json.bundling_id bundling.id
+    json.price bundling.price
+    json.time bundling.transactn.created_at
+    json.user_id bundling.transactn.user_id
+    json.username bundling.transactn.user.username
   end
 end

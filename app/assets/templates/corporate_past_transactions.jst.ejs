@@ -1,22 +1,31 @@
 <div class="container">
-  <div class="row">
     <br>
+    <div class="list-group-item">
+      <div class="row">
+        <div class="col-md-12">
+          <h3>You have a total of <%= transactions.length %> transactions.</h3>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
     <div id="past-transactions-holder">
       <div class="list-group">
         <% transactions.forEach(function(transaction){ %>
           <div class="list-group-item">
-            <% var user = transaction.attributes.user %>
-            <h5><%= user.username %> bought the following deals</h5>
-            <% var deals = transaction.attributes.deals %>
-            <ul>
-              <% deals.forEach(function(deal){ %>
-                <li><%= deal.deal_title %> at price: <%= deal.price %>, <%= deal.least_price %></li>
-              <% }) %>
-            </ul>
-            <button class="refund-deal">Refund This Transaction</button>
+            <% debugger; %>
+            <div class="row">
+              <div class="col-md-9">
+                <% var timeString = transaction.attributes.time.split("T")[0].split("-").join("/"); %>
+                <h3><%= timeString %>, <span class="information-span"><%= transaction.attributes.username %></span> bought your <span class="information-span"><%= transaction.attributes.deal_title %></span> at <span class="information-span">$<%= transaction.attributes.price %></span></h5>
+              </div>
+              <div class="col-md-3" style="padding-top: 20px; text-align: center;">
+                <button data-id="<%= transaction.attributes.bundling_id %>" id="refund-deal" class="btn btn-danger">Refund This Transaction</button>
+              </div>
+            </div>
           </div>
         <% }) %>
       </div>
     </div>
-  </div>
 </div>

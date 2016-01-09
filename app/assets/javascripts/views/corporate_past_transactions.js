@@ -13,7 +13,7 @@ RipeCom.Views.CorporatePastTransactions = Backbone.FusedView.extend({
   render: function(){
     var content = this.template({
       corporate: this.corporate,
-      transactions: this.transactions
+      transactions: this.corporate.transactions()
     });
     this.$el.html(content);
     return this;
