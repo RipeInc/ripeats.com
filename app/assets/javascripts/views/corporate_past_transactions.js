@@ -22,7 +22,8 @@ RipeCom.Views.CorporatePastTransactions = Backbone.FusedView.extend({
       url: "/api/bundlings/" + bundlingID,
       method: "DELETE",
       success: function(model, response){
-        thisView.transactions.remove(transactionID);
+        var removeModel = thisView.transactions.findWhere({transaction_id: transactionID});
+        thisView.transactions.remove(removeModel);
       },
 
       error: function(model, response){
