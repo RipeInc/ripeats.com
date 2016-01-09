@@ -20,6 +20,7 @@ json.corporates @corporates do |corporate|
       json.deal_title deal.deal_title
       json.description deal.description
       json.quantity deal.quantity
+      json.deal_image deal.deal_image
       json.time_start deal.created_at
       json.expiration deal.expiration
       json.price deal.price

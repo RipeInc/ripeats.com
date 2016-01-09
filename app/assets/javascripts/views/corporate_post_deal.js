@@ -32,6 +32,7 @@ RipeCom.Views.CorporatePostDeal = Backbone.FusedView.extend({
 
     data.deal.quantity = Number(data.deal.quantity);
     data.deal.price = Number(this.$el.find("#start-integer").val())*100 + Number(this.$el.find("#start-float").val());
+    data.deal.deal_image = this.menuItem.attributes.item_image;
 
     debugger;
     // CAUTION!
