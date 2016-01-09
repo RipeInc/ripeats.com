@@ -47,10 +47,30 @@ RipeCom.Views.UserCart = Backbone.FusedView.extend({
     var $modalField = $("#ripe-overlay-field-master");
     var newView = new RipeCom.Views.UserCheckout({
       user: this.user,
-      deals: this.user.dealSelections()
+      deals: this.user.dealSelections(),
+      cartView: this
     });
     $modalField.html(newView.render().$el);
     window.scrollTo(0, 0);
+  },
+
+  clearCarts: function(){
+    var thisView = this;
+    thisView.user.dealSelections().forEach(function(deal){
+      var selectionID = deal.attributes.cart_selection_id;
+      $.ajax({
+        url: "/api/cart_selections/" + selectionID,
+        method: "DELETE",
+        success: function(model, response){
+          var model = thisView.user.dealSelections().findWhere({cart_selection_id: selectionID});
+          thisView.user.dealSelections().remove(model);
+        },
+
+        error: function(model, response){
+          debugger;
+        }
+      });
+    })
   },
 
   render: function(){

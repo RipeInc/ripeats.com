@@ -9,6 +9,7 @@ RipeCom.Views.UserCheckout = Backbone.FusedView.extend({
   initialize: function(options){
     this.user = options.user;
     this.deals = options.deals;
+    this.cartView = options.cartView;
   },
 
   render: function(){
@@ -39,6 +40,7 @@ RipeCom.Views.UserCheckout = Backbone.FusedView.extend({
       success: function(model, response){
         thisView.user.fetch();
         thisView.closeModal();
+        thisView.cartView.clearCarts();
         $("#user-transactions-tab").trigger("click");
       },
 
