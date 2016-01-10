@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "static_pages#index"
+  get "/mission", to: "static_pages#mission"
 
   resources :users, only: [:show, :create]
   resources :corporates, only: [:show]

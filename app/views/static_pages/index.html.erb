@@ -1,32 +1,31 @@
-<nav class="navbar navbar-default navbar-ripe navbar-fixed-top">
+<div class="navbar-ripe navbar-fixed-top">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="icon-holder">
-      <%= image_tag('cherry.jpg', class: "top-icon", size: "60") %>
+
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="navbar-header">
+          <a style="color: crimson;" class="navbar-brand" href="/">Ripe</a>
+        </div>
+      </div>
+
+      <div class="col-md-6" style="text-align: center;">
+        <div class="icon-holder">
+          <img class="icon-image" src="https://s3.amazonaws.com/ripe-assets/images/cherry.jpeg" alt=""/>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0;" href="#login">Login</a></li>
+          <li><a style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0;" href="#signup">Join Today</a></li>
+          <li><a style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0;" href="/mission">Our Mission</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="navbar-header">
-      <a style="color: crimson;" class="navbar-brand" href="#main">Ripe</a>
-    </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div style="width: inherit;" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a style="color: crimson; font-weight: bold; line-height: 40px; height: 63px; margin: 0;" href="#login">Login</a></li>
-        <li><a style="color: crimson; font-weight: bold; line-height: 40px; height: 63px; margin: 0;" href="#signup">Join Today</a></li>
-
-        <li class="dropdown">
-          <a href="#" style="color: crimson; font-weight: bold; line-height: 40px; height: 63px; margin: 0;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Learn More <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Get Started</a></li>
-            <li><a href="#">Our Mission</a></li>
-            <li><a href="#">Our Services</a></li>
-          </ul>
-        </li>
-      </ul>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+  </div>
+</div>
 
 <div class="navbar-buffer"></div>
 
