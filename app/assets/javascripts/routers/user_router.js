@@ -25,7 +25,7 @@ RipeCom.Routers.UserRouter = Backbone.Router.extend({
       var cookie = cookies[i];
       var name = cookie.split("=")[0];
       if(name.substring(1, name.length) == "lastQuery"){
-        lastQuery = Number(cookie.split("=")[1]);
+        lastQuery = cookie.split("=")[1];
         break;
       };
     };
