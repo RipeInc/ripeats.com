@@ -37,6 +37,7 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
       },
 
       function(result){
+        debugger;
         var data = {"profile_image": result.url};
         thisView.corporate.save(data, {
           success: function(model, response){

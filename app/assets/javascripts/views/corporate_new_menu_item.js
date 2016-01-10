@@ -36,6 +36,7 @@ RipeCom.Views.CorporateNewMenuItem = Backbone.FusedView.extend({
       },
 
       function(result){
+        debugger;
         thisView.image_url = result.url;
         var $imagePreview = thisView.$el.find("#image-preview")[0];
         $imagePreview.src = thisView.image_url;

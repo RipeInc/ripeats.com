@@ -2,7 +2,11 @@
   <br>
 
   <div class="list-group-item">
-    <h3>You have a total of <%= user.transactions().length %> transactions.</h3>
+    <% if(user.transactions().length == 1){ %>
+      <h3>You have a total of <%= user.transactions().length %> transaction.</h3>
+    <% }else{ %>
+      <h3>You have a total of <%= user.transactions().length %> transactions.</h3>
+    <% } %>
   </div>
 
   <hr>
@@ -13,17 +17,19 @@
     <% _.each(transactions.last(transactions.length).reverse(), function(transaction){ %>
       <div class="list-group-item user-transaction-list-item">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-3" style="font-weight: bold; font-size: 24px;">
             <% var timeString = transaction.attributes.created_at %>
-            <% timeString = timeString.split("T")[0].split("-").join("/") %>
-            <h3><%= timeString %></h3>
+            <% timeString = timeString.split("T")[0].split("-"); %>
+            <% timeString.push(timeString[0]); %>
+            <% timeString = timeString.slice(1).join("/") %>
+            <%= timeString %>
           </div>
 
           <div class="col-md-9">
             <% if(transaction.attributes.deals.length > 0){ %>
               <% transaction.attributes.deals.forEach(function(deal){ %>
-                <div class="row">
-                  <h4>You bought <span class="information-span"><%= deal.corporate_name %></span>'s <span class="information-span"><%= deal.deal_title %></span> for <span class="information-span">$<%= deal.price/100 %></span></h4>
+                <div class="row" style="font-size: 24px;">
+                  You bought <%= deal.corporate_name %>'s <%= deal.deal_title %> for $<%= deal.price/100 %>
                 </div>
               <% }) %>
             <% }else{ %>

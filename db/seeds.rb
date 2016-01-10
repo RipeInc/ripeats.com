@@ -6,27 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Corporate.create(corporate_name: "Razynoir", email: "razynoir@gmail.com", password: "abcdef", password_verify: "abcdef");
+Corporate.create(corporate_name: "The Bistro", description: "The Bistro is an Italian-American bistro located in the heart of downtown Manhattan, serving the finest food in a sophisticated setting.", email: "thebistro@nyc.com", password: "abcdef", password_verify: "abcdef", profile_image: "https://cdn.filepicker.io/api/file/tANELld4Q3m8xN0JejrY/convert?crop=0,0,195,195");
 User.create(username: "Aaron", email: "aaron@gmail.com", password: "123456", password_verify: "123456");
 User.create(username: "Brian", email: "brian@gmail.com", password: "123456", password_verify: "123456");
+User.create(username: "Casey", email: "casey@gmail.com", password: "123456", password_verify: "123456");
 
-MenuItem.create(corporate_id: 1, item_name: "Fried Chicken", description: "Chicken at its finest.", price: 1200);
-MenuItem.create(corporate_id: 1, item_name: "Turkey Burger", description: "Burger made with turkey.", price: 800);
-MenuItem.create(corporate_id: 1, item_name: "Orange County Buffet", description: "Just a mixture of California stuff", price: 3600);
+MenuItem.create(corporate_id: 1, item_name: "Southern-Style Buttermilk Fried Chicken", description: "with a blue cheese and bacon-smattered iceberg salad", price: 2000, item_image: "https://cdn.filepicker.io/api/file/eBqpzlIRs2D1MEQLc31z/convert?crop=27,0,440,440");
+MenuItem.create(corporate_id: 1, item_name: "Orange-Rosemary Glazed Salmon", description: "on a bed of arugula", price: 2600, item_image: "https://cdn.filepicker.io/api/file/oxfTAkpfS6m4yVY0CZNO/convert?crop=0,0,575,575");
+MenuItem.create(corporate_id: 1, item_name: "Filet Mignon with Rich Balsamic Glaze", description: "with warm goat cheese salad and roasted potatoes", price: 3000, item_image: "https://cdn.filepicker.io/api/file/GXO3oGidTSeepaD9H7ri/convert?crop=22,0,795,795");
 
-Deal.create(corporate_id: 1, deal_title: "Orange County Comes to You", description: "Orange County Buffet for sale", quantity: 25, original_price: 3600, price: 1800, least_price: 1200, expire: false, expiration: Time.now+86400);
-Deal.create(corporate_id: 1, deal_title: "Chicken Frenzy", description: "Experience this American sensation for a buck", quantity: 10, original_price: 800, price: 100, least_price: 1, expire: false, expiration: Time.now+86400);
-Deal.create(corporate_id: 1, deal_title: "Flying Turkey", description: "Turkey burger for ridiculous low price.", quantity: 6, original_price: 1200, price: 100, least_price: 1, expire: true, expiration: Time.now+86400);
+Deal.create(corporate_id: 1, deal_title: "Southern-Style Buttermilk Fried Chicken", description: "with a blue cheese and bacon-smattered iceberg salad", quantity: 25, original_price: 2000, price: 1500, least_price: 800, expire: false, expiration: Time.now+86400, deal_image: "https://cdn.filepicker.io/api/file/eBqpzlIRs2D1MEQLc31z/convert?crop=27,0,440,440");
+Deal.create(corporate_id: 1, deal_title: "Orange-Rosemary Glazed Salmon", description: "on a bed of arugula", quantity: 10, original_price: 2600, price: 2000, least_price: 1000, expire: false, expiration: Time.now+86400, deal_image: "https://cdn.filepicker.io/api/file/oxfTAkpfS6m4yVY0CZNO/convert?crop=0,0,575,575");
+Deal.create(corporate_id: 1, deal_title: "Filet Mignon with Rich Balsamic Glaze", description: "with warm goat cheese salad and roasted potatoes", quantity: 10, original_price: 3000, price: 1800, least_price: 1200, expire: false, expiration: Time.now+86400, deal_image: "https://cdn.filepicker.io/api/file/GXO3oGidTSeepaD9H7ri/convert?crop=22,0,795,795");
 
 Rating.create(user_id: 1, corporate_id: 1, description: "This place is nice", rating: 5);
 Rating.create(user_id: 2, corporate_id: 1, description: "The delivery was fast.", rating: 4);
 Rating.create(user_id: 3, corporate_id: 1, description: "Chicken tastes like beef.", rating: 1);
 
 Address.create(street_one: "80 Washington Square South", city: "New York", state: "NY", zip_code: "10003", locatable_id: 1, locatable_type: "Corporate");
-Address.create(street_one: "70 Washington Square North", city: "New York", state: "NY", zip_code: "10003", locatable_id: 1, locatable_type: "User");
-Address.create(street_one: "60 Washington Square West", city: "New York", state: "NY", zip_code: "10003", locatable_id: 2, locatable_type: "User");
-Address.create(street_one: "50 Washington Square East", city: "New York", state: "NY", zip_code: "10003", locatable_id: 3, locatable_type: "User");
-Address.create(street_one: "40 University Place", city: "New York", state: "NY", zip_code: "10013", locatable_id: 4, locatable_type: "User");
 
 
 

@@ -3,7 +3,11 @@
     <div class="list-group-item">
       <div class="row">
         <div class="col-md-12">
-          <h3>You have a total of <%= transactions.length %> transactions.</h3>
+          <% if(transactions.length == 1){ %>
+            <h3>You have a total of <%= transactions.length %> transaction.</h3>
+          <% }else{ %>
+            <h3>You have a total of <%= transactions.length %> transactions.</h3>
+          <% } %>
         </div>
       </div>
     </div>
@@ -16,10 +20,12 @@
           <div class="list-group-item">
             <div class="row">
               <div class="col-md-9">
-                <% var timeString = transaction.attributes.time.split("T")[0].split("-").join("/"); %>
-                <h4><%= timeString %>, <span class="information-span"><%= transaction.attributes.username %></span> bought your <span class="information-span"><%= transaction.attributes.deal_title %></span> at <span class="information-span">$<%= transaction.attributes.price/100 %></span></h4>
+                <% var timeString = transaction.attributes.time.split("T")[0].split("-"); %>
+                <% timeString.push(timeString[0]); %>
+                <% timeString = timeString.slice(1).join("/") %>
+                <h4><%= timeString %>, <%= transaction.attributes.username %> bought your <%= transaction.attributes.deal_title %> at $<%= transaction.attributes.price/100 %></h4>
               </div>
-              <div class="col-md-3" style="padding-top: 20px; text-align: center;">
+              <div class="col-md-3" style="text-align: center;">
                 <button data-id="<%= transaction.attributes.bundling_id %>" data-tid="<%= transaction.attributes.transaction_id %>" id="refund-deal" class="btn btn-danger">Refund This Transaction</button>
               </div>
             </div>
