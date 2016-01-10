@@ -76,7 +76,8 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
     var searchInput = this.$el.find("#search-input").val();
     thisView.zip_code = searchInput;
-    RipeCom.Utils.setCookie("lastQuery", "");
+    
+    RipeCom.Utils.setCookie("lastQuery", searchInput);
     thisView.corporateDeals.changeZip(Number(searchInput));
 
 
