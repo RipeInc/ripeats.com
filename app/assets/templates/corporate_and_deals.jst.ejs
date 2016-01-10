@@ -3,7 +3,7 @@
 <div class="list-group-item corporate-deal-group">
   <div class="row" id="corporate-information-row">
     <div class="col-md-3" style="text-align: center; padding-top: 10px;">
-      <div id="corporate-avatar-holder">
+      <div id="corporate-avatar-holder" style="cursor: pointer;" data-corporate-id=<%= corporate.id %>>
         <% if(corporate.attributes.profile_image){ %>
           <img id="corporate-avatar" src=<%= String(corporate.attributes.profile_image) %> alt="?" />
         <% }else{ %>
@@ -13,7 +13,7 @@
     </div>
 
     <div id="corporate-account-information-main" class="col-md-9">
-      <h2><%= corporate.attributes.corporate_name %></h2>
+      <h2 id="corporate-title" style="cursor: pointer;" data-corporate-id=<%= corporate.id %>><%= corporate.attributes.corporate_name %></h2>
       <hr>
 
       <div class="row">

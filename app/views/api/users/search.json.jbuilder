@@ -1,4 +1,5 @@
 json.corporates @corporates do |corporate|
+  json.id corporate.id
   json.corporate_name corporate.corporate_name
   json.description corporate.description
   json.email corporate.email

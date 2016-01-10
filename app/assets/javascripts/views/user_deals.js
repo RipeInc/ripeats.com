@@ -4,6 +4,8 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   events: {
     "click #search-deals": "searchDeals",
     "click #add-to-cart": "addToCart",
+    "click #corporate-avatar-holder": "showCorporateInfo",
+    "click #corporate-title": "showCorporateInfo",
   },
 
   initialize: function(options){
@@ -24,6 +26,20 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
   remove: function(){
     clearInterval(this.timeInterval);
+  },
+
+  showCorporateInfo: function(event){
+    event.preventDefault();
+    var corporateID = Number(event.currentTarget.dataset.corporateId);
+    var corporateToShow = new RipeCom.Models.Corporate({
+      id: corporateID
+    });
+    corporateToShow.fetch();
+    var newSummaryView = new RipeCom.Views.CorporateSummaryView({
+      corporate: corporateToShow
+    });
+    var $modalField = $("#ripe-overlay-field-master");
+    $modalField.html(newSummaryView.render().$el);
   },
 
   addToCart: function(event){
