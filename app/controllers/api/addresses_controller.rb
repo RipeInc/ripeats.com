@@ -12,6 +12,15 @@ class Api::AddressesController < ApplicationController
     render json: @addresses
   end
 
+  def create
+    @address = Address.new(address_params)
+    if @address.save
+      render json: @address
+    else
+      render json: @address.errors.full_messages, status: 422
+    end
+  end
+
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
@@ -24,6 +33,6 @@ class Api::AddressesController < ApplicationController
   private
 
   def address_params
-    params.require(:address).permit(:corporate_id, :user_id, :street_one, :street_two, :city, :state, :zip_code)
+    params.require(:address).permit(:locatable_id, :locatable_type, :corporate_id, :user_id, :street_one, :street_two, :city, :state, :zip_code)
   end
 end

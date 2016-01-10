@@ -74,7 +74,13 @@ RipeCom.Views.CorporateAccountInfo = Backbone.FusedView.extend({
   },
 
   addAddress: function(event){
+    event.preventDefault();
+    var $modalField = $("#ripe-overlay-field-master");
+    var newModalView = new RipeCom.Views.CorporateAddAddress({
+      corporate: this.corporate
+    });
 
+    $modalField.html(newModalView.render().$el);
   },
 
   changeAddress: function(event){

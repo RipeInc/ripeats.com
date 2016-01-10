@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     get "/search/:zip_code", to: "users#search"
     put "/address/:id", to: "addresses#update"
+    post "/address", to: "addresses#create"
+    
     resources :deals, only: [:create, :destroy]
     resources :cart_selections, only: [:create, :destroy]
     resources :users, only: [:show] do

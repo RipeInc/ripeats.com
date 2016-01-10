@@ -1,13 +1,27 @@
 <div class="row">
   <div class="container">
-    <form id="corporate-change-description-form">
-      <fieldset>
-        <h2>Change the Description for Your Restaurant</h2>
+    <div class="modal-form-holder">
 
-        <textarea name="corporate[description]"></textarea>
-        <button id="close-modal-button">cancel</button>
-        <input type="submit" val="submit">
-      </fieldset>
-    </form>
+      <form id="corporate-change-description-form">
+        <h2>Change the Description for Your Restaurant</h2>
+        <hr>
+        <div class="row">
+          <div class="col-md-6" style="text-align: center; font-size: 24px; font-weight: bold;">
+            New Description
+          </div>
+          <div class="col-md-6">
+            <textarea class="form-control" name="corporate[description]" row="4"></textarea>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <input class="btn btn-success" type="submit" value="Change Description" style="text-transform: capitalize;">
+            <span>&nbsp&nbsp&nbsp</span>
+            <button class="btn btn-danger" id="modal-close-button">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
