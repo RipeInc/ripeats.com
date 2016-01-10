@@ -67,7 +67,7 @@
                   </div>
                   <div class="col-md-3" style="text-align: center;">
                     <h5>Current Price:</h5>
-                    <h5>$<%= deal.currentPrice()/100 %>&nbsp;&nbsp;&nbsp; <span style="color: #585858;"><%= deal.discount() %>% OFF</span></h5>
+                    <h5>$<%= deal.currentPrice()/100 %>&nbsp;&nbsp;&nbsp; <span style="color: #585858;"><%= Math.floor(Number(deal.discount())) %>% OFF</span></h5>
                   </div>
                 </div>
 
