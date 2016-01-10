@@ -8,6 +8,20 @@ class Api::UsersController < ApplicationController
     render "search"
   end
 
+  def splash_search
+    @zip_code = params[:zip_code]
+    usernum = (1 + rand(9999)).to_s
+    password_string = SecureRandom.urlsafe_base64
+    @user = User.new(username: "Guest " + usernum, email: password_string + "@ripeats.com", password: password_string, password_verify: password_string);
+
+    if @user.save
+      log_in!(@user)
+      render json: @user
+    else
+      render json: "Guest account creation failed.", status: 422
+    end
+  end
+
   def cart
     @user = User.find(params[:user_id])
     @deal_selections = @user.deal_selections

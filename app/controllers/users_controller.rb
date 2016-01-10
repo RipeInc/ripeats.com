@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+  before_action :check_current_user, only: [:show]
+
+  def check_current_user
+    @user = User.find(params[:id])
+    if current_user != @user
+      render json: "You can't view other user's account.", status: 403
+    elsif !current_user
+      redirect_to root_url
+    end
+  end
 
   def index
   end
@@ -19,7 +29,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-
   end
 
   def delete

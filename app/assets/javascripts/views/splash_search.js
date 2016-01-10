@@ -3,7 +3,7 @@ RipeCom.Views.SplashSearch = Backbone.FusedView.extend({
   className: 'splash-main',
 
   events: {
-
+    "submit #splash-search-form": "searchSplash"
   },
 
   initialize: function(options){
@@ -18,6 +18,24 @@ RipeCom.Views.SplashSearch = Backbone.FusedView.extend({
     this.$el.find(".message-board-holder").append($newMessage);
     setInterval(function(){ $newMessage.css("opacity", "1")}, 1);
     this.lastMessage = $newMessage;
+  },
+
+  searchSplash: function(event){
+    event.preventDefault();
+
+    var data = this.$el.find("#splash-search-form").serializeJSON();
+    debugger;
+    $.ajax({
+      url: "/api/splash_search/" + Number(data.search),
+      method: "GET",
+      success: function(model, response){
+        document.cookie = "session_token=" + model.session_token + "; path=/";
+      },
+
+      error: function(model, response){
+
+      }
+    })
   },
 
   setBoardChange: function(){

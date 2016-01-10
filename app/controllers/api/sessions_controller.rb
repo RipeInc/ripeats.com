@@ -5,7 +5,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(session_params[:name], session_params[:password])
 
     if @corporate
-      log_in!(@corporate)
+      log_in_corporate!(@corporate)
       render json: @corporate
     elsif @user
       log_in!(@user)
