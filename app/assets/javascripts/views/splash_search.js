@@ -24,12 +24,16 @@ RipeCom.Views.SplashSearch = Backbone.FusedView.extend({
     event.preventDefault();
 
     var data = this.$el.find("#splash-search-form").serializeJSON();
-    debugger;
+
     $.ajax({
       url: "/api/splash_search/" + Number(data.search),
       method: "GET",
       success: function(model, response){
-        document.cookie = "session_token=" + model.session_token + "; path=/";
+        RipeCom.Utils.setCookie("session_token", model.session_token);
+        RipeCom.Utils.setCookie("lastQuery", data.search, "1000");
+        // document.cookie = "session_token=" + model.session_token + "; path=/";
+        // document.cookie = "lastQuery=" + Number(data.search);
+        window.location = "/";
       },
 
       error: function(model, response){

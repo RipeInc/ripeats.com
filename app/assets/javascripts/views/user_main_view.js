@@ -8,6 +8,7 @@ RipeCom.Views.UserMainView = Backbone.FusedView.extend({
   initialize: function(options){
     this.$userRoot = options.$userRoot;
     this.user = options.user;
+    this.lastQuery = options.lastQuery;
 
     this.addAllViews();
   },
@@ -35,7 +36,8 @@ RipeCom.Views.UserMainView = Backbone.FusedView.extend({
 
   addNavBarDashboard: function(){
     var $userNavBarDashboard = new RipeCom.Views.UserNavBarDashboard({
-      user: this.user
+      user: this.user,
+      lastQuery: this.lastQuery
     });
 
     this.addComponent($userNavBarDashboard, "#main-navbardashboard-field");

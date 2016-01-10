@@ -5,6 +5,7 @@ RipeCom.Routers.UserRouter = Backbone.Router.extend({
 
   initialize: function(options){
     this.$userRoot = options.$userRoot;
+    this.lastQuery = this.findLastQuery();
 
     if(!$("#user-info-header").html()){ return 0; };
 
@@ -17,10 +18,25 @@ RipeCom.Routers.UserRouter = Backbone.Router.extend({
     this.main();
   },
 
+  findLastQuery: function(){
+    var cookies = document.cookie.split(";");
+    var lastQuery;
+    for(var i = 0; i< cookies.length; i++){
+      var cookie = cookies[i];
+      var name = cookie.split("=")[0];
+      if(name.substring(1, name.length) == "lastQuery"){
+        lastQuery = Number(cookie.split("=")[1]);
+        break;
+      };
+    };
+    return lastQuery;
+  },
+
   main: function(){
     var $userMainView = new RipeCom.Views.UserMainView({
       $userRoot: this.$userRoot,
-      user: this.user
+      user: this.user,
+      lastQuery: this.lastQuery
     });
     this._swap($userMainView);
   },

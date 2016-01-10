@@ -11,6 +11,7 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
     var thisView = this;
     this.user = options.user;
     this.corporateDeals = new RipeCom.Collections.CorporateDeals();
+    this.zip_code = options.lastQuery;
 
     this.listenTo(this.user, 'sync', this.updateName.bind(this));
   },

@@ -12,7 +12,9 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     this.user = options.user;
     this.corporateDeals = options.corporateDeals;
     this.zip_code = options.zip_code;
+
     if(this.zip_code){ this.retrieveDeals(this.zip_code); };
+    if(options.lastQuery){ this.retrieveDeals(options.lastQuery); };
 
     this.corporateDeals.reset();
     this.listenTo(this.corporateDeals, 'sync', this.render.bind(this));
@@ -74,8 +76,9 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
     var searchInput = this.$el.find("#search-input").val();
     thisView.zip_code = searchInput;
-
+    RipeCom.Utils.setCookie("lastQuery", "");
     thisView.corporateDeals.changeZip(Number(searchInput));
+
 
     $.ajax({
       url: "/api/search/" + searchInput,
@@ -163,7 +166,8 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
   render: function(){
     var content = this.template({
-      user: this.user
+      user: this.user,
+      zip_code: this.zip_code
     });
     this.$el.html(content);
     return this;
