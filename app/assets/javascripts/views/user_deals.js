@@ -2,7 +2,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   template: JST['user_deals'],
 
   events: {
-    "click #search-deals": "searchDeals",
+    "submit #search-input-form": "searchDeals",
     "click #add-to-cart": "addToCart",
     "click #corporate-avatar-holder": "showCorporateInfo",
     "click #corporate-title": "showCorporateInfo",
@@ -76,7 +76,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
     var searchInput = this.$el.find("#search-input").val();
     thisView.zip_code = searchInput;
-    
+
     RipeCom.Utils.setCookie("lastQuery", searchInput);
     thisView.corporateDeals.changeZip(Number(searchInput));
 

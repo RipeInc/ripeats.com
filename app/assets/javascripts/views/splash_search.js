@@ -29,8 +29,8 @@ RipeCom.Views.SplashSearch = Backbone.FusedView.extend({
       url: "/api/splash_search/" + data.search,
       method: "GET",
       success: function(model, response){
-        RipeCom.Utils.setCookie("session_token", model.session_token);
         RipeCom.Utils.setCookie("lastQuery", data.search);
+        RipeCom.Utils.setCookie("session_token", model.session_token);
         // document.cookie = "session_token=" + model.session_token + "; path=/";
         // document.cookie = "lastQuery=" + Number(data.search);
         window.location = "/";
