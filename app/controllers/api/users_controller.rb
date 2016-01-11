@@ -3,8 +3,15 @@ class Api::UsersController < ApplicationController
   def search
     @zip_code = params[:zip_code]
     # RAZYNOIR-INCOMPLETE: NO ZIP CODE SEARCH
+    # p RipeCom::Application::ALL_NEAR_ZIP(@zip_code)
+    @near_zips = RipeCom::Application::ALL_NEAR_ZIP(@zip_code)
+    @zip_hash = {}
+    @near_zips.each do |zip|
+      @zip_hash[zip] = true
+    end
+    p @near_zips
 
-    @corporates = Corporate.includes(:deals).includes(:ratings).includes(:transactions).all
+    @corporates = Corporate.includes(:addresses).includes(:deals).includes(:ratings).includes(:transactions).all
     render "search"
   end
 

@@ -29,7 +29,7 @@
             <% if(transaction.attributes.deals.length > 0){ %>
               <% transaction.attributes.deals.forEach(function(deal){ %>
                 <div class="row" style="font-size: 24px;">
-                  You bought <%= deal.corporate_name %>'s <%= deal.deal_title %> for $<%= deal.price/100 %>
+                  You bought <span class="information-span"><%= deal.corporate_name %></span>'s <%= deal.deal_title %> for $<%= deal.price/100 %>
                 </div>
               <% }) %>
             <% }else{ %>

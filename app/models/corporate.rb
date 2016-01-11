@@ -16,6 +16,7 @@
 
 class Corporate < ActiveRecord::Base
   attr_reader :password
+  attr_accessor :zip_code
 
   validates :corporate_name, :email, :password_digest, :session_token, presence: true
   validates :corporate_name, :email, uniqueness: true
@@ -51,6 +52,10 @@ class Corporate < ActiveRecord::Base
     through: :deals,
     source: :transactions
   )
+
+  def zip_code
+    self.addresses.first.zip_code
+  end
 
   def password=(password)
     @password = password
