@@ -72,7 +72,7 @@ module RipeCom
         longtitude_diff = (end_longitude.to_f - start_longitude.to_f).abs * 54.6
         distance = Math.sqrt(latitude_diff * latitude_diff + longtitude_diff * longtitude_diff)
 
-        if distance <= 2
+        if distance <= 5
           cache.push(zip_code)
         end
       end
