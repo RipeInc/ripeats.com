@@ -39,6 +39,6 @@ class Api::DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:corporate_id, :deal_title, :description, :deal_image, :quantity, :original_price, :price, :least_price, :expire, :expiration)
+    params.require(:deal).permit(:id, :created_at, :corporate_id, :deal_title, :description, :deal_image, :quantity, :original_price, :price, :least_price, :expire, :expiration)
   end
 end

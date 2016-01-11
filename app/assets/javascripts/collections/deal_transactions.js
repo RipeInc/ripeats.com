@@ -10,6 +10,11 @@ RipeCom.Collections.DealTransactions = Backbone.Collection.extend({
   },
 
   parse: function(response){
-    this.set(response);
+    var thisCollection = this;
+    response.forEach(function(r){
+      var newModel = new RipeCom.Models.Transaction();
+      newModel.parse(r);
+      thisCollection.add(newModel);
+    });
   }
 })

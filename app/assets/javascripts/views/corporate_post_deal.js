@@ -59,8 +59,9 @@ RipeCom.Views.CorporatePostDeal = Backbone.FusedView.extend({
 
     newDeal.save(data.deal, {
       success: function(model, response){
+        model.attributes.transactions = [];
         thisView.deals.add(model);
-        $("#active-deals-tab > a").trigger("click")
+        $("#active-deals-tab > a").trigger("click");
         thisView.closeModal();
       },
 

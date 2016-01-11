@@ -6,8 +6,17 @@ RipeCom.Models.Deal = Backbone.Model.extend({
       this._transactions = new RipeCom.Collections.DealTransactions({
         deal: this
       });
+      this._transactions.reset();
     };
     return this._transactions;
+  },
+
+  expire: function(collection){
+    this.save({expire: true}, {
+      success: function(model, response){
+        collection.remove(model);
+      }
+    })
   },
 
   parse: function(response){
@@ -23,11 +32,11 @@ RipeCom.Models.Deal = Backbone.Model.extend({
   },
 
   sold: function(){
-    return this.transactions().length;
+    return this.attributes.transactions.length;
   },
 
   left: function(){
-    return this.attributes.quantity - this.transactions().length;
+    return this.attributes.quantity - this.attributes.transactions.length;
   },
 
   timeLeft: function(){

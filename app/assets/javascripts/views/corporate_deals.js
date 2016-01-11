@@ -24,9 +24,10 @@ RipeCom.Views.CorporateDeals = Backbone.FusedView.extend({
     var thisView = this;
     var removeID = Number(event.currentTarget.dataset.dealid);
     var removeDeal = this.deals.where({id: removeID})[0];
-    removeDeal.destroy({
+    removeDeal.save({expire: true}, {
       success: function(model, response){
-
+        thisView.deals.remove(model);
+        debugger;
       }
     })
   },
