@@ -8,7 +8,7 @@ class Api::CorporatesController < ApplicationController
     @address = @corporate.addresses.first
 
     if @address
-      request_line = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @address.street_one.split(" ").join("+") + ",+" + @address.city.split(" ").join("+") + ",+" + @address.state.to_s + "&key=" + RipeCom::Application::GOOGLE_MAP_API_KEY
+      request_line = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @address.street_one.split(" ").join("+") + ",+" + @address.city.split(" ").join("+") + ",+" + @address.state.to_s.split(" ").join("+") + "&key=" + RipeCom::Application::GOOGLE_MAP_API_KEY
       res = Net::HTTP.get(URI.parse(request_line))
       res = JSON.parse(res)
 
