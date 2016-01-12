@@ -47,6 +47,12 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
 
   postDeal: function(event){
     event.preventDefault();
+
+    if(this.corporate.attributes.addresses.length < 1){
+      RipeCom.Utils.insertErrorMessages(["You need to add your address to post a deal."]);
+      return;
+    }
+
     var itemID = Number(event.currentTarget.dataset.itemid);
 
     var thisView = this;
