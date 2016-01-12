@@ -19,8 +19,9 @@
           <% }%>
         </div>
 
-        <div class="col-md-9" style="text-align: center;">
-          <h2><%= corporate.attributes.corporate_name %></h2>
+        <div class="col-md-9">
+          <h2 style="text-align: center;"><%= corporate.attributes.corporate_name %></h2>
+          <p><%= corporate.attributes.description %></p>
         </div>
 
       </div>
@@ -28,13 +29,13 @@
       <hr>
 
       <div class="row">
-        <div class="col-md-4" style="text-align: center;">
-          <div style="height: 250px; width: 250px; padding-left: 20px;">
+        <div class="col-md-6" style="text-align: center;">
+          <div style="height: 250px; width: 500px; padding-left: 20px;">
             <div id="google-map" style="height: 100%; width: 100%;"></div>
           </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="row">
             <div class="col-md-4">
               <span style="font-weight: bold">Contact Number</span>
