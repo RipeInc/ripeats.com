@@ -42,6 +42,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     });
     var $modalField = $("#ripe-overlay-field-master");
     $modalField.html(newSummaryView.render().$el);
+    window.scrollTo(0, 0);
   },
 
   addToCart: function(event){
