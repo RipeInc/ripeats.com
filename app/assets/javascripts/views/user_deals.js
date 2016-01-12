@@ -155,13 +155,25 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     var $rootEl = this.$el.find("#deals-list-holder");
     $rootEl.html("");
 
-    corporateDeals.forEach(function(corporate){
-      var content = JST['corporate_and_deals']({
-        corporate: corporate,
-        deals: corporate.activeDeals()
+    if(corporateDeals.length > 0){
+      corporateDeals.forEach(function(corporate){
+        var content;
+
+        if(corporate.activeDeals().length < 1){
+          content = ""
+        }else{
+          content = JST['corporate_and_deals']({
+            corporate: corporate,
+            deals: corporate.activeDeals()
+          });
+        };
+
+        $rootEl.append(content);
       });
-      $rootEl.append(content);
-    })
+    }else{
+      var content = JST['no-deals']({});
+      $rootEl.html(content);
+    }
   },
 
   render: function(){

@@ -34,7 +34,12 @@
         <div class="col-md-4">
           <span style="font-weight: bold; margin-bottom: 10px;">Rating</span>
         </div>
-        <div class="col-md-8"><p><%= corporate.ratings().average() %></p></div>
+
+        <% if(corporate.ratings().length < 1){ %>
+          <div class="col-md-8"><p>No ratings yet</p></div>
+        <% }else{ %>
+          <div class="col-md-8"><p><%= corporate.ratings().average() %></p></div>
+        <% } %>
       </div>
 
       <div class="row">
@@ -139,7 +144,7 @@
           <span style="font-weight: bold">State</span>
         </div>
         <div class="col-md-8">
-          <p><%= corporateAddress.state %></p>
+          <p><%= corporateAddress.state.split("+").join(" ") %></p>
         </div>
       </div>
 
