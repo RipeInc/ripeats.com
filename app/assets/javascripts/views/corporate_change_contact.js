@@ -24,6 +24,15 @@ RipeCom.Views.CorporateChangeContact = Backbone.FusedView.extend({
     var thisView = this;
 
     var data = $("#corporate-change-contact-form").serializeJSON();
+    var contact = data.corporate.corporate_contact;
+
+    if(!contact.split("-").join("").split(" ").join("").match(/^\d{10}$/)){
+      RipeCom.Utils.insertErrorMessages(["The contact number is not valid. Please try again."]);
+      window.scrollTo(0, 0);
+      thisView.closeModal();
+      return;
+    };
+
     this.corporate.save(data.corporate, {
       success: function(model, response){
         thisView.closeModal();

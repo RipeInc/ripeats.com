@@ -10,13 +10,13 @@
             New Contact
           </div>
           <div class="col-md-6">
-            <input type="text" class="form-control" name="corporate[corporate_contact]">
+            <input type="text" class="form-control" name="corporate[corporate_contact]" placeholder="e.g. 1234567890" value=<%= corporate.attributes.corporate_contact %>>
           </div>
         </div>
         <hr>
         <div class="row">
           <div class="col-md-12" style="text-align: center;">
-            <input class="btn btn-success" type="submit" value="Change Contact" style="text-transform: capitalize;">
+            <input class="btn btn-success" type="submit" value="Change Contact" style="text-transform: capitalize;"/>
             <span>&nbsp&nbsp&nbsp</span>
             <button class="btn btn-danger" id="modal-close-button">Cancel</button>
           </div>
