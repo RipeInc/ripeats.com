@@ -31,5 +31,6 @@ json.transactions @user.transactions do |transaction|
     json.price bundling.price
     json.deal_title bundling.deal.deal_title
     json.corporate_name bundling.deal.corporate.corporate_name
+    json.corporate_id bundling.deal.corporate.id
   end
 end

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     put "/address/:id", to: "addresses#update"
     post "/address", to: "addresses#create"
     get "/splash_search/:zip_code", to: "users#splash_search"
+    get "/ratings/exist/:corporate_id/:user_id", to: "ratings#check"
+    resources :ratings, only: [:create, :update]
 
     resources :deals, only: [:create, :destroy]
     resources :cart_selections, only: [:create, :destroy]

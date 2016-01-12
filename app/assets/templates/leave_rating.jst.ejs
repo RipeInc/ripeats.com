@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="container">
+    <div class="modal-form-holder">
+
+      <form id="new-rating-form">
+        <h2 style="text-align: center;">Leave a new rating for <%= corporateName %></h2>
+        <hr>
+
+        <% if(rating.attributes.id){ %>
+          <div class="row">
+            <div class="col-md-12" style="text-align: center;">
+              <h5>Your already gave a review to <%= corporateName %> with <%= rating.attributes.rating %> points. To change this review, use the form below!</h5>
+            </div>
+          </div>
+          <hr>
+        <% } %>
+
+        <div class="row">
+          <div class="col-md-6" style="text-align: center;">
+            <span style="font-weight = bold; font-size: 24px;">Your new rating</span>
+          </div>
+          <div class="col-md-6">
+            <select class= "form-control" name="rating[rating]">
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6" style="text-align: center;">
+            <span style="font-weight = bold; font-size: 24px;">Description</span>
+          </div>
+          <div class="col-md-6">
+            <textarea class="form-control" name="rating[description]"><%= rating.attributes.description %></textarea>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-12" style="text-align: center;">
+            <input class="btn btn-success" type="submit" value="Submit Rating">
+            <button class="btn btn-danger" id="modal-close-button">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

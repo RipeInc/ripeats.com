@@ -11,7 +11,7 @@
 
   <hr>
 
-  <div>
+  <div style="min-height: 400px;">
     <% var transactions = user.transactions() %>
 
     <% _.each(transactions.last(transactions.length).reverse(), function(transaction){ %>
@@ -29,7 +29,7 @@
             <% if(transaction.attributes.deals.length > 0){ %>
               <% transaction.attributes.deals.forEach(function(deal){ %>
                 <div class="row" style="font-size: 24px;">
-                  You bought <span class="information-span"><%= deal.corporate_name %></span>'s <%= deal.deal_title %> for $<%= deal.price/100 %>
+                  You bought <span class="information-span" id="leave-a-rating" style="cursor: pointer;" data-corporate-id=<%= deal.corporate_id %> data-corporate-name="<%= deal.corporate_name %>"><%= deal.corporate_name %></span>'s <%= deal.deal_title %> for $<%= deal.price/100 %>
                 </div>
               <% }) %>
             <% }else{ %>
