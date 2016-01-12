@@ -83,7 +83,9 @@
               <span style="font-weight: bold">State</span>
             </div>
             <div class="col-md-8">
-              <p><%= corporateAddresses[0].state %></p>
+              <% if(corporateAddresses[0].state){ %>
+                <p><%= corporateAddresses[0].state.split("+").join(" ") %></p>
+              <% } %>
             </div>
           </div>
 
