@@ -49,7 +49,7 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
     event.preventDefault();
 
     if(this.corporate.attributes.addresses.length < 1){
-      RipeCom.Utils.insertErrorMessages(["You need to add your address to post a deal."]);
+      RipeCom.Utils.insertErrorMessages(["You need to add your address to post a deal. Please go to 'My Account' to add an address."]);
       return;
     }
 
