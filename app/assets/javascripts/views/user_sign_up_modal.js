@@ -12,7 +12,23 @@ RipeCom.Views.UserSignupModal = Backbone.FusedView.extend({
   },
 
   signup: function(event){
+    event.preventDefault();
 
+    var $form = this.$el.find("#signup-form");
+    var data = $form.serializeJSON();
+    data.user.guest = false;
+
+    var newUser = new RipeCom.Models.User(data);
+    newUser.save(data.user, {
+      success: function(model){
+        window.location = "/users/" + model.id;
+      },
+
+      error: function(model, response){
+        RipeCom.Utils.insertErrorMessages(response.responseJSON);
+        thisView.closeModal();
+      }
+    });
   },
 
   render: function(){
@@ -20,7 +36,7 @@ RipeCom.Views.UserSignupModal = Backbone.FusedView.extend({
     this.$el.html(content);
     return this;
   },
-  
+
   closeModal: function(event){
     if(event){ event.preventDefault(); };
     $("#ripe-overlay-field-master").html("");

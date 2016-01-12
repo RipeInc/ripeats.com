@@ -15,7 +15,7 @@
     <div class="navbar-right-options">
       <ul class="nav navbar-nav navbar-right">
         <li><a id="user-deals-tab" style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0px;" href="#">Deals</a></li>
-        <li><a id="user-cart-tab" style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0px;" href="#">Cart</a></li>
+        <li><a id="user-cart-tab" style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0px;" href="#">Cart ( <span id="items-in-cart"><%= user.dealSelections().length %></span> items )</a></li>
         <li><a id="user-transactions-tab" style="color: crimson; font-weight: bold; line-height: 40px; height: 69px; margin: 0px;" href="#">Transactions</a></li>
 
         <% if(user.attributes.guest){ %>

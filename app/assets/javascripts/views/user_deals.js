@@ -61,7 +61,6 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     newCartSelection.save(data.cart_selection, {
       success: function(model, response){
         thisView.user.fetch();
-        $("#user-cart-tab").trigger("click");
       },
 
       error: function(model, response){

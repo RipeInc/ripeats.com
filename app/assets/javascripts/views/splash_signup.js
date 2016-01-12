@@ -34,7 +34,7 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
       },
 
       error: function(model, response){
-        debugger;
+        RipeCom.Utils.insertErrorMessages(response.responseJSON);
       }
     });
   },

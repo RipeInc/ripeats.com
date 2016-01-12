@@ -15,6 +15,7 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
     this.corporateDeals = new RipeCom.Collections.CorporateDeals();
     this.zip_code = options.lastQuery;
 
+    this.listenTo(this.user.dealSelections(), 'sync change update', this.updateNumber.bind(this));
     this.listenTo(this.user, 'sync', this.updateName.bind(this));
     this.listenTo(this.user, 'sync', this.render.bind(this));
   },
@@ -34,6 +35,10 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
     var newView = new RipeCom.Views.UserLoginModal();
 
     $modalField.html(newView.render().$el);
+  },
+
+  updateNumber: function(){
+    this.$el.find("#items-in-cart").html(this.user.dealSelections().length);
   },
 
   updateName: function(){
