@@ -1,5 +1,5 @@
 json.corporates @corporates do |corporate|
-  if @zip_hash[corporate.addresses.first.zip_code]
+  if corporate.addresses.first && @zip_hash[corporate.addresses.first.zip_code]
     json.id corporate.id
     json.corporate_name corporate.corporate_name
     json.description corporate.description

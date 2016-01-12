@@ -8,7 +8,10 @@ class Api::UsersController < ApplicationController
       @zip_hash[zip] = true
     end
 
+    p @near_zips
     @corporates = Corporate.includes(:addresses).includes(:deals).includes(:ratings).includes(:transactions).all
+    p @corporates.errors.full_messages
+    p.@corporates
     render "search"
   end
 
