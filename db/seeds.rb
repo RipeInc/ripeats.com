@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Corporate.create(corporate_name: "The Bistro", description: "The Bistro is an Italian-American bistro located in the heart of downtown Manhattan, serving the finest food in a sophisticated setting.", email: "thebistro@nyc.com", password: "abcdef", password_verify: "abcdef", profile_image: "https://cdn.filepicker.io/api/file/tANELld4Q3m8xN0JejrY/convert?crop=0,0,195,195");
-User.create(username: "Aaron", email: "aaron@gmail.com", password: "123456", password_verify: "123456");
-User.create(username: "Brian", email: "brian@gmail.com", password: "123456", password_verify: "123456");
-User.create(username: "Casey", email: "casey@gmail.com", password: "123456", password_verify: "123456");
+User.create(username: "Aaron", guest: false, email: "aaron@gmail.com", password: "123456", password_verify: "123456");
+User.create(username: "Brian", guest: false, email: "brian@gmail.com", password: "123456", password_verify: "123456");
+User.create(username: "Casey", guest: false, email: "casey@gmail.com", password: "123456", password_verify: "123456");
 
 MenuItem.create(corporate_id: 1, item_name: "Southern-Style Buttermilk Fried Chicken", description: "with a blue cheese and bacon-smattered iceberg salad", price: 2000, item_image: "https://cdn.filepicker.io/api/file/eBqpzlIRs2D1MEQLc31z/convert?crop=27,0,440,440");
 MenuItem.create(corporate_id: 1, item_name: "Orange-Rosemary Glazed Salmon", description: "on a bed of arugula", price: 2600, item_image: "https://cdn.filepicker.io/api/file/oxfTAkpfS6m4yVY0CZNO/convert?crop=0,0,575,575");

@@ -5,9 +5,15 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(session_params[:name], session_params[:password])
 
     if @corporate
+      if current_corporate
+        log_out!
+      end
       log_in_corporate!(@corporate)
       render json: @corporate
     elsif @user
+      if current_user
+        log_out!
+      end
       log_in!(@user)
       render json: @user
     else

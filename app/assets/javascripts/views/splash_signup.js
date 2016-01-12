@@ -25,6 +25,7 @@ RipeCom.Views.SplashSignup = Backbone.FusedView.extend({
 
     var $form = this.$el.find("#new-user-form");
     var data = $form.serializeJSON();
+    data.user.guest = false;
 
     var newUser = new RipeCom.Models.User(data);
     newUser.save(data.user, {

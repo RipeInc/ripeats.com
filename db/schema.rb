@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160107214907) do
     t.string   "username",        null: false
     t.string   "email",           null: false
     t.string   "profile_image"
+    t.boolean  "guest",           null: false
     t.string   "password_digest", null: false
     t.string   "session_token",   null: false
     t.datetime "created_at",      null: false

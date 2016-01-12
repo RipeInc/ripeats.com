@@ -5,6 +5,8 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
     "click #user-deals-tab": "showDeals",
     "click #user-cart-tab": "showCart",
     "click #user-transactions-tab": "showTransactions",
+    "click #user-signup-tab": "userSignup",
+    "click #user-login-tab": "userLogin",
   },
 
   initialize: function(options){
@@ -14,6 +16,24 @@ RipeCom.Views.UserNavBarDashboard = Backbone.FusedView.extend({
     this.zip_code = options.lastQuery;
 
     this.listenTo(this.user, 'sync', this.updateName.bind(this));
+    this.listenTo(this.user, 'sync', this.render.bind(this));
+  },
+
+  userSignup: function(event){
+    event.preventDefault();
+
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.UserSignupModal();
+    $modalField.html(newView.render().$el);
+  },
+
+  userLogin: function(event){
+    event.preventDefault();
+
+    var $modalField = $("#ripe-overlay-field-master");
+    var newView = new RipeCom.Views.UserLoginModal();
+
+    $modalField.html(newView.render().$el);
   },
 
   updateName: function(){

@@ -1,4 +1,4 @@
-json.(@user, :id, :username, :email, :profile_image, :created_at)
+json.(@user, :id, :username, :email, :profile_image, :guest, :created_at)
 
 json.deal_selections @user.cart_selections do |cart_selection|
   json.id cart_selection.deal.id
