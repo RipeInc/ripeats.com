@@ -12,8 +12,25 @@ RipeCom.Views.CorporateSummaryView = Backbone.FusedView.extend({
   },
 
   render: function(){
+    var corporateAddresses = this.corporate.address().attributes.corporate.attributes.addresses;
+
+    var latitude;
+    var longitude;
+
+    if(corporateAddresses){
+      latitude = corporateAddresses[0].lat;
+      longitude = corporateAddresses[0].lng;
+    }else{
+      corporateAddresses = [{}];
+      latitude = 0;
+      longitude = 0;
+    };
+
     var content = this.template({
-      corporate: this.corporate
+      corporate: this.corporate,
+      corporateAddresses: corporateAddresses,
+      latitude: latitude,
+      longitude: longitude
     });
     this.$el.html(content);
     return this;

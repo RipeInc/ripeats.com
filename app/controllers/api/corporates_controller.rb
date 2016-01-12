@@ -1,7 +1,20 @@
+require 'net/http'
+require 'json'
+
 class Api::CorporatesController < ApplicationController
   def show
     @corporate = Corporate.includes(:menu_items).includes(deals: {transactions: :user}).includes(:addresses).includes(:ratings).find(params[:id])
     @bundlings = [];
+    @address = @corporate.addresses.first
+
+    if @address
+      request_line = "https://maps.googleapis.com/maps/api/geocode/json?address=" + @address.street_one.split(" ").join("+") + ",+" + @address.city.split(" ").join("+") + ",+" + @address.state.to_s + "&key=" + RipeCom::Application::GOOGLE_MAP_API_KEY
+      res = Net::HTTP.get(URI.parse(request_line))
+      res = JSON.parse(res)
+
+      @location_lat = res["results"][0]["geometry"]["location"]["lat"]
+      @location_lng = res["results"][0]["geometry"]["location"]["lng"]
+    end
 
     @corporate.deals.each do |deal|
       deal.bundlings.each do |bundling|

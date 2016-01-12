@@ -40,6 +40,8 @@ module RipeCom
       ZIP_CODES[zip_code] = {:latitude => latitude, :longitude => longitude}
     end
 
+    GOOGLE_MAP_API_KEY = "AIzaSyB1Dn3YLS49_h0TK_Huv7xEM-MNV7LZgJw"
+
     ZIP_CODES_IN_TWO_MILES = {}
 
     def self.ALL_NEAR_ZIP(start_zip)

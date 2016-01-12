@@ -19,16 +19,22 @@
           <% }%>
         </div>
 
-        <div class="col-md-9">
+        <div class="col-md-9" style="text-align: center;">
+          <h2><%= corporate.attributes.corporate_name %></h2>
+        </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <h3><%= corporate.attributes.corporate_name %></h3>
-            </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-4" style="text-align: center;">
+          <div style="height: 250px; width: 250px; padding-left: 20px;">
+            <div id="google-map" style="height: 100%; width: 100%;"></div>
           </div>
+        </div>
 
-          <hr>
-
+        <div class="col-md-8">
           <div class="row">
             <div class="col-md-4">
               <span style="font-weight: bold">Contact Number</span>
@@ -42,24 +48,22 @@
             </div>
           </div>
 
-          <% var corporateAddress = corporate.address(); %>
-
           <div class="row">
             <div class="col-md-4">
               <span style="font-weight: bold">Street Address One</span>
             </div>
             <div class="col-md-8">
-              <p><%= corporateAddress.street_one %></p>
+              <p><%= corporateAddresses[0].street_one %></p>
             </div>
           </div>
 
-          <% if(corporateAddress.street_two){ %>
+          <% if(corporateAddresses[0].street_two){ %>
             <div class="row">
               <div class="col-md-4">
                 <span style="font-weight: bold">Street Address Two</span>
               </div>
               <div class="col-md-8">
-                <p><%= corporateAddress.street_two %></p>
+                <p><%= corporateAddresses[0].street_two %></p>
               </div>
             </div>
           <% } %>
@@ -69,7 +73,7 @@
               <span style="font-weight: bold">City</span>
             </div>
             <div class="col-md-8">
-              <p><%= corporateAddress.city %></p>
+              <p><%= corporateAddresses[0].city %></p>
             </div>
           </div>
 
@@ -78,7 +82,7 @@
               <span style="font-weight: bold">State</span>
             </div>
             <div class="col-md-8">
-              <p><%= corporateAddress.state %></p>
+              <p><%= corporateAddresses[0].state %></p>
             </div>
           </div>
 
@@ -87,9 +91,11 @@
               <span style="font-weight: bold">Zip Code</span>
             </div>
             <div class="col-md-8">
-              <p><%= corporateAddress.zip_code %></p>
+              <p><%= corporateAddresses[0].zip_code %></p>
             </div>
           </div>
+
+
 
         </div>
       </div>
@@ -145,13 +151,28 @@
 
         </div>
       </div>
-
-
-
-
-
-
-
     </div>
   </div>
 </div>
+
+<% console.log(latitude); %>
+<% console.log(longitude); %>
+
+<script type="text/javascript">
+  var map;
+  var position = new google.maps.LatLng(<%= latitude %>, <%= longitude %>);
+  function showMap() {
+    map = new google.maps.Map(document.getElementById('google-map'), {
+      center: position,
+      zoom: 16,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var marker = new google.maps.Marker({
+      position: position,
+      map: map,
+      title: "<%= corporate.attributes.corporate_name %>"
+    });
+  };
+  showMap();
+</script>

@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'figaro'
+gem 'json'
 
 gem 'annotate'
 

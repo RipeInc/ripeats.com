@@ -8,6 +8,8 @@ json.addresses @corporate.addresses do |address|
   json.city address.city
   json.state address.state
   json.zip_code address.zip_code
+  json.lat @location_lat
+  json.lng @location_lng
 end
 
 json.menu_items @corporate.menu_items do |menu_item|
