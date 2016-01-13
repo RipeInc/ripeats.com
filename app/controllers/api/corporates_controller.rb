@@ -4,7 +4,6 @@ require 'json'
 class Api::CorporatesController < ApplicationController
   def show
     @corporate = Corporate.includes(:menu_items).includes(deals: {transactions: :user}).includes(:addresses).includes(:ratings).find(params[:id])
-    @bundlings = [];
     @address = @corporate.addresses.first
 
     if @address
@@ -16,6 +15,7 @@ class Api::CorporatesController < ApplicationController
       @location_lng = res["results"][0]["geometry"]["location"]["lng"]
     end
 
+    @bundlings = [];
     @corporate.deals.each do |deal|
       deal.bundlings.each do |bundling|
         @bundlings.push(bundling)
