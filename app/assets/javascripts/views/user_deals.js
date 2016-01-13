@@ -6,12 +6,14 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
     "click #add-to-cart": "addToCart",
     "click #corporate-avatar-holder": "showCorporateInfo",
     "click #corporate-title": "showCorporateInfo",
+    "click #view-in-cart": "viewInCart",
   },
 
   initialize: function(options){
     this.user = options.user;
     this.corporateDeals = options.corporateDeals;
     this.zip_code = options.zip_code;
+    this.cache = {};
 
     if(this.zip_code){ this.retrieveDeals(this.zip_code); };
     if(options.lastQuery){ this.retrieveDeals(options.lastQuery); };
@@ -24,6 +26,11 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
 
   isSearchView: function(){
     return true;
+  },
+
+  viewInCart: function(event){
+    event.preventDefault();
+    $("#user-cart-tab").trigger("click");
   },
 
   remove: function(){
@@ -152,6 +159,7 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   },
 
   displayDeals: function(){
+    var thisView = this;
     var corporateDeals = this.corporateDeals;
     var $rootEl = this.$el.find("#deals-list-holder");
     $rootEl.html("");
@@ -165,7 +173,8 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
         }else{
           content = JST['corporate_and_deals']({
             corporate: corporate,
-            deals: corporate.activeDeals()
+            deals: corporate.activeDeals(),
+            cache: thisView.cache
           });
         };
 
@@ -178,9 +187,16 @@ RipeCom.Views.UserDeals = Backbone.FusedView.extend({
   },
 
   render: function(){
+    var thisView = this;
+    if(thisView.user.attributes.deal_selections){
+      thisView.user.attributes.deal_selections.forEach(function(selection){
+        thisView.cache[selection.id] = true;
+      }.bind(this));
+    }
     var content = this.template({
-      user: this.user,
-      zip_code: this.zip_code
+      user: thisView.user,
+      zip_code: thisView.zip_code,
+      cache: thisView.cache
     });
     this.$el.html(content);
     return this;

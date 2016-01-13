@@ -1,5 +1,4 @@
 <% var defaultImage = corporate.attributes.profile_image %>
-
 <div class="list-group-item corporate-deal-group">
   <div class="row" id="corporate-information-row">
     <div class="col-md-3" style="text-align: center; padding-top: 10px;">
@@ -83,7 +82,11 @@
                   </div>
 
                   <div class="col-md-3" style="text-align:center;">
-                    <button id="add-to-cart" data-id=<%= deal.attributes.id %> class="btn btn-success">Add to Cart</button>
+                    <% if(cache[deal.attributes.id]){ %>
+                      <button id="view-in-cart" class="btn btn-warning">View in Cart</button>
+                    <% }else{ %>
+                      <button id="add-to-cart" data-id=<%= deal.attributes.id %> class="btn btn-success">Add to Cart</button>
+                    <% } %>
                   </div>
                 </div>
               </div>

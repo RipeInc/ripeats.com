@@ -32,6 +32,13 @@ RipeCom.Views.UserCart = Backbone.FusedView.extend({
       method: "DELETE",
       success: function(model, response){
         var model = thisView.user.dealSelections().findWhere({cart_selection_id: selectionID});
+        var models = thisView.user.attributes.deal_selections
+        for(var i = 0; i< models.length; i++){
+          var selection = models[i];
+          if(selection.cart_selection_id == selectionID){
+            models.splice(i, 1);
+          };
+        };
         thisView.user.dealSelections().remove(model);
       },
 
