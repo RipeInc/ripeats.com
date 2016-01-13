@@ -31,6 +31,7 @@ json.active_deals @corporate.deals do |deal|
     json.expiration deal.expiration
     json.deal_image deal.deal_image
     json.price deal.price
+    json.menu_item_id deal.menu_item_id
     json.least_price deal.least_price
     json.created_at deal.created_at
 
@@ -50,6 +51,7 @@ json.expired_deals @corporate.deals do |deal|
     json.quantity deal.quantity
     json.time_start deal.created_at
     json.price deal.price
+    json.id deal.menu_item_id
     json.least_price deal.least_price
     json.created_at deal.created_at
 

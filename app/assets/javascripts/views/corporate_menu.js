@@ -10,13 +10,20 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
   initialize: function(options){
     this.corporate = options.corporate;
     this.menuItems = this.corporate.menuItems();
-    this.listenTo(this.corporate, 'sync', this.updateRender);
-    this.listenTo(this.menuItems, 'sync update', this.updateRender);
+    this.check = {};
+
+    this.listenTo(this.corporate, 'sync', this.updateRender.bind(this));
+    this.listenTo(this.menuItems, 'sync update', this.updateRender.bind(this));
+    this.listenTo(this.corporate.activeDeals(), 'sync update change', this.updateRender.bind(this));
   },
 
   updateRender: function(){
-    this.menuItems = this.corporate.menuItems();
-    this.render();
+    var thisView = this;
+    thisView.menuItems = thisView.corporate.menuItems();
+    thisView.corporate.attributes.active_deals.forEach(function(deal){
+      thisView.check[deal.menu_item_id] = true;
+    });
+    thisView.render();
   },
 
   createNewItem: function(event){
@@ -54,6 +61,10 @@ RipeCom.Views.CorporateMenu = Backbone.FusedView.extend({
     }
 
     var itemID = Number(event.currentTarget.dataset.itemid);
+    if(this.check[itemID]){
+      RipeCom.Utils.insertErrorMessages(["This menu item has an active deal outstanding! Go to 'Active Deals' to view the deal!"])
+      return;
+    }
 
     var thisView = this;
 

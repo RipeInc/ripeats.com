@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20160107214907) do
     t.string   "deal_title",     null: false
     t.text     "description",    null: false
     t.string   "deal_image"
+    t.integer  "menu_item_id"
     t.integer  "quantity",       null: false
     t.integer  "price",          null: false
     t.integer  "least_price",    null: false

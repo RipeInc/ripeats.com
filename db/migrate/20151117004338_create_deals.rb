@@ -5,6 +5,7 @@ class CreateDeals < ActiveRecord::Migration
       t.string :deal_title, null: false
       t.text :description, null: false
       t.string :deal_image
+      t.integer :menu_item_id
 
       t.integer :quantity, null: false
       t.integer :price, null: false
